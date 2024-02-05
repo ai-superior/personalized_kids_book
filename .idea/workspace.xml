@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="4f3fec3c-998e-4568-9568-8d97cb6904e1" name="Changes" comment="replacing gpt with open ai">
+      <change afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/requirements-test.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/api/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/api/routes/health.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/api/setup.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/config/book_cover_template.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/config/book_title_template.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/config/character_image_template.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/config/prompt_input.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/dependencies.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/domain/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/domain/basic_types.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/domain/leads/commands.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/domain/leads/errors.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/domain/leads/model.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/domain/leads/queries.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/domain/leads/repositories.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/domain/leads/services.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/domain/leads/usecases.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/implementation/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/implementation/repositories/leads.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/implementation/services/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/implementation/services/open_ai.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/implementation/sql.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/settings.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/conftest.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/integration/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/integration/repositories/conftest.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/integration/repositories/test_leads.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/integration/services/test_open_ai.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FormatOnSaveOptions">
+    <option name="myRunOnSave" value="true" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="OptimizeOnSaveOptions">
+    <option name="myRunOnSave" value="true" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 3
+}</component>
+  <component name="ProjectId" id="2btGEUoHslbiCi8IF7Q8F4KNl6l" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "/home/subra/Documents/personalized_kids_book/tests",
+    "settings.editor.selected.configurable": "com.jetbrains.python.black.configuration.BlackFormatterConfigurable"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/tests" />
+      <recent name="$PROJECT_DIR$/src/implementation/services" />
+      <recent name="$PROJECT_DIR$/src/implementation" />
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/src/domain" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/tests/integration" />
+      <recent name="$PROJECT_DIR$" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Python tests.pytest for integration.repositories.test_leads.test_get_lead">
+    <configuration name="main" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
+      <module name="personalized_kids_book" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="SDK_NAME" value="open_ai" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="net.ashald.envfile">
+        <option name="IS_ENABLED" value="true" />
+        <option name="IS_SUBST" value="false" />
+        <option name="IS_PATH_MACRO_SUPPORTED" value="false" />
+        <option name="IS_IGNORE_MISSING_FILES" value="false" />
+        <option name="IS_ENABLE_EXPERIMENTAL_INTEGRATIONS" value="false" />
+        <ENTRIES>
+          <ENTRY IS_ENABLED="true" PARSER="runconfig" IS_EXECUTABLE="false" />
+          <ENTRY IS_ENABLED="true" PARSER="env" IS_EXECUTABLE="false" PATH=".env" />
+        </ENTRIES>
+      </EXTENSION>
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/main.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="pytest for integration.repositories.test_chats.test_get_all_chats" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
+      <module name="personalized_kids_book" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_keywords" value="&quot;&quot;" />
+      <option name="_new_parameters" value="&quot;&quot;" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;integration.repositories.test_chats.test_get_all_chats&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
+    <configuration name="pytest for integration.repositories.test_leads.test_get_all_leads" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
+      <module name="personalized_kids_book" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_keywords" value="&quot;&quot;" />
+      <option name="_new_parameters" value="&quot;&quot;" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;integration.repositories.test_leads.test_get_all_leads&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
+    <configuration name="pytest for integration.repositories.test_leads.test_get_lead" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
+      <module name="personalized_kids_book" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_keywords" value="&quot;&quot;" />
+      <option name="_new_parameters" value="&quot;&quot;" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;integration.repositories.test_leads.test_get_lead&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
+    <configuration name="pytest for integration.services.test_open_ai.test_ask_for_image" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
+      <module name="personalized_kids_book" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_keywords" value="&quot;&quot;" />
+      <option name="_new_parameters" value="&quot;&quot;" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;integration.services.test_open_ai.test_ask_for_image&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
+    <configuration name="pytest for integration.services.test_open_ai.test_ask_for_text" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
+      <module name="personalized_kids_book" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="net.ashald.envfile">
+        <option name="IS_ENABLED" value="false" />
+        <option name="IS_SUBST" value="false" />
+        <option name="IS_PATH_MACRO_SUPPORTED" value="false" />
+        <option name="IS_IGNORE_MISSING_FILES" value="false" />
+        <option name="IS_ENABLE_EXPERIMENTAL_INTEGRATIONS" value="false" />
+        <ENTRIES>
+          <ENTRY IS_ENABLED="true" PARSER="runconfig" IS_EXECUTABLE="false" />
+        </ENTRIES>
+      </EXTENSION>
+      <option name="_new_keywords" value="&quot;&quot;" />
+      <option name="_new_parameters" value="&quot;&quot;" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;integration.services.test_open_ai.test_ask_for_text&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Python.main" />
+      <item itemvalue="Python tests.pytest for integration.repositories.test_leads.test_get_all_leads" />
+      <item itemvalue="Python tests.pytest for integration.repositories.test_leads.test_get_lead" />
+      <item itemvalue="Python tests.pytest for integration.services.test_open_ai.test_ask_for_image" />
+      <item itemvalue="Python tests.pytest for integration.repositories.test_chats.test_get_all_chats" />
+      <item itemvalue="Python tests.pytest for integration.services.test_open_ai.test_ask_for_text" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python tests.pytest for integration.repositories.test_leads.test_get_lead" />
+        <item itemvalue="Python tests.pytest for integration.repositories.test_leads.test_get_all_leads" />
+        <item itemvalue="Python tests.pytest for integration.services.test_open_ai.test_ask_for_image" />
+        <item itemvalue="Python tests.pytest for integration.services.test_open_ai.test_ask_for_text" />
+        <item itemvalue="Python tests.pytest for integration.repositories.test_chats.test_get_all_chats" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="4f3fec3c-998e-4568-9568-8d97cb6904e1" name="Changes" comment="" />
+      <created>1707026849859</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1707026849859</updated>
+    </task>
+    <task id="LOCAL-00001" summary="adding methods for open ai text, and images, including test cases">
+      <option name="closed" value="true" />
+      <created>1707030981981</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1707030981981</updated>
+    </task>
+    <task id="LOCAL-00002" summary="adding methods for open ai text, and images, including test cases">
+      <option name="closed" value="true" />
+      <created>1707030990058</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1707030990058</updated>
+    </task>
+    <task id="LOCAL-00003" summary="adding methods for open ai text, and images, including test cases">
+      <option name="closed" value="true" />
+      <created>1707031071665</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1707031071665</updated>
+    </task>
+    <task id="LOCAL-00004" summary="replacing gpt with open ai">
+      <option name="closed" value="true" />
+      <created>1707064706523</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1707064706523</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
+    <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="adding methods for open ai text, and images, including test cases" />
+    <MESSAGE value="replacing gpt with open ai" />
+    <option name="LAST_COMMIT_MESSAGE" value="replacing gpt with open ai" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/tests/e2e/test_auth.py</url>
+          <line>1</line>
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/tests/integration/repositories/test_chats.py</url>
+          <line>7</line>
+          <option name="timeStamp" value="12" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/tests/e2e/test_chats.py</url>
+          <line>1</line>
+          <option name="timeStamp" value="13" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>

@@ -1,0 +1,15 @@
+{
+  "bookCoverTemplate": {
+    "email": "{{email}}",
+    "name": "{{name}}",
+    "city": "{{city}}",
+    "birthday": "{{birthday}}",
+    "favouriteFood": "{{favourite_food}}",
+    "likes": "{{likes}}",
+    "activities": "{{activities}}",
+    "skinTone": "{{skin_tone}}",
+    "hairColor": "{{hair_color}}",
+    "hairLength": "{{hair_length}}",
+    "kidsPhoto": "{{kids_photo}}"
+  }
+}
