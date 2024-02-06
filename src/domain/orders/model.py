@@ -1,5 +1,4 @@
 from dataclasses import dataclass
-from typing import Optional
 
 from domain.basic_types import Entity
 
@@ -13,7 +12,7 @@ class Result:
 
 
 @dataclass
-class Lead(Entity):
+class Order(Entity):
     email: str
     name: str
     city: str
@@ -28,5 +27,3 @@ class Lead(Entity):
     favourite_place: str
     story_message: str
     personal_dedication: str
-    status: Optional[str] = None
-    result: Optional[Result] = None

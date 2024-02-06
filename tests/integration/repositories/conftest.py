@@ -3,7 +3,7 @@ import secrets
 import pytest
 
 from dependencies import DependencyInjector
-from domain.leads.model import Lead
+from domain.orders.model import Order
 
 
 def random_name():
@@ -11,8 +11,8 @@ def random_name():
 
 
 @pytest.fixture
-def lead():
-    random_lead = Lead(
+def order():
+    random_lead = Order(
         email=f"{secrets.token_hex(5)}@example.com",
         name=secrets.token_hex(5),
         city=secrets.token_hex(5),
@@ -25,5 +25,5 @@ def lead():
         hair_length=secrets.token_hex(5),
         kids_photo=f"path/to/photos/{secrets.token_hex(5)}.jpg",
     )
-    DependencyInjector.get().leads().add(random_lead)
+    DependencyInjector.get().orders().add(random_lead)
     return random_lead

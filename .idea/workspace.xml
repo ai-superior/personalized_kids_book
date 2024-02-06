@@ -5,29 +5,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4f3fec3c-998e-4568-9568-8d97cb6904e1" name="Changes" comment="replacing gpt with open ai">
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/personalized_kids_book.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/arial.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/characters/mock_character.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/api/routes/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/api/routes/leads.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/config/old_title_template.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/experiments/test_img.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/experiments/test_img.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/setup.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/setup.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/config/book_cover_template.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/config/book_cover_template.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/config/book_title_template.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/config/book_title_template.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/config/prompt_input.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/routes/leads.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/routes/leads.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/dependencies.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/dependencies.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/leads/commands.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/leads/commands.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/leads/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/leads/model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/leads/usecases.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/leads/usecases.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/implementation/repositories/leads.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/implementation/repositories/leads.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/leads/commands.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/orders/commands.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/leads/errors.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/orders/errors.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/leads/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/orders/model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/leads/queries.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/orders/queries.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/leads/repositories.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/orders/repositories.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/leads/services.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/orders/services.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/leads/usecases.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/orders/usecases.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/implementation/repositories/leads.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/implementation/repositories/orders.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/implementation/services/open_ai.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/implementation/services/open_ai.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/integration/repositories/conftest.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/integration/repositories/conftest.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/integration/repositories/test_leads.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/integration/repositories/test_leads.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

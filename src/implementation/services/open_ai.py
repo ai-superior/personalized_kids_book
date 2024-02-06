@@ -1,6 +1,6 @@
 from openai import OpenAI
 
-from domain.leads.services import LLMProcessor
+from domain.orders.services import LLMProcessor
 
 
 class OpenAIAPI(LLMProcessor):

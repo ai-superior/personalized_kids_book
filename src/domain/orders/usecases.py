@@ -6,33 +6,16 @@ import requests
 from PIL import Image, ImageDraw, ImageFont
 
 from domain.basic_types import UseCase
-from domain.leads import queries, errors, commands, model
-from domain.leads.model import Lead
-from domain.leads.repositories import LeadRepository
-from domain.leads.services import LLMProcessor
+from domain.orders import queries, errors, commands, model
+from domain.orders.model import Order
+from domain.orders.repositories import OrderRepository
+from domain.orders.services import LLMProcessor
 
 
-class StandardRequestUseCase(UseCase, abc.ABC):
-    def __init__(self, messages: LeadRepository):
-        super().__init__()
-        self.messages = messages
-
-
-class GetLead(StandardRequestUseCase):
-    def execute(self, query: queries.GetLead) -> Lead:
-        lead = self.messages.get(query.request_id)
-
-        if lead is None:  # pragma: no cover
-            raise errors.LeadNotFound
-        return lead
-
-
-@staticmethod
 def character_generator():
     return "https://pkb-assets.s3.eu-central-1.amazonaws.com/mock_character.jpg"
 
 
-@staticmethod
 def fuse_images(image_url1, image_url2, text, output_file_name):
     # Download the images
     response1 = requests.get(image_url1)
@@ -61,13 +44,19 @@ def fuse_images(image_url1, image_url2, text, output_file_name):
     return f"http://0.0.0.0:8000/public/results/{output_file_name}.jpg"
 
 
-class CreateLead(UseCase):
-    def __init__(self, leads: LeadRepository, llm: LLMProcessor):
+class StandardOrderUseCase(UseCase, abc.ABC):
+    def __init__(self, messages: OrderRepository):
         super().__init__()
-        self.leads = leads
+        self.messages = messages
+
+
+class CreateOrder(UseCase):
+    def __init__(self, orders: OrderRepository, llm: LLMProcessor):
+        super().__init__()
+        self.orders = orders
         self.llm = llm
 
-    async def execute(self, cmd: commands.CreateLeads):
+    async def execute(self, cmd: commands.CreateOrders):
         with open("src/config/book_title_template.txt") as f:
             book_cover_template = f.read()
             title_prompt = (
@@ -131,7 +120,7 @@ class CreateLead(UseCase):
             final_result_url=final_result_url,
         )
 
-        lead = model.Lead(
+        order = model.Order(
             email=cmd.email,
             name=cmd.name,
             city=cmd.city,
@@ -150,6 +139,15 @@ class CreateLead(UseCase):
             result=result,
         )
 
-        self.leads.add(lead)
+        self.orders.add(order)
 
         return result
+
+
+class GetLead(StandardOrderUseCase):
+    def execute(self, query: queries.GetOrder) -> Order:
+        order = self.messages.get(query.order_id)
+
+        if order is None:  # pragma: no cover
+            raise errors.OrderNotFound
+        return order

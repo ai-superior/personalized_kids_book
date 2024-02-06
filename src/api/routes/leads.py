@@ -1,13 +1,13 @@
 from fastapi import APIRouter
 
 from dependencies import DependencyInjector
-from domain.leads import commands, usecases, model
+from domain.orders import commands, usecases, model
 
-router = APIRouter(prefix="/leads")
+router = APIRouter(prefix="/orders")
 
 
 @router.post("/")
-async def create_lead(cmd: commands.CreateLeads) -> model.Result:
+async def create_lead(cmd: commands.CreateOrders) -> model.Result:
     di = DependencyInjector.get()
-    usecase = usecases.CreateLead(di.leads(), di.gpt())
+    usecase = usecases.CreateOrder(di.orders(), di.gpt())
     return await usecase.execute(cmd)
