@@ -5,5 +5,5 @@
     <option name="enabledOnSave" value="true" />
     <option name="sdkName" value="open_ai" />
   </component>
-  <component name="ProjectRootManager" version="2" project-jdk-name="open_ai" project-jdk-type="Python SDK" />
+  <component name="ProjectRootManager" version="2" project-jdk-name="pkb" project-jdk-type="Python SDK" />
 </project>

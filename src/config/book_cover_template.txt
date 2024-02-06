@@ -5,7 +5,7 @@ An enchanting story set in the heart of {{city}}, where {{name}} embarks on a jo
 Key Details:
 - Birthday: {{birthday}}
 - Favourite Food: {{favourite_food}}
-- Preferences: {{likes}}, {{activities}}
+- Preferences: {{interests}}, {{event_to_come}}
 - Appearance:
   - Skin Tone: {{skin_tone}}
   - Hair Color: {{hair_color}}
