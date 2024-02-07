@@ -5,6 +5,7 @@ import pytest
 from dependencies import DependencyInjector
 from domain.assets.model import Asset, AssetStatus, AssetType
 from domain.orders.model import Order
+from domain.previews.model import Preview, PreviewStatus
 
 
 def random_name():
@@ -42,3 +43,12 @@ def asset():
     )
     DependencyInjector.get().assets().add(random_asset)
     return random_asset
+
+
+@pytest.fixture
+def preview():
+    random_preview = Preview(
+        asset_ids=[secrets.token_hex(5)], status=PreviewStatus.SELECTED.value
+    )
+    DependencyInjector.get().previews().add(random_preview)
+    return random_preview

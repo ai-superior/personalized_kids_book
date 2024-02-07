@@ -4,8 +4,10 @@ from dependency_injector.providers import Factory, Object
 from domain.assets.repositories import AssetRepository
 from domain.orders.repositories import OrderRepository
 from domain.orders.services import LLMProcessor
+from domain.previews.repositories import PreviewRepository
 from implementation.repositories.assets import AssetSqlRepository
 from implementation.repositories.orders import OrderSqlRepository
+from implementation.repositories.previews import PreviewSqlRepository
 from implementation.services.open_ai import OpenAIAPI
 from settings import SETTINGS, Settings
 
@@ -15,6 +17,7 @@ class DependencyInjector(containers.DeclarativeContainer):
     config: Object[Settings] = Object(SETTINGS)
     orders: Factory[OrderRepository] = Factory(OrderSqlRepository, config)
     assets: Factory[AssetRepository] = Factory(AssetSqlRepository, config)
+    previews: Factory[PreviewRepository] = Factory(PreviewSqlRepository, config)
     gpt: Factory[LLMProcessor] = Factory(OpenAIAPI)
 
     @classmethod

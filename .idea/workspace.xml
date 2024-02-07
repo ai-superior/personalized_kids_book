@@ -4,21 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4f3fec3c-998e-4568-9568-8d97cb6904e1" name="Changes" comment="orders database created and tests for pushing data into it">
-      <change afterPath="$PROJECT_DIR$/src/domain/assets/commands.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/domain/assets/errors.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/domain/assets/model.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/domain/assets/queries.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/domain/assets/repositories.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/implementation/repositories/assets.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/integration/repositories/test_assets.py" afterDir="false" />
+    <list default="true" id="4f3fec3c-998e-4568-9568-8d97cb6904e1" name="Changes" comment="assets database created and tests for pushing data into it">
+      <change afterPath="$PROJECT_DIR$/src/domain/previews/commands.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/domain/previews/errors.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/domain/previews/model.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/domain/previews/queries.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/domain/previews/repositories.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/implementation/repositories/previews.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/integration/repositories/test_previews.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/routes/leads.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/routes/leads.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/dependencies.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/dependencies.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/orders/commands.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/orders/commands.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/orders/usecases.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/orders/usecases.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/integration/repositories/conftest.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/integration/repositories/conftest.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/integration/repositories/test_orders.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/integration/repositories/test_orders.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,17 +48,17 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "main",
-    "last_opened_file_path": "/home/subra/Documents/personalized_kids_book",
+    "last_opened_file_path": "/home/subra/Documents/personalized_kids_book/tests/integration/repositories",
     "settings.editor.selected.configurable": "actions.on.save"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/tests/integration/repositories" />
+      <recent name="$PROJECT_DIR$/src/implementation/repositories" />
+      <recent name="$PROJECT_DIR$/src/domain/previews" />
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/src/assets" />
-      <recent name="$PROJECT_DIR$/tests" />
-      <recent name="$PROJECT_DIR$/src/implementation/services" />
-      <recent name="$PROJECT_DIR$/src/implementation" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/assets" />
@@ -72,7 +68,7 @@
       <recent name="$PROJECT_DIR$/tests/integration" />
     </key>
   </component>
-  <component name="RunManager" selected="Python tests.pytest for integration.repositories.test_assets.test_get_asset">
+  <component name="RunManager" selected="Python tests.pytest for integration.repositories.test_previews.test_get_preview">
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="personalized_kids_book" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -154,7 +150,7 @@
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="pytest for integration.repositories.test_orders.test_get_lead" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
+    <configuration name="pytest for integration.repositories.test_previews.test_get_all_previews" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
       <module name="personalized_kids_book" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -166,11 +162,11 @@
       <option name="_new_keywords" value="&quot;&quot;" />
       <option name="_new_parameters" value="&quot;&quot;" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;integration.repositories.test_orders.test_get_lead&quot;" />
+      <option name="_new_target" value="&quot;integration.repositories.test_previews.test_get_all_previews&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="pytest for integration.repositories.test_orders.test_get_order" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
+    <configuration name="pytest for integration.repositories.test_previews.test_get_preview" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
       <module name="personalized_kids_book" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -182,7 +178,7 @@
       <option name="_new_keywords" value="&quot;&quot;" />
       <option name="_new_parameters" value="&quot;&quot;" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;integration.repositories.test_orders.test_get_order&quot;" />
+      <option name="_new_target" value="&quot;integration.repositories.test_previews.test_get_preview&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
@@ -191,16 +187,16 @@
       <item itemvalue="Python tests.pytest for integration.repositories.test_assets.test_get_all_assets" />
       <item itemvalue="Python tests.pytest for integration.repositories.test_assets.test_get_asset" />
       <item itemvalue="Python tests.pytest for integration.repositories.test_orders.test_get_all_orders" />
-      <item itemvalue="Python tests.pytest for integration.repositories.test_orders.test_get_lead" />
-      <item itemvalue="Python tests.pytest for integration.repositories.test_orders.test_get_order" />
+      <item itemvalue="Python tests.pytest for integration.repositories.test_previews.test_get_all_previews" />
+      <item itemvalue="Python tests.pytest for integration.repositories.test_previews.test_get_preview" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python tests.pytest for integration.repositories.test_previews.test_get_preview" />
+        <item itemvalue="Python tests.pytest for integration.repositories.test_previews.test_get_all_previews" />
         <item itemvalue="Python tests.pytest for integration.repositories.test_assets.test_get_asset" />
         <item itemvalue="Python tests.pytest for integration.repositories.test_assets.test_get_all_assets" />
         <item itemvalue="Python tests.pytest for integration.repositories.test_orders.test_get_all_orders" />
-        <item itemvalue="Python tests.pytest for integration.repositories.test_orders.test_get_order" />
-        <item itemvalue="Python tests.pytest for integration.repositories.test_orders.test_get_lead" />
       </list>
     </recent_temporary>
   </component>
@@ -261,7 +257,15 @@
       <option name="project" value="LOCAL" />
       <updated>1707287693642</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="assets database created and tests for pushing data into it">
+      <option name="closed" value="true" />
+      <created>1707290736592</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1707290736592</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -269,7 +273,8 @@
     <MESSAGE value="replacing gpt with open ai" />
     <MESSAGE value="refactoring leads to orders" />
     <MESSAGE value="orders database created and tests for pushing data into it" />
-    <option name="LAST_COMMIT_MESSAGE" value="orders database created and tests for pushing data into it" />
+    <MESSAGE value="assets database created and tests for pushing data into it" />
+    <option name="LAST_COMMIT_MESSAGE" value="assets database created and tests for pushing data into it" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
