@@ -9,12 +9,16 @@ def _model_to_db(previews: model.Preview):
         "id": previews.id,
         "status": previews.status,
         "asset_ids": previews.asset_ids,
+        "created_at": previews.created_at,
     }
 
 
 def _db_to_model(preview):
     return Preview(
-        id=preview["id"], status=preview["status"], asset_ids=preview["asset_ids"]
+        id=preview["id"],
+        status=preview["status"],
+        asset_ids=preview["asset_ids"],
+        created_at=preview["created_at"],
     )
 
 

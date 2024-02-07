@@ -21,6 +21,7 @@ def _model_to_db(orders: model.Order):
         "story_message": orders.story_message,
         "favourite_place": orders.favourite_place,
         "personal_dedication": orders.personal_dedication,
+        "created_at": orders.created_at,
     }
 
 
@@ -41,6 +42,7 @@ def _db_to_model(order):
         favourite_place=order["favourite_place"],
         story_message=order["story_message"],
         personal_dedication=order["personal_dedication"],
+        created_at=order["created_at"],
     )
 
 

@@ -2,7 +2,7 @@ from fastapi import FastAPI, APIRouter
 from fastapi.staticfiles import StaticFiles
 
 from api.routes.health import router as health_router
-from api.routes.leads import router as leads_router
+from api.routes.orders import router as leads_router
 from settings import SETTINGS
 
 

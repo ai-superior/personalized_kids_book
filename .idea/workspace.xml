@@ -4,17 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4f3fec3c-998e-4568-9568-8d97cb6904e1" name="Changes" comment="assets database created and tests for pushing data into it">
-      <change afterPath="$PROJECT_DIR$/src/domain/previews/commands.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/domain/previews/errors.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/domain/previews/model.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/domain/previews/queries.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/domain/previews/repositories.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/implementation/repositories/previews.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/integration/repositories/test_previews.py" afterDir="false" />
+    <list default="true" id="4f3fec3c-998e-4568-9568-8d97cb6904e1" name="Changes" comment="previews database created and tests for pushing data into it">
+      <change afterPath="$PROJECT_DIR$/experiments/rough.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dependencies.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/dependencies.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/integration/repositories/conftest.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/integration/repositories/conftest.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/routes/leads.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/routes/orders.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/setup.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/setup.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/orders/usecases.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/orders/usecases.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/implementation/repositories/assets.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/implementation/repositories/assets.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/implementation/repositories/orders.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/implementation/repositories/orders.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/implementation/repositories/previews.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/implementation/repositories/previews.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,7 +66,7 @@
       <recent name="$PROJECT_DIR$/tests/integration" />
     </key>
   </component>
-  <component name="RunManager" selected="Python tests.pytest for integration.repositories.test_previews.test_get_preview">
+  <component name="RunManager" selected="Python.main">
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="personalized_kids_book" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -265,7 +263,15 @@
       <option name="project" value="LOCAL" />
       <updated>1707290736592</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="previews database created and tests for pushing data into it">
+      <option name="closed" value="true" />
+      <created>1707291682162</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1707291682162</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -274,7 +280,8 @@
     <MESSAGE value="refactoring leads to orders" />
     <MESSAGE value="orders database created and tests for pushing data into it" />
     <MESSAGE value="assets database created and tests for pushing data into it" />
-    <option name="LAST_COMMIT_MESSAGE" value="assets database created and tests for pushing data into it" />
+    <MESSAGE value="previews database created and tests for pushing data into it" />
+    <option name="LAST_COMMIT_MESSAGE" value="previews database created and tests for pushing data into it" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
