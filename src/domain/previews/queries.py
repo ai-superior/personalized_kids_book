@@ -6,3 +6,8 @@ from domain.basic_types import Query
 @dataclass(frozen=True)
 class GetPreview(Query):
     preview_id: str
+
+
+@dataclass(frozen=True)
+class GetPreviewByOrderId(Query):
+    order_id: str

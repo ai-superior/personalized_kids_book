@@ -1,8 +1,10 @@
 from dataclasses import dataclass
+from typing import Optional
 
 from domain.basic_types import Command
 
 
 @dataclass(frozen=True)
 class CreatePreview(Command):
-    asset_ids: list[str]
+    order_id: str
+    asset_ids: Optional[list[str]]

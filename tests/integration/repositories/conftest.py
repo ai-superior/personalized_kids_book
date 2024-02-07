@@ -48,7 +48,7 @@ def asset():
 @pytest.fixture
 def preview():
     random_preview = Preview(
-        asset_ids=[secrets.token_hex(5)], status=PreviewStatus.SELECTED.value
+        asset_ids=[secrets.token_hex(5)], status=PreviewStatus.PENDING.value
     )
     DependencyInjector.get().previews().add(random_preview)
     return random_preview

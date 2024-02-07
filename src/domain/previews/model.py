@@ -5,11 +5,12 @@ from domain.basic_types import Entity
 
 
 class PreviewStatus(Enum):
-    SELECTED = "SELECTED"
-    UNSELECTED = "UNSELECTED"
+    PENDING = "PENDING"
+    COMPLETED = "COMPLETED"
 
 
 @dataclass
 class Preview(Entity):
     asset_ids: list[str]
+    is_approved: bool
     status: PreviewStatus

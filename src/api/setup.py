@@ -3,6 +3,7 @@ from fastapi import FastAPI, APIRouter
 from api.routes.assets import router as assets_router
 from api.routes.health import router as health_router
 from api.routes.orders import router as leads_router
+from api.routes.previews import router as previews_router
 from settings import SETTINGS
 
 
@@ -11,6 +12,7 @@ def create_fastapi_app():
     public_routes.include_router(health_router)
     public_routes.include_router(leads_router)
     public_routes.include_router(assets_router)
+    public_routes.include_router(previews_router)
 
     app = FastAPI(
         docs_url="/docs" if SETTINGS.debug else None,

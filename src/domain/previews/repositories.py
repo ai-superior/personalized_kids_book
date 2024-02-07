@@ -13,5 +13,9 @@ class PreviewRepository(abc.ABC):
         raise NotImplementedError
 
     @abc.abstractmethod
+    def get_by_order_id(self, order_id: str) -> list[Preview]:
+        raise NotImplementedError
+
+    @abc.abstractmethod
     def list(self) -> list[Preview]:
         raise NotImplementedError
