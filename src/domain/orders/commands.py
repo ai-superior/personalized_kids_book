@@ -4,7 +4,7 @@ from domain.basic_types import Command
 
 
 @dataclass(frozen=True)
-class CreateOrders(Command):
+class CreateOrder(Command):
     email: str
     name: str
     city: str

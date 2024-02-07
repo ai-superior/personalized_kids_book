@@ -4,13 +4,13 @@ from domain.orders.model import Order
 from domain.orders.repositories import OrderRepository
 
 
-def test_get_all_leads(order: Order):
+def test_get_all_orders(order: Order):
     repo: OrderRepository = DependencyInjector.get().orders()
-    leads = repo.list()
-    assert len(leads) >= 1
+    orders = repo.list()
+    assert len(orders) >= 1
 
 
-def test_get_lead(order: Order):
+def test_get_order(order: Order):
     repo: OrderRepository = DependencyInjector.get().orders()
-    lead_collection = repo.get(order.id)
-    assert lead_collection.id == order.id
+    order_collection = repo.get(order.id)
+    assert order_collection.id == order.id

@@ -56,7 +56,7 @@ class CreateOrder(UseCase):
         self.orders = orders
         self.llm = llm
 
-    async def execute(self, cmd: commands.CreateOrders):
+    async def execute(self, cmd: commands.CreateOrder):
         with open("src/config/book_title_template.txt") as f:
             book_cover_template = f.read()
             title_prompt = (

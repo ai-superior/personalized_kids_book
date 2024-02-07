@@ -7,7 +7,7 @@ router = APIRouter(prefix="/orders")
 
 
 @router.post("/")
-async def create_lead(cmd: commands.CreateOrders) -> model.Result:
+async def create_lead(cmd: commands.CreateOrder) -> model.Result:
     di = DependencyInjector.get()
     usecase = usecases.CreateOrder(di.orders(), di.gpt())
     return await usecase.execute(cmd)

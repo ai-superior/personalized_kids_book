@@ -3,6 +3,7 @@ import secrets
 import pytest
 
 from dependencies import DependencyInjector
+from domain.assets.model import Asset, AssetStatus, AssetType
 from domain.orders.model import Order
 
 
@@ -30,3 +31,14 @@ def order():
     )
     DependencyInjector.get().orders().add(random_lead)
     return random_lead
+
+
+@pytest.fixture
+def asset():
+    random_asset = Asset(
+        order_id=secrets.token_hex(5),
+        status=AssetStatus.PENDING.value,
+        type=AssetType.TITLE.value,
+    )
+    DependencyInjector.get().assets().add(random_asset)
+    return random_asset
