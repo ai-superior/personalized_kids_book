@@ -1,5 +1,4 @@
 from fastapi import FastAPI, APIRouter
-from fastapi.staticfiles import StaticFiles
 
 from api.routes.health import router as health_router
 from api.routes.orders import router as leads_router
@@ -17,6 +16,7 @@ def create_fastapi_app():
         redoc_url=None,
     )
     app.include_router(public_routes)
-    app.mount("/public", StaticFiles(directory="public"), name="public")
+    # Upload the files to S3 bucket instead of storing them here
+    # app.mount("/public", StaticFiles(directory="public"), name="public")
 
     return app
