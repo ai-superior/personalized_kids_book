@@ -16,3 +16,4 @@ paramiko
 types-paramiko
 openai==1.10.0
 Pillow==10.2.0
+matplotlib==3.8.2

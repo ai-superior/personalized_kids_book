@@ -4,12 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4f3fec3c-998e-4568-9568-8d97cb6904e1" name="Changes" comment="orders create and query endpoint created">
-      <change afterPath="$PROJECT_DIR$/tests/e2e/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/e2e/conftest.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/e2e/test_orders.py" afterDir="false" />
+    <list default="true" id="4f3fec3c-998e-4568-9568-8d97cb6904e1" name="Changes" comment="establishing e2e tests">
+      <change afterPath="$PROJECT_DIR$/src/api/routes/assets.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/domain/assets/usecases.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/experiments/dalle_3_api.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/experiments/dalle_3_api.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/experiments/test_img.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/experiments/test_img.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/api/setup.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/setup.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/assets/commands.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/assets/commands.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/assets/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/assets/model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/assets/queries.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/assets/queries.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/assets/repositories.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/assets/repositories.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/implementation/repositories/assets.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/implementation/repositories/assets.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -276,7 +283,15 @@
       <option name="project" value="LOCAL" />
       <updated>1707298321747</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="establishing e2e tests">
+      <option name="closed" value="true" />
+      <created>1707299338647</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1707299338647</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -287,7 +302,8 @@
     <MESSAGE value="assets database created and tests for pushing data into it" />
     <MESSAGE value="previews database created and tests for pushing data into it" />
     <MESSAGE value="orders create and query endpoint created" />
-    <option name="LAST_COMMIT_MESSAGE" value="orders create and query endpoint created" />
+    <MESSAGE value="establishing e2e tests" />
+    <option name="LAST_COMMIT_MESSAGE" value="establishing e2e tests" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -306,6 +322,16 @@
           <url>file://$PROJECT_DIR$/tests/e2e/test_chats.py</url>
           <line>1</line>
           <option name="timeStamp" value="13" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/implementation/repositories/assets.py</url>
+          <line>37</line>
+          <option name="timeStamp" value="40" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/domain/assets/usecases.py</url>
+          <line>43</line>
+          <option name="timeStamp" value="41" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

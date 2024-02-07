@@ -13,5 +13,9 @@ class AssetRepository(abc.ABC):
         raise NotImplementedError
 
     @abc.abstractmethod
+    def get_by_order_id(self, order_id: str) -> list[Asset]:
+        raise NotImplementedError
+
+    @abc.abstractmethod
     def list(self) -> list[Asset]:
         raise NotImplementedError

@@ -1,5 +1,6 @@
 from dataclasses import dataclass
 from enum import Enum
+from typing import Optional
 
 from domain.basic_types import Entity
 
@@ -18,5 +19,6 @@ class AssetStatus(Enum):
 @dataclass
 class Asset(Entity):
     order_id: str
-    type: AssetType
-    status: AssetStatus
+    value: Optional[str] = None
+    type: Optional[AssetType] = None
+    status: Optional[AssetStatus] = None

@@ -31,6 +31,10 @@ class AssetSqlRepository(AssetRepository, SqlRepository):
     def get(self, asset_id: str) -> Asset:
         return _db_to_model(self.db["assets"].find_one({"id": asset_id}))
 
+    def get_by_order_id(self, order_id: str) -> list[Asset]:
+        assets = self.db["assets"].find({"order_id": order_id})
+        return [_db_to_model(msg) for msg in assets]
+
     def list(self) -> list[Asset]:
         assets = self.db["assets"].find({})
         return [_db_to_model(msg) for msg in assets]
