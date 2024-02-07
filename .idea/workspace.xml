@@ -4,23 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4f3fec3c-998e-4568-9568-8d97cb6904e1" name="Changes" comment="replacing gpt with open ai">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="4f3fec3c-998e-4568-9568-8d97cb6904e1" name="Changes" comment="refactoring leads to orders">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/routes/leads.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/routes/leads.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/dependencies.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/dependencies.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/leads/commands.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/orders/commands.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/leads/errors.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/orders/errors.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/leads/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/orders/model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/leads/queries.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/orders/queries.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/leads/repositories.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/orders/repositories.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/leads/services.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/orders/services.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/leads/usecases.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/orders/usecases.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/implementation/repositories/leads.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/implementation/repositories/orders.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/implementation/services/open_ai.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/implementation/services/open_ai.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/implementation/repositories/orders.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/implementation/repositories/orders.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/integration/repositories/conftest.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/integration/repositories/conftest.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/integration/repositories/test_leads.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/integration/repositories/test_leads.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/integration/repositories/test_leads.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/integration/repositories/test_orders.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,7 +43,7 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "main",
     "last_opened_file_path": "/home/subra/Documents/personalized_kids_book",
-    "settings.editor.selected.configurable": "com.jetbrains.python.black.configuration.BlackFormatterConfigurable"
+    "settings.editor.selected.configurable": "actions.on.save"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -74,7 +62,7 @@
       <recent name="$PROJECT_DIR$/tests/integration" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.main">
+  <component name="RunManager" selected="Python tests.pytest for integration.repositories.test_orders.test_get_lead">
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="personalized_kids_book" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -124,7 +112,7 @@
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="pytest for integration.repositories.test_leads.test_get_all_leads" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
+    <configuration name="pytest for integration.repositories.test_orders.test_get_all_leads" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
       <module name="personalized_kids_book" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -136,11 +124,11 @@
       <option name="_new_keywords" value="&quot;&quot;" />
       <option name="_new_parameters" value="&quot;&quot;" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;integration.repositories.test_leads.test_get_all_leads&quot;" />
+      <option name="_new_target" value="&quot;integration.repositories.test_orders.test_get_all_leads&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="pytest for integration.repositories.test_leads.test_get_lead" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
+    <configuration name="pytest for integration.repositories.test_orders.test_get_lead" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
       <module name="personalized_kids_book" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -152,7 +140,7 @@
       <option name="_new_keywords" value="&quot;&quot;" />
       <option name="_new_parameters" value="&quot;&quot;" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;integration.repositories.test_leads.test_get_lead&quot;" />
+      <option name="_new_target" value="&quot;integration.repositories.test_orders.test_get_lead&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
@@ -200,16 +188,16 @@
     </configuration>
     <list>
       <item itemvalue="Python.main" />
-      <item itemvalue="Python tests.pytest for integration.repositories.test_leads.test_get_all_leads" />
-      <item itemvalue="Python tests.pytest for integration.repositories.test_leads.test_get_lead" />
+      <item itemvalue="Python tests.pytest for integration.repositories.test_orders.test_get_all_leads" />
+      <item itemvalue="Python tests.pytest for integration.repositories.test_orders.test_get_lead" />
       <item itemvalue="Python tests.pytest for integration.services.test_open_ai.test_ask_for_image" />
       <item itemvalue="Python tests.pytest for integration.repositories.test_chats.test_get_all_chats" />
       <item itemvalue="Python tests.pytest for integration.services.test_open_ai.test_ask_for_text" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python tests.pytest for integration.repositories.test_leads.test_get_lead" />
-        <item itemvalue="Python tests.pytest for integration.repositories.test_leads.test_get_all_leads" />
+        <item itemvalue="Python tests.pytest for integration.repositories.test_orders.test_get_lead" />
+        <item itemvalue="Python tests.pytest for integration.repositories.test_orders.test_get_all_leads" />
         <item itemvalue="Python tests.pytest for integration.services.test_open_ai.test_ask_for_image" />
         <item itemvalue="Python tests.pytest for integration.services.test_open_ai.test_ask_for_text" />
         <item itemvalue="Python tests.pytest for integration.repositories.test_chats.test_get_all_chats" />
@@ -257,13 +245,22 @@
       <option name="project" value="LOCAL" />
       <updated>1707064706523</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="refactoring leads to orders">
+      <option name="closed" value="true" />
+      <created>1707246301121</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1707246301121</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="adding methods for open ai text, and images, including test cases" />
     <MESSAGE value="replacing gpt with open ai" />
-    <option name="LAST_COMMIT_MESSAGE" value="replacing gpt with open ai" />
+    <MESSAGE value="refactoring leads to orders" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactoring leads to orders" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

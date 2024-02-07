@@ -24,6 +24,9 @@ def order():
         hair_color=secrets.token_hex(5),
         hair_length=secrets.token_hex(5),
         kids_photo=f"path/to/photos/{secrets.token_hex(5)}.jpg",
+        favourite_place=secrets.token_hex(5),
+        story_message=secrets.token_hex(5),
+        personal_dedication=secrets.token_hex(5),
     )
     DependencyInjector.get().orders().add(random_lead)
     return random_lead
