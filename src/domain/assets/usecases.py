@@ -18,17 +18,34 @@ class CreateAsset(UseCase):
         self.assets = assets
 
     def execute(self, cmd: commands.CreateAsset):
-        iterations = cmd.quantity
         assets = []
-        for iteration in range(iterations):
-            for asset_type in AssetType:
-                asset = Asset(
-                    order_id=cmd.order_id,
-                    type=asset_type.value,
-                    status=AssetStatus.PENDING.value,
-                )
-                assets.append(asset)
-                self.assets.add(asset)
+        for _ in range(cmd.no_of_titles):
+            asset = Asset(
+                order_id=cmd.order_id,
+                type=AssetType.TITLE.value,
+                status=AssetStatus.PENDING.value,
+            )
+            assets.append(asset)
+            self.assets.add(asset)
+
+        for _ in range(cmd.no_of_cover_images):
+            asset = Asset(
+                order_id=cmd.order_id,
+                type=AssetType.BACKGROUND_IMAGE.value,
+                status=AssetStatus.PENDING.value,
+            )
+            assets.append(asset)
+            self.assets.add(asset)
+
+        asset = Asset(
+            order_id=cmd.order_id,
+            type=AssetType.CHARACTER_IMAGE.value,
+            status=AssetStatus.PENDING.value,
+        )
+
+        assets.append(asset)
+        self.assets.add(asset)
+
         return assets
 
 
