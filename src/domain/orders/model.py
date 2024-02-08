@@ -4,14 +4,6 @@ from domain.basic_types import Entity
 
 
 @dataclass
-class Result:
-    title: str
-    cover_url: str
-    character_url: str
-    final_result_url: str
-
-
-@dataclass
 class Order(Entity):
     email: str
     name: str

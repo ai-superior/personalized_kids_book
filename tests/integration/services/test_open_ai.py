@@ -7,7 +7,7 @@ from implementation.services.open_ai import OpenAIAPI
 async def test_ask_for_text():
     open_ai = OpenAIAPI()
     dummy_prompt = 'This is a test message. Only Reply "Hello"'
-    response = await open_ai.ask_for_text(dummy_prompt)
+    response = await open_ai.ask_for_text(dummy_prompt, quantity=1)
     message = response.choices[0].message.content
     assert message == "Hello"
 

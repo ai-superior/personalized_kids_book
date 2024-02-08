@@ -1,18 +1,11 @@
-Book Cover for {{name}}
+# Generate a scenery Book Cover for a children book in a 3D pixar cartoon style. Here are 3 titles that describe the story:
 
-An enchanting story set in the heart of {{city}}, where {{name}} embarks on a journey of self-discovery. Celebrate with us as we unveil a tale filled with love, adventure, and unforgettable moments.
 
-Key Details:
-- Birthday: {{birthday}}
-- Favourite Food: {{favourite_food}}
-- Preferences: {{interests}}, {{event_to_come}}
-- Appearance:
-  - Skin Tone: {{skin_tone}}
-  - Hair Color: {{hair_color}}
-  - Hair Length: {{hair_length}}
+1. Love is unconditional
+2. Survival of the fittest
+3. Morals outweighs wealth
 
-Witness the magic through the eyes of {{name}} and their little ones. The cover captures the essence of the story, featuring a heartwarming photo of the family.
-
-Get ready for an extraordinary adventure with "The Chronicles of {{name}}!"
-
-[Image: {{kids_photo}}]
+# Additional notes:
+1. Image orientation: horizontal
+2. Important: Ensure the image is free from any textual elements.
+3. Important: It is only background, without people or animals or any other characters on the image.

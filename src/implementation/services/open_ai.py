@@ -7,7 +7,7 @@ class OpenAIAPI(LLMProcessor):
     def __init__(self):
         self.client = OpenAI()
 
-    async def ask_for_text(self, prompt: str):
+    async def ask_for_text(self, prompt: str, quantity: int):
         response = self.client.chat.completions.create(
             model="gpt-4-1106-preview",
             messages=[
@@ -16,6 +16,7 @@ class OpenAIAPI(LLMProcessor):
             ],
             temperature=0.9,
             max_tokens=150,
+            n=quantity,
         )
         return response
 

@@ -1,4 +1,5 @@
 from fastapi import FastAPI, APIRouter
+from starlette.staticfiles import StaticFiles
 
 from api.routes.assets import router as assets_router
 from api.routes.health import router as health_router
@@ -20,7 +21,12 @@ def create_fastapi_app():
         redoc_url=None,
     )
     app.include_router(public_routes)
+
     # Upload the files to S3 bucket instead of storing them here
-    # app.mount("/public", StaticFiles(directory="public"), name="public")
+    app.mount(
+        "/public",
+        StaticFiles(directory="/home/subra/Documents/personalized_kids_book/public"),
+        name="public",
+    )
 
     return app

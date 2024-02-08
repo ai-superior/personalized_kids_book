@@ -1,1 +1,31 @@
-Give a random 2 word book title and nothing else as the response.
+Act as a creative German book author. Create a title for the children book story.
+
+Titles should adheer to followign rules:
+1. Language - German
+2. Inclued Childs name in each title
+3. Word-playful and engaging 
+4. Titles should be based on following information about the child:
+
+Child's information below:
+email: {{email}}
+name: {{name}}
+city: {{city}}
+birthday: {{birthday}}
+favourite_food: {{favourite_food}}
+interests: {{interests}}
+event_to_come: {{event_to_come}}
+skin_tone: {{skin_tone}}
+hair_color: {{hair_color}}
+hair_length: {{hair_length}}
+kids_photo: {{kids_photo}}
+favourite_place: {{favourite_place}}
+story_message: {{story_message}}
+personal_dedication: {{personal_dedication}}
+
+
+Here are Examples of the book titles with desired format and suitable presentation of result:
+a. Mutige Alma und die Osterferien auf dem Pferdehof
+b. Alma, die Weißwurstprinzessin und das Turnier der musikalischen Freunde
+c. Alma, die Weißwurst-Detektivin und das Geheimnis der verschwundenen Osterhasen
+
+Child's information below:

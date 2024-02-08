@@ -11,6 +11,7 @@ def _model_to_db(assets: model.Asset):
         "order_id": assets.order_id,
         "status": assets.status,
         "created_at": assets.created_at,
+        "value": assets.value,
     }
 
 
@@ -20,6 +21,7 @@ def _db_to_model(asset):
         status=asset["status"],
         type=asset["type"],
         order_id=asset["order_id"],
+        value=asset["value"],
         created_at=asset["created_at"],
     )
 

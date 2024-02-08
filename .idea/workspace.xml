@@ -4,10 +4,28 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4f3fec3c-998e-4568-9568-8d97cb6904e1" name="Changes" comment="previews endpoint creation test case">
+    <list default="true" id="4f3fec3c-998e-4568-9568-8d97cb6904e1" name="Changes" comment="fixing integration tests for previews">
+      <change afterPath="$PROJECT_DIR$/tests/e2e/test_assets.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/integration/repositories/conftest.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/integration/repositories/conftest.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/integration/repositories/test_previews.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/integration/repositories/test_previews.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/experiments/chat_text_contexts.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/experiments/chat_text_contexts.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/experiments/dalle_3_api.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/experiments/dalle_3_api.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/routes/assets.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/routes/assets.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/setup.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/setup.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config/book_cover_template.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/config/book_cover_template.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config/book_title_template.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/config/book_title_template.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config/character_image_template.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config/old_title_template.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/config/old templates.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/assets/usecases.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/assets/usecases.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/orders/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/orders/model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/orders/services.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/orders/services.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/previews/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/previews/model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/previews/usecases.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/previews/usecases.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/implementation/repositories/assets.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/implementation/repositories/assets.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/implementation/repositories/previews.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/implementation/repositories/previews.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/implementation/services/open_ai.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/implementation/services/open_ai.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/e2e/test_previews.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/e2e/test_previews.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/integration/services/test_open_ai.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/integration/services/test_open_ai.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,7 +79,7 @@
       <recent name="$PROJECT_DIR$/tests/integration" />
     </key>
   </component>
-  <component name="RunManager" selected="Python tests.pytest for integration.repositories.test_previews.test_get_preview">
+  <component name="RunManager" selected="Python tests.pytest for e2e.test_previews.test_generate_preview">
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="personalized_kids_book" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -111,7 +129,7 @@
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="pytest for e2e.test_orders.test_get_chat" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
+    <configuration name="pytest for e2e.test_orders.test_get_order" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
       <module name="personalized_kids_book" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -123,7 +141,7 @@
       <option name="_new_keywords" value="&quot;&quot;" />
       <option name="_new_parameters" value="&quot;&quot;" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;e2e.test_orders.test_get_chat&quot;" />
+      <option name="_new_target" value="&quot;e2e.test_orders.test_get_order&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
@@ -178,18 +196,18 @@
     <list>
       <item itemvalue="Python.main" />
       <item itemvalue="Python tests.pytest for e2e.test_orders.test_generate_preview" />
-      <item itemvalue="Python tests.pytest for e2e.test_orders.test_get_chat" />
+      <item itemvalue="Python tests.pytest for e2e.test_orders.test_get_order" />
       <item itemvalue="Python tests.pytest for e2e.test_previews.test_generate_preview" />
       <item itemvalue="Python tests.pytest for integration.repositories.test_previews.test_get_all_previews" />
       <item itemvalue="Python tests.pytest for integration.repositories.test_previews.test_get_preview" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python tests.pytest for e2e.test_previews.test_generate_preview" />
+        <item itemvalue="Python tests.pytest for e2e.test_orders.test_get_order" />
         <item itemvalue="Python tests.pytest for integration.repositories.test_previews.test_get_preview" />
         <item itemvalue="Python tests.pytest for integration.repositories.test_previews.test_get_all_previews" />
-        <item itemvalue="Python tests.pytest for e2e.test_previews.test_generate_preview" />
         <item itemvalue="Python tests.pytest for e2e.test_orders.test_generate_preview" />
-        <item itemvalue="Python tests.pytest for e2e.test_orders.test_get_chat" />
       </list>
     </recent_temporary>
   </component>
@@ -314,7 +332,15 @@
       <option name="project" value="LOCAL" />
       <updated>1707387632658</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="fixing integration tests for previews">
+      <option name="closed" value="true" />
+      <created>1707388000948</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1707388000948</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -330,7 +356,8 @@
     <MESSAGE value="preview endpoint creation and storing in the database" />
     <MESSAGE value="input changes to volume of titles and images" />
     <MESSAGE value="previews endpoint creation test case" />
-    <option name="LAST_COMMIT_MESSAGE" value="previews endpoint creation test case" />
+    <MESSAGE value="fixing integration tests for previews" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixing integration tests for previews" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -352,7 +379,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/src/implementation/repositories/assets.py</url>
-          <line>37</line>
+          <line>39</line>
           <option name="timeStamp" value="40" />
         </line-breakpoint>
       </breakpoints>

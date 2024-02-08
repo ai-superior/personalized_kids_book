@@ -6,6 +6,7 @@ class WebserverSettings(BaseSettings):
     host: str = ""
     port: int = 8000
     cors_origin: str = "*"
+    protocol: str = ""
 
 
 class MongoSettings(BaseSettings):

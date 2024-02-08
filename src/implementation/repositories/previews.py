@@ -11,6 +11,10 @@ def _model_to_db(previews: model.Preview):
         "asset_ids": previews.asset_ids,
         "created_at": previews.created_at,
         "is_approved": previews.is_approved,
+        "title": previews.title,
+        "cover_image_url": previews.cover_image_url,
+        "character_image_url": previews.character_image_url,
+        "fused_image_url": previews.fused_image_url,
     }
 
 
@@ -21,6 +25,10 @@ def _db_to_model(preview):
         asset_ids=preview["asset_ids"],
         created_at=preview["created_at"],
         is_approved=preview["is_approved"],
+        title=preview["title"],
+        cover_image_url=preview["cover_image_url"],
+        character_image_url=preview["character_image_url"],
+        fused_image_url=preview["fused_image_url"],
     )
 
 
