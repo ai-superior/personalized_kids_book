@@ -4,7 +4,9 @@ import pytest
 from starlette.testclient import TestClient
 
 from dependencies import DependencyInjector
+from domain.assets.model import Asset
 from domain.orders.model import Order
+from domain.previews.model import Preview
 from main import create_fastapi_app
 
 di = DependencyInjector.get()
@@ -40,3 +42,18 @@ def order(client):
     }
     response = client.post("/orders/", json=data)
     return Order.from_dict(response.json())
+
+
+@pytest.fixture
+def assets(client, order):
+    data = {"order_id": order.id, "no_of_titles": 1, "no_of_cover_images": 1}
+    response = client.post("/assets", json=data)
+    assets = [Asset.from_dict(asset) for asset in response.json()]
+    return assets
+
+
+@pytest.fixture
+def preview(client, order, assets):
+    data = {"order_id": order.id, "asset_ids": [asset.id for asset in assets]}
+    response = client.post("/previews", json=data)
+    return Preview.from_dict(response.json())

@@ -4,17 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4f3fec3c-998e-4568-9568-8d97cb6904e1" name="Changes" comment="asset endpoints and storing multiple necessary assets in the database">
-      <change afterPath="$PROJECT_DIR$/src/api/routes/previews.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/domain/previews/usecases.py" afterDir="false" />
+    <list default="true" id="4f3fec3c-998e-4568-9568-8d97cb6904e1" name="Changes" comment="preview endpoint creation and storing in the database">
+      <change afterPath="$PROJECT_DIR$/tests/e2e/test_previews.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/setup.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/setup.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/previews/commands.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/previews/commands.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/previews/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/previews/model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/previews/queries.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/previews/queries.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/previews/repositories.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/previews/repositories.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/implementation/repositories/previews.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/implementation/repositories/previews.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/integration/repositories/conftest.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/integration/repositories/conftest.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/experiments/dalle_3_api.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/experiments/dalle_3_api.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/assets/commands.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/assets/commands.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/assets/usecases.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/assets/usecases.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/e2e/conftest.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/e2e/conftest.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,7 +64,7 @@
       <recent name="$PROJECT_DIR$/tests/integration" />
     </key>
   </component>
-  <component name="RunManager" selected="Python tests.pytest for e2e.test_orders.test_get_chat">
+  <component name="RunManager" selected="Python tests.pytest for e2e.test_orders.test_generate_preview">
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="personalized_kids_book" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -102,6 +98,22 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="pytest for e2e.test_orders.test_generate_preview" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
+      <module name="personalized_kids_book" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_keywords" value="&quot;&quot;" />
+      <option name="_new_parameters" value="&quot;&quot;" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;e2e.test_orders.test_generate_preview&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
     <configuration name="pytest for e2e.test_orders.test_get_chat" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
       <module name="personalized_kids_book" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -115,22 +127,6 @@
       <option name="_new_parameters" value="&quot;&quot;" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
       <option name="_new_target" value="&quot;e2e.test_orders.test_get_chat&quot;" />
-      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
-      <method v="2" />
-    </configuration>
-    <configuration name="pytest for integration.repositories.test_assets.test_get_all_assets" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
-      <module name="personalized_kids_book" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="_new_keywords" value="&quot;&quot;" />
-      <option name="_new_parameters" value="&quot;&quot;" />
-      <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;integration.repositories.test_assets.test_get_all_assets&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
@@ -184,19 +180,19 @@
     </configuration>
     <list>
       <item itemvalue="Python.main" />
+      <item itemvalue="Python tests.pytest for e2e.test_orders.test_generate_preview" />
       <item itemvalue="Python tests.pytest for e2e.test_orders.test_get_chat" />
-      <item itemvalue="Python tests.pytest for integration.repositories.test_assets.test_get_all_assets" />
       <item itemvalue="Python tests.pytest for integration.repositories.test_assets.test_get_asset" />
       <item itemvalue="Python tests.pytest for integration.repositories.test_previews.test_get_all_previews" />
       <item itemvalue="Python tests.pytest for integration.repositories.test_previews.test_get_preview" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python tests.pytest for e2e.test_orders.test_generate_preview" />
         <item itemvalue="Python tests.pytest for e2e.test_orders.test_get_chat" />
         <item itemvalue="Python tests.pytest for integration.repositories.test_previews.test_get_preview" />
         <item itemvalue="Python tests.pytest for integration.repositories.test_previews.test_get_all_previews" />
         <item itemvalue="Python tests.pytest for integration.repositories.test_assets.test_get_asset" />
-        <item itemvalue="Python tests.pytest for integration.repositories.test_assets.test_get_all_assets" />
       </list>
     </recent_temporary>
   </component>
@@ -297,7 +293,15 @@
       <option name="project" value="LOCAL" />
       <updated>1707308134924</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="preview endpoint creation and storing in the database">
+      <option name="closed" value="true" />
+      <created>1707313628458</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1707313628458</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -310,7 +314,8 @@
     <MESSAGE value="orders create and query endpoint created" />
     <MESSAGE value="establishing e2e tests" />
     <MESSAGE value="asset endpoints and storing multiple necessary assets in the database" />
-    <option name="LAST_COMMIT_MESSAGE" value="asset endpoints and storing multiple necessary assets in the database" />
+    <MESSAGE value="preview endpoint creation and storing in the database" />
+    <option name="LAST_COMMIT_MESSAGE" value="preview endpoint creation and storing in the database" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
