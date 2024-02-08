@@ -6,8 +6,8 @@ from domain.previews.repositories import PreviewRepository
 
 def test_get_all_previews(preview: Preview):
     repo: PreviewRepository = DependencyInjector.get().previews()
-    leads = repo.list()
-    assert len(leads) >= 1
+    previews = repo.list()
+    assert len(previews) >= 1
 
 
 def test_get_preview(preview: Preview):
