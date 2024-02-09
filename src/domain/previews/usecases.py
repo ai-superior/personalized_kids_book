@@ -42,8 +42,8 @@ class CreatePreview(UseCase):
         char_image = Image.open(BytesIO(char_image_response.content))
 
         # First is width, second is height
-        final_dimensions = (800, 600)
-        char_dimensions = (200, 150)
+        final_dimensions = (900, 600)
+        char_dimensions = (300, 200)
 
         # Resizing the dimensions of the images
         cover_image = cover_image.resize(final_dimensions)
