@@ -4,11 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4f3fec3c-998e-4568-9568-8d97cb6904e1" name="Changes" comment="updates to the fusion process and adjusting the creativity of llm">
+    <list default="true" id="4f3fec3c-998e-4568-9568-8d97cb6904e1" name="Changes" comment="making the char image transparent">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/assets/usecases.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/assets/usecases.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/setup.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/setup.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/domain/previews/usecases.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/previews/usecases.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/unit/test_fusion.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/unit/test_fusion.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -347,7 +346,15 @@
       <option name="project" value="LOCAL" />
       <updated>1707483403923</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="making the char image transparent">
+      <option name="closed" value="true" />
+      <created>1707488532229</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1707488532229</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -367,7 +374,8 @@
     <MESSAGE value="revamping preview endpoints, with e2e tests and added prompts with core functions" />
     <MESSAGE value="updates to prompt generation, fusion and changes to input params" />
     <MESSAGE value="updates to the fusion process and adjusting the creativity of llm" />
-    <option name="LAST_COMMIT_MESSAGE" value="updates to the fusion process and adjusting the creativity of llm" />
+    <MESSAGE value="making the char image transparent" />
+    <option name="LAST_COMMIT_MESSAGE" value="making the char image transparent" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
