@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4f3fec3c-998e-4568-9568-8d97cb6904e1" name="Changes" comment="adjustments for deployment">
+    <list default="true" id="4f3fec3c-998e-4568-9568-8d97cb6904e1" name="Changes" comment="character image dimensions">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/domain/previews/usecases.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/previews/usecases.py" afterDir="false" />
     </list>
@@ -361,7 +361,15 @@
       <option name="project" value="LOCAL" />
       <updated>1707488678914</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="character image dimensions">
+      <option name="closed" value="true" />
+      <created>1707489033280</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1707489033280</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -383,7 +391,8 @@
     <MESSAGE value="updates to the fusion process and adjusting the creativity of llm" />
     <MESSAGE value="making the char image transparent" />
     <MESSAGE value="adjustments for deployment" />
-    <option name="LAST_COMMIT_MESSAGE" value="adjustments for deployment" />
+    <MESSAGE value="character image dimensions" />
+    <option name="LAST_COMMIT_MESSAGE" value="character image dimensions" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

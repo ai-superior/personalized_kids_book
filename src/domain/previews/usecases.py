@@ -42,8 +42,8 @@ class CreatePreview(UseCase):
         char_image = Image.open(BytesIO(char_image_response.content))
 
         # First is width, second is height
-        final_dimensions = (900, 600)
-        char_dimensions = (300, 200)
+        final_dimensions = (1200, 800)
+        char_dimensions = (400, 300)
 
         # Resizing the dimensions of the images
         cover_image = cover_image.resize(final_dimensions)
@@ -73,7 +73,7 @@ class CreatePreview(UseCase):
 
         # Overlay the text onto the fused image
         draw = ImageDraw.Draw(fused_image)
-        header_font_size = 36
+        header_font_size = 32
 
         # URL to the font file on the CDN
         font_url = (
