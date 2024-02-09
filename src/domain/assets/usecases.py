@@ -6,6 +6,7 @@ from domain.assets import queries, errors, commands
 from domain.assets.model import Asset, AssetType, AssetStatus
 from domain.assets.repositories import AssetRepository
 from domain.basic_types import UseCase
+from domain.orders.repositories import OrderRepository
 from domain.orders.services import LLMProcessor
 
 
@@ -16,10 +17,13 @@ class StandardAssetUseCase(UseCase, abc.ABC):
 
 
 class CreateAsset(UseCase):
-    def __init__(self, assets: AssetRepository, llm: LLMProcessor):
+    def __init__(
+        self, assets: AssetRepository, orders: OrderRepository, llm: LLMProcessor
+    ):
         super().__init__()
         self.assets = assets
         self.llm = llm
+        self.orders = orders
 
     async def execute(self, cmd: commands.CreateAsset):
         assets = []
@@ -30,14 +34,29 @@ class CreateAsset(UseCase):
         cover_prompt = requests.get(
             "https://ai-childrens-book-assets.s3.eu-central-1.amazonaws.com/book_cover_template.txt"
         ).text
+
+        order = self.orders.get(order_id=cmd.order_id)
+        title_prompt = (
+            title_prompt.replace("{{", "{")
+            .replace("}}", "}")
+            .format(
+                name=order.name,
+                city=order.city,
+                birthday=order.birthday,
+                favourite_food=order.favourite_food,
+                interests=order.interests,
+                favourite_place=order.favourite_place,
+                event_to_come=order.event_to_come,
+            )
+        )
+
         titles_response = await self.llm.ask_for_text(
             prompt=title_prompt,
-            # "Generate a standard Book Title. Just the title and nothing else",
-            quantity=cmd.no_of_titles,
+            quantity=cmd.no_of_covers,
         )
         titles = [title.message.content for title in titles_response.choices]
 
-        for i in range(cmd.no_of_titles):
+        for i in range(cmd.no_of_covers):
             asset = Asset(
                 order_id=cmd.order_id,
                 type=AssetType.TITLE.value,
@@ -47,11 +66,16 @@ class CreateAsset(UseCase):
             assets.append(asset)
             self.assets.add(asset)
 
-        for i in range(cmd.no_of_cover_images):
-            cover_images_response = await self.llm.ask_for_image(
-                cover_prompt
-                # "Generate standard cover for a book"
+        for i in range(cmd.no_of_covers):
+            cover_prompt = (
+                cover_prompt.replace("{{", "{")
+                .replace("}}", "}")
+                .format(
+                    generated_title=titles[i],
+                )
             )
+
+            cover_images_response = await self.llm.ask_for_image(cover_prompt)
             asset = Asset(
                 order_id=cmd.order_id,
                 type=AssetType.BACKGROUND_IMAGE.value,

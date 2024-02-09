@@ -1,9 +1,6 @@
-# Generate a scenery Book Cover for a children book in a 3D pixar cartoon style. Here are 3 titles that describe the story:
+# Generate a scenery Book Cover for a children book in a 3D pixar cartoon style. Here is a title that describes the story:
 
-
-1. Love is unconditional
-2. Survival of the fittest
-3. Morals outweighs wealth
+Title: {{generated_title}}
 
 # Additional notes:
 1. Image orientation: horizontal

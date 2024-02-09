@@ -32,21 +32,21 @@ class CreatePreview(UseCase):
         return assets_for_preview
 
     @staticmethod
-    def fuse_images(image_url1, image_url2, text, output_file_name):
+    def fuse_images(cover_image_url, char_image_url, title, output_file_name):
         # Download the images
-        response1 = requests.get(image_url1)
-        response2 = requests.get(image_url2)
+        cover_image = requests.get(cover_image_url)
+        char_image = requests.get(char_image_url)
 
         # Open the images
-        image1 = Image.open(BytesIO(response1.content))
-        image2 = Image.open(BytesIO(response2.content))
+        image1 = Image.open(BytesIO(cover_image.content))
+        image2 = Image.open(BytesIO(char_image.content))
 
         # Resize the images to the same dimensions
         image1 = image1.resize(image2.size)
 
         # Overlay the text onto the first image
         draw = ImageDraw.Draw(image1)
-        draw.text((10, 10), text, fill="black")
+        draw.text((10, 10), title, fill="black")
 
         # Blend the images together
         fused_image = Image.blend(image1, image2, alpha=0.5)
@@ -95,7 +95,7 @@ class CreatePreview(UseCase):
 
         preview = Preview(
             asset_ids=asset_ids,
-            status=PreviewStatus.PENDING.value,
+            status=PreviewStatus.COMPLETED.value,
             is_approved=False,
             title=title,
             character_image_url=char_image_url,

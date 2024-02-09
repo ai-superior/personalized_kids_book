@@ -9,7 +9,7 @@ router = APIRouter(prefix="/assets")
 @router.post("/")
 async def create_asset(cmd: commands.CreateAsset) -> list[model.Asset]:
     di = DependencyInjector.get()
-    usecase = usecases.CreateAsset(di.assets(), di.gpt())
+    usecase = usecases.CreateAsset(di.assets(), di.orders(), di.gpt())
     return await usecase.execute(cmd)
 
 
