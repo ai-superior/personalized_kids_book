@@ -89,7 +89,7 @@ class CreateAsset(UseCase):
             order_id=cmd.order_id,
             type=AssetType.CHARACTER_IMAGE.value,
             status=AssetStatus.ACTIVE.value,
-            value="https://ai-childrens-book-assets.s3.eu-central-1.amazonaws.com/mock_character.jpg",
+            value="https://ai-childrens-book-assets.s3.eu-central-1.amazonaws.com/mock_character.png",
         )
 
         assets.append(asset)

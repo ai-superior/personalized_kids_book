@@ -42,21 +42,34 @@ class CreatePreview(UseCase):
         char_image = Image.open(BytesIO(char_image_response.content))
 
         # First is width, second is height
-        final_dimensions = (700, 600)
+        final_dimensions = (800, 600)
         char_dimensions = (200, 150)
 
         # Resizing the dimensions of the images
-        cover_image.resize(final_dimensions)
+        cover_image = cover_image.resize(final_dimensions)
         char_image = char_image.resize(char_dimensions)
 
         # Create a new blank image to hold the fused images
-        fused_image = Image.new("RGB", final_dimensions, (0, 0, 0, 0))
+        fused_image = Image.new("RGBA", final_dimensions, (0, 0, 0, 0))
 
         # Paste the cover image onto the fused image at the top
         fused_image.paste(cover_image, (0, 0))
 
+        # Create a mask for the character image
+        char_mask = char_image.split()[3]  # Get the alpha channel
+        char_image.putalpha(char_mask)
+
+        # Adjust the alpha channel values to increase opacity
+        char_alpha = char_image.getchannel("A")
+        char_alpha = char_alpha.point(lambda x: 255 if x > 128 else x)
+
+        # Update the alpha channel of the character image
+        char_image.putalpha(char_alpha)
+
         # Paste the character image onto the fused image at the calculated position
-        fused_image.paste(char_image, (0, final_dimensions[1] - char_dimensions[1]))
+        fused_image.paste(
+            char_image, (0, final_dimensions[1] - char_dimensions[1]), mask=char_mask
+        )
 
         # Overlay the text onto the fused image
         draw = ImageDraw.Draw(fused_image)
@@ -79,11 +92,12 @@ class CreatePreview(UseCase):
         )
 
         # Save the fused image
-        output_path = f"/home/subra/Documents/personalized_kids_book/public/results/{output_file_name}.jpg"
+        # output_path = f"/public/results/{output_file_name}.jpg"
+        output_path = f"/home/subra/Documents/personalized_kids_book/public/results/{output_file_name}.png"
         fused_image.save(output_path)
 
         # return f"{SETTINGS.webserver.protocol}://18.158.63.205:{SETTINGS.webserver.port}/public/results/{output_file_name}.jpg"
-        return f"{SETTINGS.webserver.protocol}://{SETTINGS.webserver.host}:{SETTINGS.webserver.port}/public/results/{output_file_name}.jpg"
+        return f"{SETTINGS.webserver.protocol}://{SETTINGS.webserver.host}:{SETTINGS.webserver.port}/public/results/{output_file_name}.png"
 
     def __init__(self, previews: PreviewRepository, assets: AssetRepository):
         super().__init__()
