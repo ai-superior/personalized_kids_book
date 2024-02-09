@@ -14,7 +14,7 @@ class OpenAIAPI(LLMProcessor):
                 {"role": "system", "content": "You are a helpful assistant."},
                 {"role": "user", "content": prompt},
             ],
-            temperature=0.9,
+            temperature=1.7,
             max_tokens=150,
             n=quantity,
         )

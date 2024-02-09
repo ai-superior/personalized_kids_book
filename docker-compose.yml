@@ -1,21 +1,21 @@
 version: '3.8'
 
 services:
-  #  api:
-  #    build:
-  #      context: .
-  #      dockerfile: Dockerfile # Use the Dockerfile for your FastAPI app
-  #    container_name: my-fastapi-app
-  #    ports:
-  #      - "8000:8000" # Map your FastAPI app's port to a host port
-  #    depends_on:
-  #      - mongodb
-  #    env_file:
-  #      - .env
-  #    networks:
-  #      - shared_network
-  #    volumes:
-  #      - /home/ubuntu/personalized_kids_book/public:/public
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile # Use the Dockerfile for your FastAPI app
+    container_name: my-fastapi-app
+    ports:
+      - "8000:8000" # Map your FastAPI app's port to a host port
+    depends_on:
+      - mongodb
+    env_file:
+      - .env
+    networks:
+      - shared_network
+    volumes:
+      - /home/ubuntu/personalized_kids_book/public:/public
 
   mongodb:
     image: mongo:latest

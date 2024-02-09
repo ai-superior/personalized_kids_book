@@ -3,7 +3,7 @@ import secrets
 from io import BytesIO
 
 import requests
-from PIL import Image, ImageDraw
+from PIL import Image, ImageDraw, ImageFont
 
 from domain.assets.model import AssetType
 from domain.assets.repositories import AssetRepository
@@ -34,28 +34,55 @@ class CreatePreview(UseCase):
     @staticmethod
     def fuse_images(cover_image_url, char_image_url, title, output_file_name):
         # Download the images
-        cover_image = requests.get(cover_image_url)
-        char_image = requests.get(char_image_url)
+        cover_image_response = requests.get(cover_image_url)
+        char_image_response = requests.get(char_image_url)
 
         # Open the images
-        image1 = Image.open(BytesIO(cover_image.content))
-        image2 = Image.open(BytesIO(char_image.content))
+        cover_image = Image.open(BytesIO(cover_image_response.content))
+        char_image = Image.open(BytesIO(char_image_response.content))
 
-        # Resize the images to the same dimensions
-        image1 = image1.resize(image2.size)
+        # First is width, second is height
+        final_dimensions = (700, 600)
+        char_dimensions = (200, 150)
 
-        # Overlay the text onto the first image
-        draw = ImageDraw.Draw(image1)
-        draw.text((10, 10), title, fill="black")
+        # Resizing the dimensions of the images
+        cover_image.resize(final_dimensions)
+        char_image = char_image.resize(char_dimensions)
 
-        # Blend the images together
-        fused_image = Image.blend(image1, image2, alpha=0.5)
+        # Create a new blank image to hold the fused images
+        fused_image = Image.new("RGB", final_dimensions, (0, 0, 0, 0))
 
-        fused_image.save(
-            f"/home/subra/Documents/personalized_kids_book/public/results/{output_file_name}.jpg"
+        # Paste the cover image onto the fused image at the top
+        fused_image.paste(cover_image, (0, 0))
+
+        # Paste the character image onto the fused image at the calculated position
+        fused_image.paste(char_image, (0, final_dimensions[1] - char_dimensions[1]))
+
+        # Overlay the text onto the fused image
+        draw = ImageDraw.Draw(fused_image)
+        header_font_size = 36
+
+        # URL to the font file on the CDN
+        font_url = (
+            "https://ai-childrens-book-assets.s3.eu-central-1.amazonaws.com/arial.ttf"
         )
 
-        # Return the fused image
+        # Download the font file from the CDN
+        font_response = requests.get(font_url)
+        font = ImageFont.truetype(BytesIO(font_response.content), header_font_size)
+
+        draw.text(
+            (10, 10),
+            title,
+            fill="black",
+            font=font,
+        )
+
+        # Save the fused image
+        output_path = f"/home/subra/Documents/personalized_kids_book/public/results/{output_file_name}.jpg"
+        fused_image.save(output_path)
+
+        # return f"{SETTINGS.webserver.protocol}://18.158.63.205:{SETTINGS.webserver.port}/public/results/{output_file_name}.jpg"
         return f"{SETTINGS.webserver.protocol}://{SETTINGS.webserver.host}:{SETTINGS.webserver.port}/public/results/{output_file_name}.jpg"
 
     def __init__(self, previews: PreviewRepository, assets: AssetRepository):

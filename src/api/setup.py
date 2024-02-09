@@ -25,6 +25,7 @@ def create_fastapi_app():
     # Upload the files to S3 bucket instead of storing them here
     app.mount(
         "/public",
+        # StaticFiles(directory="./public"),
         StaticFiles(directory="/home/subra/Documents/personalized_kids_book/public"),
         name="public",
     )
