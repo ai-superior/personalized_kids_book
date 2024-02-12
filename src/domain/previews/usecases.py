@@ -1,6 +1,7 @@
 import abc
 import secrets
 from io import BytesIO
+from textwrap import TextWrapper
 
 import requests
 from PIL import Image, ImageDraw, ImageFont
@@ -42,12 +43,13 @@ class CreatePreview(UseCase):
         char_image = Image.open(BytesIO(char_image_response.content))
 
         # First is width, second is height
-        final_dimensions = (303, 216)
-        char_dimensions = (140, 100)
+        final_dimensions = (1312, 928)
+        # final_dimensions = cover_image.size
+        char_dimensions = char_image.size
 
         # Resizing the dimensions of the images
         cover_image = cover_image.resize(final_dimensions)
-        char_image = char_image.resize(char_dimensions)
+        # char_image = char_image.resize(char_dimensions)
 
         # Create a new blank image to hold the fused images
         fused_image = Image.new("RGBA", final_dimensions, (0, 0, 0, 0))
@@ -67,13 +69,23 @@ class CreatePreview(UseCase):
         char_image.putalpha(char_alpha)
 
         # Paste the character image onto the fused image at the calculated position
+        # fused_image.paste(
+        #     char_image, (-30, final_dimensions[1] - char_image.size[1]), mask=char_mask
+        # )
+        # char_position = (65 * 4, 140 * 4)
+        char_position = (
+            2 * 65 * 4 - char_dimensions[0],
+            2 * 140 * 4 - char_dimensions[1],
+        )
         fused_image.paste(
-            char_image, (0, final_dimensions[1] - char_dimensions[1]), mask=char_mask
+            char_image,
+            char_position,
+            mask=char_mask,
         )
 
         # Overlay the text onto the fused image
         draw = ImageDraw.Draw(fused_image)
-        header_font_size = 14
+        header_font_size = 60
 
         # URL to the font file on the CDN
         font_url = "https://ai-childrens-book-assets.s3.eu-central-1.amazonaws.com/fingerpaint.ttf"
@@ -82,10 +94,20 @@ class CreatePreview(UseCase):
         font_response = requests.get(font_url)
         font = ImageFont.truetype(BytesIO(font_response.content), header_font_size)
 
+        wrapper = TextWrapper(width=30)
+        wrapped_lines = wrapper.wrap(title)
+        wrapped_title = "\n".join(line.center(30) for line in wrapped_lines)
+
+        # wrapped_title = wrapper.fill(title)
+
+        _, _, w, h = draw.textbbox((0, 0), wrapped_title, font=font)
+
+        text_position = (2 * 152 * 4 - w, 2 * 23 * 4 - h)
+
         draw.text(
-            (10, 10),
-            title,
-            fill="black",
+            text_position,
+            wrapped_title,
+            fill="white",
             font=font,
         )
 
