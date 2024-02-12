@@ -61,6 +61,7 @@ class CreateAsset(UseCase):
                 order_id=cmd.order_id,
                 type=AssetType.TITLE.value,
                 status=AssetStatus.ACTIVE.value,
+                prompt=title_prompt,
                 value=titles[i],
             )
             assets.append(asset)
@@ -80,6 +81,7 @@ class CreateAsset(UseCase):
                 order_id=cmd.order_id,
                 type=AssetType.BACKGROUND_IMAGE.value,
                 status=AssetStatus.ACTIVE.value,
+                prompt=cover_prompt,
                 value=cover_images_response.data[0].url,
             )
             assets.append(asset)

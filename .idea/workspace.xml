@@ -4,9 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4f3fec3c-998e-4568-9568-8d97cb6904e1" name="Changes" comment="character image dimensions">
+    <list default="true" id="4f3fec3c-998e-4568-9568-8d97cb6904e1" name="Changes" comment="character image dimensions and title updates">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config/book_cover_template.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/config/book_cover_template.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/assets/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/assets/model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/assets/usecases.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/assets/usecases.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/domain/previews/usecases.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/previews/usecases.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/implementation/repositories/assets.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/implementation/repositories/assets.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/unit/test_fusion.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/unit/test_fusion.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -186,8 +191,8 @@
       <list>
         <item itemvalue="Python tests.pytest for unit.test_fusion.test_fuse_images" />
         <item itemvalue="Python tests.pytest for e2e.test_previews.test_generate_preview" />
-        <item itemvalue="Python tests.pytest for integration.repositories.test_assets.test_get_asset" />
         <item itemvalue="Python tests.pytest for e2e.test_orders.test_get_order" />
+        <item itemvalue="Python tests.pytest for integration.repositories.test_assets.test_get_asset" />
         <item itemvalue="Python tests.pytest for integration.repositories.test_previews.test_get_preview" />
       </list>
     </recent_temporary>
@@ -369,7 +374,15 @@
       <option name="project" value="LOCAL" />
       <updated>1707489033280</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="character image dimensions and title updates">
+      <option name="closed" value="true" />
+      <created>1707489176363</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1707489176363</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -392,7 +405,8 @@
     <MESSAGE value="making the char image transparent" />
     <MESSAGE value="adjustments for deployment" />
     <MESSAGE value="character image dimensions" />
-    <option name="LAST_COMMIT_MESSAGE" value="character image dimensions" />
+    <MESSAGE value="character image dimensions and title updates" />
+    <option name="LAST_COMMIT_MESSAGE" value="character image dimensions and title updates" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -414,7 +428,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/src/implementation/repositories/assets.py</url>
-          <line>39</line>
+          <line>41</line>
           <option name="timeStamp" value="40" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
@@ -424,8 +438,18 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/tests/unit/test_fusion.py</url>
-          <line>12</line>
+          <line>15</line>
           <option name="timeStamp" value="69" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/tests/e2e/test_orders.py</url>
+          <line>2</line>
+          <option name="timeStamp" value="71" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/domain/assets/usecases.py</url>
+          <line>53</line>
+          <option name="timeStamp" value="74" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

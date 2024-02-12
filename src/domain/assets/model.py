@@ -19,6 +19,7 @@ class AssetStatus(Enum):
 @dataclass
 class Asset(Entity):
     order_id: str
+    prompt: Optional[str] = None
     value: Optional[str] = None
     type: Optional[AssetType] = None
     status: Optional[AssetStatus] = None

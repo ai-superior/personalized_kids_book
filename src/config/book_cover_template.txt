@@ -6,3 +6,5 @@ Title: {{generated_title}}
 1. Image orientation: horizontal
 2. Important: Ensure the image is free from any textual elements.
 3. Important: It is only background, without people or animals or any other characters on the image.
+
+The aspect ratio of the output 303:216
