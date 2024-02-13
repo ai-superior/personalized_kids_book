@@ -54,7 +54,7 @@ class CreateAsset(UseCase):
             prompt=title_prompt,
             quantity=cmd.no_of_covers,
         )
-        titles = [title.message.content for title in titles_response.choices]
+        titles = [title.message.content.strip('"') for title in titles_response.choices]
 
         for i in range(cmd.no_of_covers):
             asset = Asset(

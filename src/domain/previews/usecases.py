@@ -94,9 +94,9 @@ class CreatePreview(UseCase):
         font_response = requests.get(font_url)
         font = ImageFont.truetype(BytesIO(font_response.content), header_font_size)
 
-        wrapper = TextWrapper(width=30)
+        wrapper = TextWrapper(width=33)
         wrapped_lines = wrapper.wrap(title)
-        wrapped_title = "\n".join(line.center(30) for line in wrapped_lines)
+        wrapped_title = "\n".join(line.center(33) for line in wrapped_lines)
 
         # wrapped_title = wrapper.fill(title)
 
@@ -144,26 +144,15 @@ class CreatePreview(UseCase):
         assets_for_preview = assets
 
         # if cmd.asset_ids is None:
-        #     asset_ids = [asset.id for asset in assets_for_preview]
+        #     assets_for_preview = [asset.id for asset in assets_for_preview]
         # else:
-        #     asset_ids = cmd.asset_ids
+        #     assets_for_preview = cmd.asset_ids
 
-        asset_ids = [asset.id for asset in assets_for_preview]
-        char_image_url = [
-            asset.value
-            for asset in assets_for_preview
-            if asset.type == AssetType.CHARACTER_IMAGE.value
-        ][0]
-        cover_image_url = [
-            asset.value
-            for asset in assets_for_preview
-            if asset.type == AssetType.BACKGROUND_IMAGE.value
-        ][0]
-        title = [
-            asset.value
-            for asset in assets_for_preview
-            if asset.type == AssetType.TITLE.value
-        ][0]
+        # asset_ids = [asset.id for asset in assets_for_preview]
+        asset_ids = cmd.asset_ids
+        char_image_url = self.assets.get(cmd.asset_ids[2]).value
+        cover_image_url = self.assets.get(cmd.asset_ids[1]).value
+        title = self.assets.get(cmd.asset_ids[0]).value
         result_url = self.fuse_images(
             cover_image_url, char_image_url, title, secrets.token_hex(6)
         )
