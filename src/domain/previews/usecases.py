@@ -72,11 +72,11 @@ class CreatePreview(UseCase):
         # fused_image.paste(
         #     char_image, (-30, final_dimensions[1] - char_image.size[1]), mask=char_mask
         # )
-        # char_position = (65 * 4, 140 * 4)
-        char_position = (
-            2 * 65 * 4 - char_dimensions[0],
-            2 * 140 * 4 - char_dimensions[1],
-        )
+        char_position = (2 * 65, 928 - 560)
+        # char_position = (
+        #     2 * 65 * 4 - char_dimensions[0],
+        #     2 * 140 * 4 - char_dimensions[1],
+        # )
         fused_image.paste(
             char_image,
             char_position,
@@ -102,7 +102,21 @@ class CreatePreview(UseCase):
 
         _, _, w, h = draw.textbbox((0, 0), wrapped_title, font=font)
 
-        text_position = (2 * 152 * 4 - w, 2 * 23 * 4 - h)
+        text_position = (2 * 152 * 4 - w, 2 * 23 * 4 - h / 2)
+
+        # text_position = (2 * 152 * 4 - w, 2 * 23 * 4 - h / 2)
+
+        outline_color = "black"
+        outline_thickness = 2
+
+        for dx in [-outline_thickness, 0, outline_thickness]:
+            for dy in [-outline_thickness, 0, outline_thickness]:
+                draw.text(
+                    (text_position[0] + dx, text_position[1] + dy),
+                    wrapped_title,
+                    font=font,
+                    fill=outline_color,
+                )
 
         draw.text(
             text_position,

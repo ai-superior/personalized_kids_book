@@ -20,3 +20,6 @@ Here are Examples of the book titles with desired format and suitable presentati
 a. Mutige Alma und die Osterferien auf dem Pferdehof
 b. Alma, die Weißwurstprinzessin und das Turnier der musikalischen Freunde
 c. Alma, die Weißwurst-Detektivin und das Geheimnis der verschwundenen Osterhasen
+
+
+The title length must not be more than 10 words.

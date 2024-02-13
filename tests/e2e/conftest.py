@@ -25,20 +25,20 @@ def client():
 @pytest.fixture
 def order(client):
     data = {
-        "email": random_name(5),
-        "name": random_name(5),
-        "city": random_name(5),
-        "birthday": random_name(5),
-        "favourite_food": random_name(5),
-        "interests": random_name(5),
-        "event_to_come": random_name(5),
-        "skin_tone": random_name(5),
-        "hair_color": random_name(5),
-        "hair_length": random_name(5),
-        "kids_photo": random_name(5),
-        "favourite_place": random_name(5),
-        "story_message": random_name(5),
-        "personal_dedication": random_name(5),
+        "email": "someemail@gmail.com",
+        "name": "Tim",
+        "city": "Hamburg",
+        "birthday": "28/01/2019",
+        "favourite_food": "Pizza",
+        "interests": "Fussball",
+        "event_to_come": "Urlaub in Spanien",
+        "skin_tone": "Hell",
+        "hair_color": "Blond",
+        "hair_length": "Kurz",
+        "kids_photo": "string",
+        "favourite_place": "Der Hamburger Hafen",
+        "story_message": "Mut und Freundschaft überwinden alle Hindernisse",
+        "personal_dedication": "Für dich meine Liebe",
     }
     response = client.post("/orders/", json=data)
     return Order.from_dict(response.json())

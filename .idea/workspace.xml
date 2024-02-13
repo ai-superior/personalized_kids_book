@@ -4,11 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4f3fec3c-998e-4568-9568-8d97cb6904e1" name="Changes" comment="adding prompt used to generate assets in the endpoint response">
+    <list default="true" id="4f3fec3c-998e-4568-9568-8d97cb6904e1" name="Changes" comment="updates to aspect ratio">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/config/book_cover_template.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/config/book_cover_template.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config/book_title_template.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/config/book_title_template.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/assets/usecases.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/assets/usecases.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/domain/previews/usecases.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/previews/usecases.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/unit/test_fusion.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/unit/test_fusion.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/implementation/services/open_ai.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/implementation/services/open_ai.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/e2e/conftest.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/e2e/conftest.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,7 +64,7 @@
       <recent name="$PROJECT_DIR$/tests/integration" />
     </key>
   </component>
-  <component name="RunManager" selected="Python tests.pytest for unit.test_fusion.test_fuse_images">
+  <component name="RunManager" selected="Python tests.pytest for e2e.test_previews.test_generate_preview">
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="personalized_kids_book" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -186,8 +188,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python tests.pytest for unit.test_fusion.test_fuse_images" />
         <item itemvalue="Python tests.pytest for e2e.test_previews.test_generate_preview" />
+        <item itemvalue="Python tests.pytest for unit.test_fusion.test_fuse_images" />
         <item itemvalue="Python tests.pytest for e2e.test_orders.test_get_order" />
         <item itemvalue="Python tests.pytest for integration.repositories.test_assets.test_get_asset" />
         <item itemvalue="Python tests.pytest for integration.repositories.test_previews.test_get_preview" />
@@ -387,8 +389,27 @@
       <option name="project" value="LOCAL" />
       <updated>1707730980177</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="updates to aspect ratio">
+      <option name="closed" value="true" />
+      <created>1707740885947</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1707740885947</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="adding methods for open ai text, and images, including test cases" />
@@ -412,7 +433,8 @@
     <MESSAGE value="character image dimensions" />
     <MESSAGE value="character image dimensions and title updates" />
     <MESSAGE value="adding prompt used to generate assets in the endpoint response" />
-    <option name="LAST_COMMIT_MESSAGE" value="adding prompt used to generate assets in the endpoint response" />
+    <MESSAGE value="updates to aspect ratio" />
+    <option name="LAST_COMMIT_MESSAGE" value="updates to aspect ratio" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -446,11 +468,6 @@
           <url>file://$PROJECT_DIR$/tests/e2e/test_orders.py</url>
           <line>2</line>
           <option name="timeStamp" value="71" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/domain/previews/usecases.py</url>
-          <line>46</line>
-          <option name="timeStamp" value="81" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
