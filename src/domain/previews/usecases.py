@@ -127,7 +127,7 @@ class CreatePreview(UseCase):
 
         # Save the fused image
         # output_path = f"/public/results/{output_file_name}.png"
-        output_path = f"/home/subra/Documents/personalized_kids_book/public/results/{output_file_name}.png"
+        output_path = f"/home/subra/Documents/pkb/personalized_kids_book/public/results/{output_file_name}.png"
         fused_image.save(output_path)
 
         # return f"{SETTINGS.webserver.protocol}://18.158.63.205:{SETTINGS.webserver.port}/public/results/{output_file_name}.png"
@@ -139,9 +139,9 @@ class CreatePreview(UseCase):
         self.assets = assets
 
     def execute(self, cmd: commands.CreatePreview) -> Preview:
-        assets = self.assets.get_by_order_id(cmd.order_id)
+        # assets = self.assets.get_by_order_id(cmd.order_id)
         # assets_for_preview = self.assets_for_preview(assets)
-        assets_for_preview = assets
+        # assets_for_preview = assets
 
         # if cmd.asset_ids is None:
         #     assets_for_preview = [asset.id for asset in assets_for_preview]

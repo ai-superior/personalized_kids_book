@@ -1,4 +1,5 @@
 from fastapi import FastAPI, APIRouter
+from fastapi.middleware.cors import CORSMiddleware
 from starlette.staticfiles import StaticFiles
 
 from api.routes.assets import router as assets_router
@@ -22,11 +23,21 @@ def create_fastapi_app():
     )
     app.include_router(public_routes)
 
+    app.add_middleware(
+        CORSMiddleware,
+        allow_origins=["*"],  # Allow all origins
+        allow_credentials=True,
+        allow_methods=["*"],  # Allow all methods
+        allow_headers=["*"],  # Allow all headers
+    )
+
     # Upload the files to S3 bucket instead of storing them here
     app.mount(
         "/public",
         # StaticFiles(directory="/public"),
-        StaticFiles(directory="/home/subra/Documents/personalized_kids_book/public"),
+        StaticFiles(
+            directory="/home/subra/Documents/pkb/personalized_kids_book/public"
+        ),
         name="public",
     )
 

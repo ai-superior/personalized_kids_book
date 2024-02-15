@@ -46,7 +46,7 @@ def order(client):
 
 @pytest.fixture
 def assets(client, order):
-    data = {"order_id": order.id, "no_of_titles": 1, "no_of_cover_images": 1}
+    data = {"order_id": order.id, "no_of_covers": 1}
     response = client.post("/assets", json=data)
     assets = [Asset.from_dict(asset) for asset in response.json()]
     return assets

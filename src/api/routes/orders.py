@@ -13,6 +13,13 @@ def create_order(cmd: commands.CreateOrder) -> model.Order:
     return usecase.execute(cmd)
 
 
+@router.get("/")
+def get_orders() -> list[model.Order]:
+    di = DependencyInjector.get()
+    usecase = usecases.GetOrders(di.orders())
+    return usecase.execute()
+
+
 @router.get("/{order_id}")
 def get_order(order_id: str) -> model.Order:
     di = DependencyInjector.get()

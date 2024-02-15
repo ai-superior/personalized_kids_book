@@ -4,11 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4f3fec3c-998e-4568-9568-8d97cb6904e1" name="Changes" comment="updates to positioning and aspect ratio">
+    <list default="true" id="4f3fec3c-998e-4568-9568-8d97cb6904e1" name="Changes" comment="fixing preview reordering issues">
+      <change beforePath="$PROJECT_DIR$/.idea/personalized_kids_book.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/personalized_kids_book.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/assets/usecases.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/assets/usecases.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/routes/orders.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/routes/orders.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/setup.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/setup.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/orders/usecases.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/orders/usecases.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/domain/previews/usecases.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/previews/usecases.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/implementation/repositories/assets.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/implementation/repositories/assets.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/e2e/conftest.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/e2e/conftest.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/e2e/test_previews.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/e2e/test_previews.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -63,7 +67,7 @@
       <recent name="$PROJECT_DIR$/tests/integration" />
     </key>
   </component>
-  <component name="RunManager" selected="Python tests.pytest for e2e.test_previews.test_generate_preview">
+  <component name="RunManager" selected="Python.main">
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="personalized_kids_book" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -129,6 +133,22 @@
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
+    <configuration name="pytest for integration.repositories.test_assets.test_get_all_assets" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
+      <module name="personalized_kids_book" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_keywords" value="&quot;&quot;" />
+      <option name="_new_parameters" value="&quot;&quot;" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;integration.repositories.test_assets.test_get_all_assets&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
     <configuration name="pytest for integration.repositories.test_assets.test_get_asset" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
       <module name="personalized_kids_book" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -145,53 +165,37 @@
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="pytest for integration.repositories.test_previews.test_get_preview" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
+    <configuration name="pytest for test_orders.test_get_order" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
       <module name="personalized_kids_book" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests/e2e" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="_new_keywords" value="&quot;&quot;" />
       <option name="_new_parameters" value="&quot;&quot;" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;integration.repositories.test_previews.test_get_preview&quot;" />
-      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
-      <method v="2" />
-    </configuration>
-    <configuration name="pytest for unit.test_fusion.test_fuse_images" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
-      <module name="personalized_kids_book" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="_new_keywords" value="&quot;&quot;" />
-      <option name="_new_parameters" value="&quot;&quot;" />
-      <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;unit.test_fusion.test_fuse_images&quot;" />
+      <option name="_new_target" value="&quot;test_orders.test_get_order&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
     <list>
       <item itemvalue="Python.main" />
+      <item itemvalue="Python tests.pytest for test_orders.test_get_order" />
+      <item itemvalue="Python tests.pytest for integration.repositories.test_assets.test_get_all_assets" />
       <item itemvalue="Python tests.pytest for integration.repositories.test_assets.test_get_asset" />
-      <item itemvalue="Python tests.pytest for unit.test_fusion.test_fuse_images" />
       <item itemvalue="Python tests.pytest for e2e.test_orders.test_get_order" />
       <item itemvalue="Python tests.pytest for e2e.test_previews.test_generate_preview" />
-      <item itemvalue="Python tests.pytest for integration.repositories.test_previews.test_get_preview" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python tests.pytest for e2e.test_previews.test_generate_preview" />
-        <item itemvalue="Python tests.pytest for unit.test_fusion.test_fuse_images" />
         <item itemvalue="Python tests.pytest for e2e.test_orders.test_get_order" />
+        <item itemvalue="Python tests.pytest for test_orders.test_get_order" />
+        <item itemvalue="Python tests.pytest for e2e.test_previews.test_generate_preview" />
         <item itemvalue="Python tests.pytest for integration.repositories.test_assets.test_get_asset" />
-        <item itemvalue="Python tests.pytest for integration.repositories.test_previews.test_get_preview" />
+        <item itemvalue="Python tests.pytest for integration.repositories.test_assets.test_get_all_assets" />
       </list>
     </recent_temporary>
   </component>
@@ -404,7 +408,15 @@
       <option name="project" value="LOCAL" />
       <updated>1707797659108</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="fixing preview reordering issues">
+      <option name="closed" value="true" />
+      <created>1707820590357</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1707820590357</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -442,7 +454,8 @@
     <MESSAGE value="adding prompt used to generate assets in the endpoint response" />
     <MESSAGE value="updates to aspect ratio" />
     <MESSAGE value="updates to positioning and aspect ratio" />
-    <option name="LAST_COMMIT_MESSAGE" value="updates to positioning and aspect ratio" />
+    <MESSAGE value="fixing preview reordering issues" />
+    <option name="LAST_COMMIT_MESSAGE" value="fixing preview reordering issues" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -473,19 +486,24 @@
           <option name="timeStamp" value="66" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/tests/e2e/test_orders.py</url>
-          <line>2</line>
-          <option name="timeStamp" value="71" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/src/domain/previews/usecases.py</url>
           <line>143</line>
           <option name="timeStamp" value="72" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/tests/e2e/conftest.py</url>
-          <line>42</line>
-          <option name="timeStamp" value="73" />
+          <line>58</line>
+          <option name="timeStamp" value="75" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/tests/e2e/conftest.py</url>
+          <line>56</line>
+          <option name="timeStamp" value="76" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/tests/e2e/test_orders.py</url>
+          <line>2</line>
+          <option name="timeStamp" value="77" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

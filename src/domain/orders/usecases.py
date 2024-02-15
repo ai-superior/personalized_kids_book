@@ -7,9 +7,9 @@ from domain.orders.repositories import OrderRepository
 
 
 class StandardOrderUseCase(UseCase, abc.ABC):
-    def __init__(self, messages: OrderRepository):
+    def __init__(self, orders: OrderRepository):
         super().__init__()
-        self.messages = messages
+        self.orders = orders
 
 
 class CreateOrder(UseCase):
@@ -40,8 +40,14 @@ class CreateOrder(UseCase):
 
 class GetOrder(StandardOrderUseCase):
     def execute(self, query: queries.GetOrder) -> Order:
-        order = self.messages.get(query.order_id)
+        order = self.orders.get(query.order_id)
 
         if order is None:  # pragma: no cover
             raise errors.OrderNotFound
         return order
+
+
+class GetOrders(StandardOrderUseCase):
+    def execute(self) -> list[Order]:
+        orders = self.orders.list()
+        return orders

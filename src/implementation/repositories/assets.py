@@ -12,7 +12,7 @@ def _model_to_db(assets: model.Asset):
         "status": assets.status,
         "created_at": assets.created_at,
         "value": assets.value,
-        "title_prompt": assets.prompt,
+        "prompt": assets.prompt,
     }
 
 
@@ -20,7 +20,7 @@ def _db_to_model(asset):
     return Asset(
         id=asset["id"],
         status=asset["status"],
-        prompt=asset["title_prompt"],
+        prompt=asset["prompt"],
         type=asset["type"],
         order_id=asset["order_id"],
         value=asset["value"],
