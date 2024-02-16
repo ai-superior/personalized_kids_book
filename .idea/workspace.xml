@@ -4,16 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4f3fec3c-998e-4568-9568-8d97cb6904e1" name="Changes" comment="fixing preview reordering issues">
-      <change beforePath="$PROJECT_DIR$/.idea/personalized_kids_book.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/personalized_kids_book.iml" afterDir="false" />
+    <list default="true" id="4f3fec3c-998e-4568-9568-8d97cb6904e1" name="Changes" comment="adding orders endpoint and fixing tests">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/routes/orders.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/routes/orders.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/setup.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/setup.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/assets/usecases.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/assets/usecases.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/orders/commands.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/orders/commands.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/orders/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/orders/model.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/domain/orders/usecases.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/orders/usecases.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/previews/usecases.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/previews/usecases.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/implementation/repositories/assets.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/implementation/repositories/assets.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/implementation/repositories/orders.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/implementation/repositories/orders.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/e2e/conftest.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/e2e/conftest.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/e2e/test_previews.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/e2e/test_previews.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/integration/repositories/conftest.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/integration/repositories/conftest.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,7 +67,7 @@
       <recent name="$PROJECT_DIR$/tests/integration" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.main">
+  <component name="RunManager" selected="Python tests.pytest for e2e.test_previews.test_generate_preview">
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="personalized_kids_book" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -76,7 +76,7 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="SDK_NAME" value="open_ai" />
+      <option name="SDK_NAME" value="pkb" />
       <option name="WORKING_DIRECTORY" value="" />
       <option name="IS_MODULE_SDK" value="false" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
@@ -191,9 +191,9 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python tests.pytest for e2e.test_previews.test_generate_preview" />
         <item itemvalue="Python tests.pytest for e2e.test_orders.test_get_order" />
         <item itemvalue="Python tests.pytest for test_orders.test_get_order" />
-        <item itemvalue="Python tests.pytest for e2e.test_previews.test_generate_preview" />
         <item itemvalue="Python tests.pytest for integration.repositories.test_assets.test_get_asset" />
         <item itemvalue="Python tests.pytest for integration.repositories.test_assets.test_get_all_assets" />
       </list>
@@ -416,7 +416,15 @@
       <option name="project" value="LOCAL" />
       <updated>1707820590357</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="adding orders endpoint and fixing tests">
+      <option name="closed" value="true" />
+      <created>1708022248894</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1708022248894</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -455,7 +463,8 @@
     <MESSAGE value="updates to aspect ratio" />
     <MESSAGE value="updates to positioning and aspect ratio" />
     <MESSAGE value="fixing preview reordering issues" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixing preview reordering issues" />
+    <MESSAGE value="adding orders endpoint and fixing tests" />
+    <option name="LAST_COMMIT_MESSAGE" value="adding orders endpoint and fixing tests" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -492,18 +501,28 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/tests/e2e/conftest.py</url>
-          <line>58</line>
+          <line>61</line>
           <option name="timeStamp" value="75" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/tests/e2e/conftest.py</url>
-          <line>56</line>
+          <line>59</line>
           <option name="timeStamp" value="76" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/tests/e2e/test_orders.py</url>
           <line>2</line>
           <option name="timeStamp" value="77" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/domain/assets/usecases.py</url>
+          <line>101</line>
+          <option name="timeStamp" value="80" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/domain/assets/usecases.py</url>
+          <line>32</line>
+          <option name="timeStamp" value="81" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

@@ -19,3 +19,6 @@ class CreateOrder(Command):
     favourite_place: str
     story_message: str
     personal_dedication: str
+    age: str
+    gender: str
+    hair_style: str

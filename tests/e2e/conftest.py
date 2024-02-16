@@ -32,13 +32,16 @@ def order(client):
         "favourite_food": "Pizza",
         "interests": "Fussball",
         "event_to_come": "Urlaub in Spanien",
-        "skin_tone": "Hell",
-        "hair_color": "Blond",
-        "hair_length": "Kurz",
+        "skin_tone": "fair",
+        "hair_color": "blond",
+        "hair_length": "short",
         "kids_photo": "string",
         "favourite_place": "Der Hamburger Hafen",
         "story_message": "Mut und Freundschaft überwinden alle Hindernisse",
         "personal_dedication": "Für dich meine Liebe",
+        "age": "0-1",
+        "gender": "girl",
+        "hair_style": "straight",
     }
     response = client.post("/orders/", json=data)
     return Order.from_dict(response.json())

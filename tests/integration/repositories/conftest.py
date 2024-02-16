@@ -29,6 +29,9 @@ def order():
         favourite_place=secrets.token_hex(5),
         story_message=secrets.token_hex(5),
         personal_dedication=secrets.token_hex(5),
+        gender=secrets.token_hex(5),
+        age=secrets.token_hex(5),
+        hair_style=secrets.token_hex(5),
     )
     DependencyInjector.get().orders().add(random_lead)
     return random_lead

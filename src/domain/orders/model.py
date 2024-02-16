@@ -19,3 +19,6 @@ class Order(Entity):
     favourite_place: str
     story_message: str
     personal_dedication: str
+    gender: str
+    age: str
+    hair_style: str

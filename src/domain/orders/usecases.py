@@ -33,6 +33,9 @@ class CreateOrder(UseCase):
             favourite_place=cmd.favourite_place,
             story_message=cmd.story_message,
             personal_dedication=cmd.personal_dedication,
+            gender=cmd.gender,
+            hair_style=cmd.hair_style,
+            age=cmd.age,
         )
         self.orders.add(order)
         return order

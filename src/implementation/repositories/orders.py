@@ -22,6 +22,9 @@ def _model_to_db(orders: model.Order):
         "favourite_place": orders.favourite_place,
         "personal_dedication": orders.personal_dedication,
         "created_at": orders.created_at,
+        "gender": orders.gender,
+        "age": orders.age,
+        "hair_style": orders.hair_style,
     }
 
 
@@ -43,6 +46,9 @@ def _db_to_model(order):
         story_message=order["story_message"],
         personal_dedication=order["personal_dedication"],
         created_at=order["created_at"],
+        gender=order["gender"],
+        age=order["age"],
+        hair_style=order["hair_style"],
     )
 
 

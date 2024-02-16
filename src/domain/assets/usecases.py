@@ -1,5 +1,6 @@
 import abc
 
+import pandas as pd
 import requests
 
 from domain.assets import queries, errors, commands
@@ -24,6 +25,48 @@ class CreateAsset(UseCase):
         self.assets = assets
         self.llm = llm
         self.orders = orders
+
+    @staticmethod
+    def find_character(
+        file_url, gender, age, hair_color, hair_length, hair_style, skin_tone
+    ):
+        file_response = requests.get(file_url)
+        # Load the Excel file
+        df = pd.read_excel(file_response.content, header=1)
+
+        # Drop empty rows
+        df.dropna(axis=0, how="all", inplace=True)
+
+        # Remove redundant
+        df = df[df["redundant"] != "x"]
+
+        # Filter based on the criteria
+        filtered_df = df[
+            (df["gender"] == gender)
+            & (df["age"] == age)
+            & (df["hair color"] == hair_color)
+            & (df["hair length"] == hair_length)
+            & (df["hair style"] == hair_style)
+            & (df["skin tone"] == skin_tone)
+        ]
+
+        # Check if there is a match
+        first_result = "*missing"
+        final_result = "*missing"
+
+        if not filtered_df.empty:
+            # Return the first matching Id
+            first_result = filtered_df.iloc[0]["Id"]
+        else:
+            # No direct match found, implement logic for suggesting an alternative or return a default message
+            return "*missing"
+
+        if first_result == "*missing":
+            final_result = filtered_df.iloc[0]["alternative character"]
+        else:
+            return f"https://ai-childrens-book-assets.s3.eu-central-1.amazonaws.com/characters_imgs/{first_result}.png"
+
+        return f"https://ai-childrens-book-assets.s3.eu-central-1.amazonaws.com/characters_imgs/{final_result}.png"
 
     async def execute(self, cmd: commands.CreateAsset):
         assets = []
@@ -55,6 +98,16 @@ class CreateAsset(UseCase):
             quantity=cmd.no_of_covers,
         )
         titles = [title.message.content.strip('"') for title in titles_response.choices]
+
+        char_url = self.find_character(
+            file_url="https://ai-childrens-book-assets.s3.eu-central-1.amazonaws.com/01_Character_excel.xlsx",
+            gender=order.gender,
+            age=order.age,
+            hair_color=order.hair_color,
+            hair_length=order.hair_length,
+            hair_style=order.hair_style,
+            skin_tone=order.skin_tone,
+        )
 
         for i in range(cmd.no_of_covers):
             asset = Asset(
@@ -91,7 +144,7 @@ class CreateAsset(UseCase):
             order_id=cmd.order_id,
             type=AssetType.CHARACTER_IMAGE.value,
             status=AssetStatus.ACTIVE.value,
-            value="https://ai-childrens-book-assets.s3.eu-central-1.amazonaws.com/test_2_char.png",
+            value=char_url,
         )
 
         assets.append(asset)
