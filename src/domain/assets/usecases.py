@@ -162,6 +162,12 @@ class GetAsset(StandardAssetUseCase):
         return asset
 
 
+class GetAssets(StandardAssetUseCase):
+    def execute(self) -> list[Asset]:
+        assets = self.messages.list()
+        return assets
+
+
 class GetAssetByOrderId(StandardAssetUseCase):
     def execute(self, query: queries.GetAssetByOrderId) -> list[Asset]:
         assets = self.messages.get_by_order_id(query.order_id)

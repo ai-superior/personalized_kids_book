@@ -7,6 +7,8 @@ class WebserverSettings(BaseSettings):
     port: int = 8000
     cors_origin: str = "*"
     protocol: str = ""
+    static_dir: str = ""
+    domain: str = ""
 
 
 class MongoSettings(BaseSettings):

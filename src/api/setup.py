@@ -17,7 +17,7 @@ def create_fastapi_app():
     public_routes.include_router(previews_router)
 
     app = FastAPI(
-        docs_url="/docs" if SETTINGS.debug else None,
+        docs_url="/" if SETTINGS.debug else None,
         openapi_url="/openapi.json" if SETTINGS.debug else None,
         redoc_url=None,
     )
@@ -34,10 +34,7 @@ def create_fastapi_app():
     # Upload the files to S3 bucket instead of storing them here
     app.mount(
         "/public",
-        # StaticFiles(directory="/public"),
-        StaticFiles(
-            directory="/home/subra/Documents/pkb/personalized_kids_book/public"
-        ),
+        StaticFiles(directory=SETTINGS.webserver.static_dir),
         name="public",
     )
 

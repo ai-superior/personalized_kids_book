@@ -13,6 +13,13 @@ async def create_asset(cmd: commands.CreateAsset) -> list[model.Asset]:
     return await usecase.execute(cmd)
 
 
+@router.get("/")
+def get_assets() -> list[model.Asset]:
+    di = DependencyInjector.get()
+    usecase = usecases.GetAssets(di.assets())
+    return usecase.execute()
+
+
 @router.get("/asset_id/{asset_id}")
 def get_asset_by_asset_id(asset_id: str) -> model.Asset:
     di = DependencyInjector.get()

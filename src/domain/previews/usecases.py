@@ -126,12 +126,9 @@ class CreatePreview(UseCase):
         )
 
         # Save the fused image
-        # output_path = f"/public/results/{output_file_name}.png"
-        output_path = f"/home/subra/Documents/pkb/personalized_kids_book/public/results/{output_file_name}.png"
+        output_path = f"{SETTINGS.webserver.static_dir}/results/{output_file_name}.png"
         fused_image.save(output_path)
-
-        # return f"{SETTINGS.webserver.protocol}://18.158.63.205:{SETTINGS.webserver.port}/public/results/{output_file_name}.png"
-        return f"{SETTINGS.webserver.protocol}://{SETTINGS.webserver.host}:{SETTINGS.webserver.port}/public/results/{output_file_name}.png"
+        return f"{SETTINGS.webserver.domain}/public/results/{output_file_name}.png"
 
     def __init__(self, previews: PreviewRepository, assets: AssetRepository):
         super().__init__()
