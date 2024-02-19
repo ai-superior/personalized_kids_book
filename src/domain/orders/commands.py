@@ -22,3 +22,4 @@ class CreateOrder(Command):
     age: str
     gender: str
     hair_style: str
+    no_of_covers: int = 2
