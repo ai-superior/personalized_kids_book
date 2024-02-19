@@ -49,7 +49,7 @@ def order(client):
 
 @pytest.fixture
 def assets(client, order):
-    data = {"order_id": order.id, "no_of_covers": 1}
+    data = {"order_id": order.id, "no_of_covers": 3}
     response = client.post("/assets", json=data)
     assets = [Asset.from_dict(asset) for asset in response.json()]
     return assets
@@ -57,6 +57,14 @@ def assets(client, order):
 
 @pytest.fixture
 def preview(client, order, assets):
-    data = {"order_id": order.id, "asset_ids": [asset.id for asset in assets]}
+    data = {
+        "order_id": order.id,
+        "asset_ids": [
+            [asset.id for asset in assets if asset.type == "TITLE"][0],
+            [asset.id for asset in assets if asset.type == "BACKGROUND_IMAGE"][0],
+            [asset.id for asset in assets if asset.type == "CHARACTER_IMAGE"][0],
+        ],
+    }
+
     response = client.post("/previews", json=data)
     return Preview.from_dict(response.json())

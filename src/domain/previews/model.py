@@ -13,6 +13,7 @@ class PreviewStatus(Enum):
 @dataclass
 class Preview(Entity):
     asset_ids: list[str]
+    order_id: str
     is_approved: bool
     status: PreviewStatus
     title: Optional[str] = None

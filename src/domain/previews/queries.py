@@ -9,5 +9,5 @@ class GetPreview(Query):
 
 
 @dataclass(frozen=True)
-class GetPreviewByOrderId(Query):
+class GetPreviewsByOrderId(Query):
     order_id: str

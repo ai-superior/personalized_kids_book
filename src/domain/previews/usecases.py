@@ -137,6 +137,7 @@ class CreatePreview(UseCase):
 
     def execute(self, cmd: commands.CreatePreview) -> Preview:
         # assets = self.assets.get_by_order_id(cmd.order_id)
+
         # assets_for_preview = self.assets_for_preview(assets)
         # assets_for_preview = assets
 
@@ -156,6 +157,7 @@ class CreatePreview(UseCase):
 
         preview = Preview(
             asset_ids=asset_ids,
+            order_id=cmd.order_id,
             status=PreviewStatus.COMPLETED.value,
             is_approved=False,
             title=title,
@@ -177,10 +179,14 @@ class GetPreview(StandardPreviewUseCase):
         return preview
 
 
+class GetPreviews(StandardPreviewUseCase):
+    def execute(self) -> list[Preview]:
+        previews = self.messages.list()
+        return previews
+
+
 class GetPreviewByOrderId(StandardPreviewUseCase):
-    def execute(self, query: queries.GetPreviewByOrderId) -> list[Preview]:
+    def execute(self, query: queries.GetPreviewsByOrderId) -> list[Preview]:
         previews = self.messages.get_by_order_id(query.order_id)
 
-        if previews is None:  # pragma: no cover
-            raise errors.PreviewNotFound
         return previews

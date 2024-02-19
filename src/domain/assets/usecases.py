@@ -1,7 +1,10 @@
 import abc
+import secrets
+from io import BytesIO
 
 import pandas as pd
 import requests
+from PIL import Image
 
 from domain.assets import queries, errors, commands
 from domain.assets.model import Asset, AssetType, AssetStatus
@@ -9,6 +12,7 @@ from domain.assets.repositories import AssetRepository
 from domain.basic_types import UseCase
 from domain.orders.repositories import OrderRepository
 from domain.orders.services import LLMProcessor
+from settings import SETTINGS
 
 
 class StandardAssetUseCase(UseCase, abc.ABC):
@@ -109,6 +113,16 @@ class CreateAsset(UseCase):
             skin_tone=order.skin_tone,
         )
 
+        asset = Asset(
+            order_id=cmd.order_id,
+            type=AssetType.CHARACTER_IMAGE.value,
+            status=AssetStatus.ACTIVE.value,
+            value=char_url,
+        )
+
+        assets.append(asset)
+        self.assets.add(asset)
+
         for i in range(cmd.no_of_covers):
             asset = Asset(
                 order_id=cmd.order_id,
@@ -129,26 +143,25 @@ class CreateAsset(UseCase):
                 )
             )
 
-            cover_images_response = await self.llm.ask_for_image(cover_prompt)
+            cover_image_gpt_response = await self.llm.ask_for_image(cover_prompt)
+
+            cover_image_response = requests.get(cover_image_gpt_response.data[0].url)
+            cover_image = Image.open(BytesIO(cover_image_response.content))
+            output_file_name = secrets.token_hex(6)
+            output_path = (
+                f"{SETTINGS.webserver.static_dir}/results/{output_file_name}.png"
+            )
+            cover_image.save(output_path)
             asset = Asset(
                 order_id=cmd.order_id,
                 type=AssetType.BACKGROUND_IMAGE.value,
                 status=AssetStatus.ACTIVE.value,
                 prompt=cover_prompt,
-                value=cover_images_response.data[0].url,
+                value=f"{SETTINGS.webserver.domain}/public/results/{output_file_name}.png",
             )
+
             assets.append(asset)
             self.assets.add(asset)
-
-        asset = Asset(
-            order_id=cmd.order_id,
-            type=AssetType.CHARACTER_IMAGE.value,
-            status=AssetStatus.ACTIVE.value,
-            value=char_url,
-        )
-
-        assets.append(asset)
-        self.assets.add(asset)
 
         return assets
 
