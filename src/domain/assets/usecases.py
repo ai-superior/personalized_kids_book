@@ -134,14 +134,18 @@ class CreateAsset(UseCase):
             assets.append(asset)
             self.assets.add(asset)
 
-        for i in range(cmd.no_of_covers):
-            cover_prompt = (
-                cover_prompt.replace("{{", "{")
-                .replace("}}", "}")
-                .format(
-                    generated_title=titles[i],
-                )
+        print("cover_prompt: ", cover_prompt)
+        cover_prompt = (
+            cover_prompt.replace("{{", "{")
+            .replace("}}", "}")
+            .format(
+                generated_title=titles[i],
             )
+        )
+
+        for i in range(cmd.no_of_covers):
+            if i > 0:
+                cover_prompt = cover_prompt.replace(titles[i - 1], titles[i])
 
             cover_image_gpt_response = await self.llm.ask_for_image(cover_prompt)
 
