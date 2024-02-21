@@ -75,12 +75,8 @@ class CreateAsset(UseCase):
     async def execute(self, cmd: commands.CreateAsset):
         assets = []
 
-        title_prompt = requests.get(
-            "https://ai-childrens-book-assets.s3.eu-central-1.amazonaws.com/book_title_template.txt"
-        ).text
-        cover_prompt = requests.get(
-            "https://ai-childrens-book-assets.s3.eu-central-1.amazonaws.com/book_cover_template.txt"
-        ).text
+        title_prompt = cmd.additional_params.prompts.title_prompt
+        cover_prompt = cmd.additional_params.prompts.cover_prompt
 
         order = self.orders.get(order_id=cmd.order_id)
         title_prompt = (
@@ -99,7 +95,8 @@ class CreateAsset(UseCase):
 
         titles_response = await self.llm.ask_for_text(
             prompt=title_prompt,
-            quantity=cmd.no_of_covers,
+            quantity=cmd.additional_params.no_of_covers,
+            configs=cmd.additional_params,
         )
         titles = [title.message.content.strip('"') for title in titles_response.choices]
 
@@ -123,7 +120,7 @@ class CreateAsset(UseCase):
         assets.append(asset)
         self.assets.add(asset)
 
-        for i in range(cmd.no_of_covers):
+        for i in range(cmd.additional_params.no_of_covers):
             asset = Asset(
                 order_id=cmd.order_id,
                 type=AssetType.TITLE.value,
@@ -134,20 +131,21 @@ class CreateAsset(UseCase):
             assets.append(asset)
             self.assets.add(asset)
 
-        print("cover_prompt: ", cover_prompt)
         cover_prompt = (
             cover_prompt.replace("{{", "{")
             .replace("}}", "}")
             .format(
-                generated_title=titles[i],
+                generated_title=titles[0],
             )
         )
 
-        for i in range(cmd.no_of_covers):
+        for i in range(cmd.additional_params.no_of_covers):
             if i > 0:
                 cover_prompt = cover_prompt.replace(titles[i - 1], titles[i])
 
-            cover_image_gpt_response = await self.llm.ask_for_image(cover_prompt)
+            cover_image_gpt_response = await self.llm.ask_for_image(
+                prompt=cover_prompt, configs=cmd.additional_params
+            )
 
             cover_image_response = requests.get(cover_image_gpt_response.data[0].url)
             cover_image = Image.open(BytesIO(cover_image_response.content))

@@ -4,10 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4f3fec3c-998e-4568-9568-8d97cb6904e1" name="Changes" comment="additional endpoints for the FE app">
+    <list default="true" id="4f3fec3c-998e-4568-9568-8d97cb6904e1" name="Changes" comment="adding gitignore">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/api/routes/orders.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/routes/orders.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config/book_cover_template.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config/book_title_template.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/config/old templates.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/assets/commands.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/assets/commands.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/assets/usecases.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/assets/usecases.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/domain/orders/commands.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/orders/commands.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/orders/services.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/orders/services.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/implementation/services/open_ai.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/implementation/services/open_ai.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,7 +68,7 @@
       <recent name="$PROJECT_DIR$/tests/integration" />
     </key>
   </component>
-  <component name="RunManager" selected="Python tests.pytest for e2e.test_orders.test_get_order">
+  <component name="RunManager" selected="Python.main">
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="personalized_kids_book" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -442,7 +449,31 @@
       <option name="project" value="LOCAL" />
       <updated>1708364175699</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="merging the assets and orders endpoint">
+      <option name="closed" value="true" />
+      <created>1708373608623</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1708373608623</updated>
+    </task>
+    <task id="LOCAL-00032" summary="fixing the issue with multiple covers">
+      <option name="closed" value="true" />
+      <created>1708416057929</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1708416057929</updated>
+    </task>
+    <task id="LOCAL-00033" summary="adding gitignore">
+      <option name="closed" value="true" />
+      <created>1708416158464</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1708416158464</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -457,9 +488,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="orders database created and tests for pushing data into it" />
-    <MESSAGE value="assets database created and tests for pushing data into it" />
-    <MESSAGE value="previews database created and tests for pushing data into it" />
     <MESSAGE value="orders create and query endpoint created" />
     <MESSAGE value="establishing e2e tests" />
     <MESSAGE value="asset endpoints and storing multiple necessary assets in the database" />
@@ -482,7 +510,10 @@
     <MESSAGE value="integrating the character_changes" />
     <MESSAGE value="assets endpoint, and prod config changes" />
     <MESSAGE value="additional endpoints for the FE app" />
-    <option name="LAST_COMMIT_MESSAGE" value="additional endpoints for the FE app" />
+    <MESSAGE value="merging the assets and orders endpoint" />
+    <MESSAGE value="fixing the issue with multiple covers" />
+    <MESSAGE value="adding gitignore" />
+    <option name="LAST_COMMIT_MESSAGE" value="adding gitignore" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -532,7 +563,24 @@
           <line>150</line>
           <option name="timeStamp" value="86" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/api/routes/orders.py</url>
+          <line>11</line>
+          <option name="timeStamp" value="88" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/implementation/repositories/orders.py</url>
+          <line>32</line>
+          <option name="timeStamp" value="89" />
+        </line-breakpoint>
       </breakpoints>
+      <default-breakpoints>
+        <breakpoint type="python-exception">
+          <properties notifyOnTerminate="true" exception="BaseException">
+            <option name="notifyOnTerminate" value="true" />
+          </properties>
+        </breakpoint>
+      </default-breakpoints>
     </breakpoint-manager>
   </component>
 </project>

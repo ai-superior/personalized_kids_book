@@ -1,10 +1,10 @@
 from dataclasses import dataclass
-from typing import Optional
 
 from domain.basic_types import Command
+from domain.orders.commands import CreateOrder
 
 
 @dataclass(frozen=True)
 class CreateAsset(Command):
     order_id: str
-    no_of_covers: Optional[int] = 2
+    additional_params: CreateOrder

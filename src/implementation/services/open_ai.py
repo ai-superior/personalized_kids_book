@@ -1,5 +1,6 @@
 from openai import OpenAI
 
+from domain.orders.commands import CreateOrder
 from domain.orders.services import LLMProcessor
 
 
@@ -7,25 +8,28 @@ class OpenAIAPI(LLMProcessor):
     def __init__(self):
         self.client = OpenAI()
 
-    async def ask_for_text(self, prompt: str, quantity: int):
+    async def ask_for_text(self, prompt: str, quantity: int, configs: CreateOrder):
         response = self.client.chat.completions.create(
-            model="gpt-4-1106-preview",
+            model=configs.configs.title_configs.model,
             messages=[
-                {"role": "system", "content": "You are a helpful assistant."},
+                {
+                    "role": "system",
+                    "content": configs.configs.title_configs.system_prompt,
+                },
                 {"role": "user", "content": prompt},
             ],
-            temperature=1.7,
-            max_tokens=150,
+            temperature=configs.configs.title_configs.temperature,
+            max_tokens=configs.configs.title_configs.max_tokens,
             n=quantity,
         )
         return response
 
-    async def ask_for_image(self, prompt: str):
+    async def ask_for_image(self, prompt: str, configs: CreateOrder):
         response = self.client.images.generate(
-            model="dall-e-3",
+            model=configs.configs.cover_configs.model,
             prompt=prompt,
             size="1792x1024",
-            quality="standard",
+            quality=configs.configs.cover_configs.quality,
             n=1,
         )
         return response

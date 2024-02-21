@@ -14,7 +14,7 @@ async def create_order(cmd: commands.CreateOrder) -> model.Order:
     usecase2 = asset_usecases.CreateAsset(di.assets(), di.orders(), di.gpt())
     orders = usecase1.execute(cmd)
     await usecase2.execute(
-        asset_commands.CreateAsset(order_id=orders.id, no_of_covers=cmd.no_of_covers)
+        asset_commands.CreateAsset(order_id=orders.id, additional_params=cmd)
     )
     return orders
 
