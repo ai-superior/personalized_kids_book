@@ -62,7 +62,6 @@ class CreateAsset(UseCase):
             # Return the first matching Id
             first_result = filtered_df.iloc[0]["Id"]
         else:
-            # No direct match found, implement logic for suggesting an alternative or return a default message
             return "*missing"
 
         if first_result == "*missing":

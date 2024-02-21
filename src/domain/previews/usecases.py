@@ -44,8 +44,6 @@ class CreatePreview(UseCase):
 
         # First is width, second is height
         final_dimensions = (1312, 928)
-        # final_dimensions = cover_image.size
-        char_dimensions = char_image.size
 
         # Resizing the dimensions of the images
         cover_image = cover_image.resize(final_dimensions)
@@ -68,15 +66,8 @@ class CreatePreview(UseCase):
         # Update the alpha channel of the character image
         char_image.putalpha(char_alpha)
 
-        # Paste the character image onto the fused image at the calculated position
-        # fused_image.paste(
-        #     char_image, (-30, final_dimensions[1] - char_image.size[1]), mask=char_mask
-        # )
         char_position = (2 * 65, 928 - 560)
-        # char_position = (
-        #     2 * 65 * 4 - char_dimensions[0],
-        #     2 * 140 * 4 - char_dimensions[1],
-        # )
+
         fused_image.paste(
             char_image,
             char_position,

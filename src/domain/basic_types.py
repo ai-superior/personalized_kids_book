@@ -43,9 +43,6 @@ class Error(Exception):
 
 
 class UseCase(abc.ABC):
-    def __init__(self):
-        self.alerts: list[Alert] = []
-
     @abc.abstractmethod
     def execute(self, *args, **kwargs):
         raise NotImplementedError

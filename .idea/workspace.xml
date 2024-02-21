@@ -4,12 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4f3fec3c-998e-4568-9568-8d97cb6904e1" name="Changes" comment="making configurations editable">
+    <list default="true" id="4f3fec3c-998e-4568-9568-8d97cb6904e1" name="Changes" comment="updating order domain to allow for additional params">
+      <change afterPath="$PROJECT_DIR$/setup.cfg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/orders/commands.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/orders/commands.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/orders/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/orders/model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/orders/usecases.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/orders/usecases.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/implementation/repositories/orders.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/implementation/repositories/orders.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/api/routes/orders.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/routes/orders.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/assets/usecases.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/assets/usecases.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/basic_types.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/basic_types.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/previews/usecases.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/previews/usecases.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/e2e/conftest.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/e2e/conftest.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -477,7 +478,15 @@
       <option name="project" value="LOCAL" />
       <updated>1708515757205</updated>
     </task>
-    <option name="localTasksCounter" value="35" />
+    <task id="LOCAL-00035" summary="updating order domain to allow for additional params">
+      <option name="closed" value="true" />
+      <created>1708525388541</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1708525388541</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -492,7 +501,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="establishing e2e tests" />
     <MESSAGE value="asset endpoints and storing multiple necessary assets in the database" />
     <MESSAGE value="preview endpoint creation and storing in the database" />
     <MESSAGE value="input changes to volume of titles and images" />
@@ -517,7 +525,8 @@
     <MESSAGE value="fixing the issue with multiple covers" />
     <MESSAGE value="adding gitignore" />
     <MESSAGE value="making configurations editable" />
-    <option name="LAST_COMMIT_MESSAGE" value="making configurations editable" />
+    <MESSAGE value="updating order domain to allow for additional params" />
+    <option name="LAST_COMMIT_MESSAGE" value="updating order domain to allow for additional params" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -539,12 +548,12 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/tests/e2e/conftest.py</url>
-          <line>83</line>
+          <line>76</line>
           <option name="timeStamp" value="75" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/tests/e2e/conftest.py</url>
-          <line>73</line>
+          <line>66</line>
           <option name="timeStamp" value="76" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
@@ -553,23 +562,18 @@
           <option name="timeStamp" value="77" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/tests/e2e/conftest.py</url>
-          <line>66</line>
-          <option name="timeStamp" value="83" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/tests/integration/services/test_open_ai.py</url>
           <line>9</line>
           <option name="timeStamp" value="85" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/src/domain/previews/usecases.py</url>
-          <line>150</line>
+          <line>141</line>
           <option name="timeStamp" value="86" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/src/api/routes/orders.py</url>
-          <line>11</line>
+          <line>12</line>
           <option name="timeStamp" value="88" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
@@ -579,7 +583,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/tests/e2e/conftest.py</url>
-          <line>59</line>
+          <line>58</line>
           <option name="timeStamp" value="90" />
         </line-breakpoint>
       </breakpoints>

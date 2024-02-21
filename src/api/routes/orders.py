@@ -1,7 +1,8 @@
 from fastapi import APIRouter
 
 from dependencies import DependencyInjector
-from domain.assets import usecases as asset_usecases, commands as asset_commands
+from domain.assets import commands as asset_commands
+from domain.assets import usecases as asset_usecases
 from domain.orders import commands, usecases, model, queries
 
 router = APIRouter(prefix="/orders")
@@ -10,10 +11,10 @@ router = APIRouter(prefix="/orders")
 @router.post("/")
 async def create_order(cmd: commands.CreateOrder) -> model.Order:
     di = DependencyInjector.get()
-    usecase1 = usecases.CreateOrder(di.orders())
-    usecase2 = asset_usecases.CreateAsset(di.assets(), di.orders(), di.gpt())
-    orders = usecase1.execute(cmd)
-    await usecase2.execute(
+    order_usecase = usecases.CreateOrder(di.orders())
+    asset_usecase = asset_usecases.CreateAsset(di.assets(), di.orders(), di.gpt())
+    orders = order_usecase.execute(cmd)
+    await asset_usecase.execute(
         asset_commands.CreateAsset(order_id=orders.id, additional_params=cmd)
     )
     return orders
