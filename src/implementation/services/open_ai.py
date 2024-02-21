@@ -8,6 +8,7 @@ class OpenAIAPI(LLMProcessor):
     def __init__(self):
         self.client = OpenAI()
 
+    # TODO: This was done in haste, we should not have domain objects in here, integrations tests not possible, to go ahead and change this structure later
     async def ask_for_text(self, prompt: str, quantity: int, configs: CreateOrder):
         response = self.client.chat.completions.create(
             model=configs.configs.title_configs.model,
