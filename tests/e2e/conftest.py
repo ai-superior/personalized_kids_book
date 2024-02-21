@@ -42,6 +42,20 @@ def order(client):
         "age": "0-1",
         "gender": "girl",
         "hair_style": "straight",
+        "configs": {
+            "cover_configs": {"quality": "standard", "model": "dall-e-3"},
+            "title_configs": {
+                "temperature": 1.7,
+                "max_tokens": 150,
+                "model": "gpt-4-1106-preview",
+                "system_prompt": "You are a helpful assistant",
+            },
+        },
+        "prompts": {
+            "cover_prompt": "\n# Generate a scenery Cover for a children book in a 3D pixar cartoon style. Here is a title that describes the story:\n\nTitle: {{generated_title}}\n\n# Additional notes:\n1. Image orientation: horizontal\n2. Important: Ensure the image is free from any textual elements.\n3. Important: It is only background, without people or animals or any other characters on the image.\n",
+            "title_prompt": "\nAct as a creative German book author. Create a title for the children book story.\n\nTitle should adhere to following rules:\n1. Language - German\n2. Included Child's name\n3. Word-playful and engaging \n4. Title should be based on following information about the child:\n\nChild's information below:\nName is {{name}}\nCity is {{city}}\nBirthday is {{birthday}}\nFavorite food is {{favourite_food}}\nInterests are {{interests}}\nFavorite place is {{favourite_place}}\nAn expected event is {{event_to_come}}\n\n\nHere are Examples of the book titles with desired format and suitable presentation of result:\na. Mutige Alma und die Osterferien auf dem Pferdehof\nb. Alma, die Weißwurstprinzessin und das Turnier der musikalischen Freunde\nc. Alma, die Weißwurst-Detektivin und das Geheimnis der verschwundenen Osterhasen\n\n\nThe title length must not be more than 10 words.\n",
+        },
+        "no_of_covers": 1,
     }
     response = client.post("/orders/", json=data)
     return Order.from_dict(response.json())

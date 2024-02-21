@@ -4,6 +4,17 @@ from domain.orders.repositories import OrderRepository
 from implementation.sql import SqlRepository
 
 
+def convert_to_dict(obj):
+    if isinstance(obj, dict):
+        return {k: convert_to_dict(v) for k, v in obj.items()}
+    elif hasattr(obj, "__dict__"):
+        return convert_to_dict(obj.__dict__)
+    elif isinstance(obj, list):
+        return [convert_to_dict(item) for item in obj]
+    else:
+        return obj
+
+
 def _model_to_db(orders: model.Order):
     return {
         "id": orders.id,
@@ -25,6 +36,9 @@ def _model_to_db(orders: model.Order):
         "gender": orders.gender,
         "age": orders.age,
         "hair_style": orders.hair_style,
+        "no_of_covers": orders.no_of_covers,
+        "configs": convert_to_dict(orders.configs),
+        "prompts": convert_to_dict(orders.prompts),
     }
 
 
@@ -49,6 +63,9 @@ def _db_to_model(order):
         gender=order["gender"],
         age=order["age"],
         hair_style=order["hair_style"],
+        no_of_covers=order["no_of_covers"],
+        configs=order["configs"],
+        prompts=order["prompts"],
     )
 
 

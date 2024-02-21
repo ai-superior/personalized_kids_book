@@ -4,13 +4,13 @@ from typing import Literal
 from domain.basic_types import Command
 
 
-@dataclass()
+@dataclass
 class CoverConfigs:
     quality: Literal["standard", "hd"] = "standard"
     model: str = "dall-e-3"
 
 
-@dataclass()
+@dataclass
 class TitleConfigs:
     temperature: float = 1.7
     max_tokens: int = 150
@@ -18,51 +18,16 @@ class TitleConfigs:
     system_prompt: str = "You are a helpful assistant"
 
 
-@dataclass()
+@dataclass
 class Configs:
     cover_configs: CoverConfigs
     title_configs: TitleConfigs
 
 
-@dataclass()
+@dataclass
 class Prompt:
-    cover_prompt: str = """
-# Generate a scenery Cover for a children book in a 3D pixar cartoon style. Here is a title that describes the story:
-
-Title: {{generated_title}}
-
-# Additional notes:
-1. Image orientation: horizontal
-2. Important: Ensure the image is free from any textual elements.
-3. Important: It is only background, without people or animals or any other characters on the image.
-"""
-    title_prompt: str = """
-Act as a creative German book author. Create a title for the children book story.
-
-Title should adhere to following rules:
-1. Language - German
-2. Included Child's name
-3. Word-playful and engaging 
-4. Title should be based on following information about the child:
-
-Child's information below:
-Name is {{name}}
-City is {{city}}
-Birthday is {{birthday}}
-Favorite food is {{favourite_food}}
-Interests are {{interests}}
-Favorite place is {{favourite_place}}
-An expected event is {{event_to_come}}
-
-
-Here are Examples of the book titles with desired format and suitable presentation of result:
-a. Mutige Alma und die Osterferien auf dem Pferdehof
-b. Alma, die Weißwurstprinzessin und das Turnier der musikalischen Freunde
-c. Alma, die Weißwurst-Detektivin und das Geheimnis der verschwundenen Osterhasen
-
-
-The title length must not be more than 10 words.
-"""
+    cover_prompt: str = """Give me a standard Image"""
+    title_prompt: str = """Give me a Standard Title"""
 
 
 @dataclass(frozen=True)

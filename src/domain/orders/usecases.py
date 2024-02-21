@@ -36,6 +36,9 @@ class CreateOrder(UseCase):
             gender=cmd.gender,
             hair_style=cmd.hair_style,
             age=cmd.age,
+            no_of_covers=cmd.no_of_covers,
+            prompts=cmd.prompts,
+            configs=cmd.configs,
         )
         self.orders.add(order)
         return order
