@@ -5,7 +5,7 @@ from domain.previews.model import Preview
 
 class PreviewRepository(abc.ABC):
     @abc.abstractmethod
-    def add(self, preview: Preview):
+    async def add(self, preview: Preview):
         raise NotImplementedError
 
     @abc.abstractmethod

@@ -127,17 +127,6 @@ class CreatePreview(UseCase):
         self.assets = assets
 
     def execute(self, cmd: commands.CreatePreview) -> Preview:
-        # assets = self.assets.get_by_order_id(cmd.order_id)
-
-        # assets_for_preview = self.assets_for_preview(assets)
-        # assets_for_preview = assets
-
-        # if cmd.asset_ids is None:
-        #     assets_for_preview = [asset.id for asset in assets_for_preview]
-        # else:
-        #     assets_for_preview = cmd.asset_ids
-
-        # asset_ids = [asset.id for asset in assets_for_preview]
         asset_ids = cmd.asset_ids
         char_image_url = self.assets.get(cmd.asset_ids[2]).value
         cover_image_url = self.assets.get(cmd.asset_ids[1]).value

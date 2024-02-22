@@ -97,7 +97,10 @@ class CreateAsset(UseCase):
             quantity=cmd.additional_params.no_of_covers,
             configs=cmd.additional_params,
         )
-        titles = [title.message.content.strip('"') for title in titles_response.choices]
+        titles = [
+            title.message.content.strip('"').strip("”")
+            for title in titles_response.choices
+        ]
 
         char_url = self.find_character(
             file_url="https://ai-childrens-book-assets.s3.eu-central-1.amazonaws.com/01_Character_excel.xlsx",

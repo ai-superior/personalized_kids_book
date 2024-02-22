@@ -15,3 +15,4 @@ def test_fuse_images():
         "test",
     )
     assert len(fused_url) > 1
+    assert True
