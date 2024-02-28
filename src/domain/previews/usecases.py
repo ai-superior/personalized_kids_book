@@ -69,19 +69,6 @@ class CreatePreview(UseCase):
 
         char_position = (65, 928 - 750)
 
-        # Create a shadow mask for the character image
-        shadow_mask = char_mask.filter(ImageFilter.GaussianBlur(radius=5))
-
-        shadow_color = (0, 0, 0, 0)
-        shadow_image = Image.new("RGBA", char_image.size, shadow_color)
-
-        # Paste the shadow mask onto the fused image at an offset
-        shadow_position = (
-            char_position[0] - 2,
-            char_position[1] - 2,
-        )
-        fused_image.paste(shadow_image, shadow_position, mask=shadow_mask)
-
         fused_image.paste(
             char_image,
             char_position,
@@ -109,19 +96,35 @@ class CreatePreview(UseCase):
 
         text_position = (2 * 152 * 4 - w, 2 * 23 * 4 - h / 2)
 
-        # text_position = (2 * 152 * 4 - w, 2 * 23 * 4 - h / 2)
+        # outline_color = "white"
+        # outline_thickness = 2
+        #
+        # for dx in [-outline_thickness, 0, outline_thickness]:
+        #     for dy in [-outline_thickness, 0, outline_thickness]:
+        #         draw.text(
+        #             (text_position[0] + dx, text_position[1] + dy),
+        #             wrapped_title,
+        #             font=font,
+        #             fill=outline_color,
+        #         )
+        text_mask = Image.new("L", fused_image.size, 0)
+        draw_mask = ImageDraw.Draw(text_mask)
+        draw_mask.text(text_position, wrapped_title, fill=255, font=font)
+        shadow_mask = text_mask.filter(ImageFilter.GaussianBlur(radius=10))
+        shadow_mask = shadow_mask.point(lambda p: p * 1.2)
+        shadow_color = (
+            0,
+            0,
+            0,
+            100,
+        )
+        shadow_image = Image.new("RGBA", fused_image.size, shadow_color)
 
-        outline_color = "black"
-        outline_thickness = 2
+        # Ensure the alpha channel around the text is black
+        shadow_image.putalpha(text_mask)
 
-        for dx in [-outline_thickness, 0, outline_thickness]:
-            for dy in [-outline_thickness, 0, outline_thickness]:
-                draw.text(
-                    (text_position[0] + dx, text_position[1] + dy),
-                    wrapped_title,
-                    font=font,
-                    fill=outline_color,
-                )
+        # Paste the shadow image onto the fused image using the shadow mask
+        fused_image.paste(shadow_image, (0, 0), mask=shadow_mask)
 
         draw.text(
             text_position,
