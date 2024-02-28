@@ -4,7 +4,7 @@ from io import BytesIO
 from textwrap import TextWrapper
 
 import requests
-from PIL import Image, ImageDraw, ImageFont
+from PIL import Image, ImageDraw, ImageFont, ImageFilter
 
 from domain.assets.model import AssetType
 from domain.assets.repositories import AssetRepository
@@ -44,10 +44,11 @@ class CreatePreview(UseCase):
 
         # First is width, second is height
         final_dimensions = (1312, 928)
+        char_dimensions = (500, 750)
 
         # Resizing the dimensions of the images
         cover_image = cover_image.resize(final_dimensions)
-        # char_image = char_image.resize(char_dimensions)
+        char_image = char_image.resize(char_dimensions)
 
         # Create a new blank image to hold the fused images
         fused_image = Image.new("RGBA", final_dimensions, (0, 0, 0, 0))
@@ -66,7 +67,20 @@ class CreatePreview(UseCase):
         # Update the alpha channel of the character image
         char_image.putalpha(char_alpha)
 
-        char_position = (2 * 65, 928 - 560)
+        char_position = (65, 928 - 750)
+
+        # Create a shadow mask for the character image
+        shadow_mask = char_mask.filter(ImageFilter.GaussianBlur(radius=5))
+
+        shadow_color = (0, 0, 0, 0)
+        shadow_image = Image.new("RGBA", char_image.size, shadow_color)
+
+        # Paste the shadow mask onto the fused image at an offset
+        shadow_position = (
+            char_position[0] - 2,
+            char_position[1] - 2,
+        )
+        fused_image.paste(shadow_image, shadow_position, mask=shadow_mask)
 
         fused_image.paste(
             char_image,

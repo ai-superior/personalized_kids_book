@@ -5,7 +5,7 @@ def test_fuse_images():
     cover_image_url = (
         "https://ai-childrens-book-assets.s3.eu-central-1.amazonaws.com/test_cover2.png"
     )
-    char_image_url = "https://ai-childrens-book-assets.s3.eu-central-1.amazonaws.com/mock_character.png"
+    char_image_url = "https://ai-childrens-book-assets.s3.eu-central-1.amazonaws.com/characters_imgs/01b-01b.png"
 
     fused_url = CreatePreview.fuse_images(
         cover_image_url,
