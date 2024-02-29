@@ -35,16 +35,23 @@ def _db_to_model(preview):
 
 
 class PreviewSqlRepository(PreviewRepository, SqlRepository):
-    def add(self, preview: Preview):
-        return self.db["previews"].insert_one(_model_to_db(preview))
+    async def add(self, preview: Preview):
+        return await self.db["previews"].insert_one(_model_to_db(preview))
 
-    def get(self, preview_id: str) -> Preview:
-        return _db_to_model(self.db["previews"].find_one({"id": preview_id}))
+    async def get(self, preview_id: str) -> Preview:
+        document = await self.db["previews"].find_one({"id": preview_id})
+        return _db_to_model(document)
 
-    def get_by_order_id(self, order_id: str) -> list[Preview]:
-        previews = self.db["previews"].find({"order_id": order_id})
-        return [_db_to_model(msg) for msg in previews]
+    async def get_by_order_id(self, order_id: str) -> list[Preview]:
+        cursor = self.db["previews"].find({"order_id": order_id})
+        previews = []
+        async for document in cursor:
+            previews.append(_db_to_model(document))
+        return previews
 
-    def list(self) -> list[Preview]:
-        previews = self.db["previews"].find({})
-        return [_db_to_model(msg) for msg in previews]
+    async def list(self) -> list[Preview]:
+        cursor = self.db["previews"].find({})
+        previews = []
+        async for document in cursor:
+            previews.append(_db_to_model(document))
+        return previews
