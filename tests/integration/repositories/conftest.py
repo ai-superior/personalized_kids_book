@@ -1,6 +1,7 @@
 import secrets
 
 import pytest
+import pytest_asyncio
 
 from dependencies import DependencyInjector
 from domain.assets.model import Asset, AssetStatus, AssetType
@@ -37,14 +38,14 @@ def order():
     return random_lead
 
 
-@pytest.fixture
-def asset():
+@pytest_asyncio.fixture
+async def asset():
     random_asset = Asset(
         order_id=secrets.token_hex(5),
         status=AssetStatus.PENDING.value,
         type=AssetType.TITLE.value,
     )
-    DependencyInjector.get().assets().add(random_asset)
+    await DependencyInjector.get().assets().add(random_asset)
     return random_asset
 
 

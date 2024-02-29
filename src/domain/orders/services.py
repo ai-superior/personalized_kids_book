@@ -11,3 +11,9 @@ class LLMProcessor(abc.ABC):
     @abc.abstractmethod
     async def ask_for_image(self, prompt: str, configs: CreateOrder):
         ...
+
+
+class CRM(abc.ABC):
+    @abc.abstractmethod
+    async def get(self):
+        ...

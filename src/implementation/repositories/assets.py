@@ -29,16 +29,23 @@ def _db_to_model(asset):
 
 
 class AssetSqlRepository(AssetRepository, SqlRepository):
-    def add(self, asset: Asset):
-        return self.db["assets"].insert_one(_model_to_db(asset))
+    async def add(self, asset: Asset):
+        return await self.db["assets"].insert_one(_model_to_db(asset))
 
-    def get(self, asset_id: str) -> Asset:
-        return _db_to_model(self.db["assets"].find_one({"id": asset_id}))
+    async def get(self, asset_id: str) -> Asset:
+        document = await self.db["assets"].find_one({"id": asset_id})
+        return _db_to_model(document)
 
-    def get_by_order_id(self, order_id: str) -> list[Asset]:
-        assets = self.db["assets"].find({"order_id": order_id})
-        return [_db_to_model(msg) for msg in assets]
+    async def get_by_order_id(self, order_id: str) -> list[Asset]:
+        cursor = self.db["assets"].find({"order_id": order_id})
+        assets = []
+        async for document in cursor:
+            assets.append(_db_to_model(document))
+        return assets
 
-    def list(self) -> list[Asset]:
-        assets = self.db["assets"].find({})
-        return [_db_to_model(msg) for msg in assets]
+    async def list(self) -> list[Asset]:
+        cursor = self.db["assets"].find({})
+        assets = []
+        async for document in cursor:
+            assets.append(_db_to_model(document))
+        return assets
