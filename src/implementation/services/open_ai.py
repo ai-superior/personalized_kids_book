@@ -5,6 +5,9 @@ from domain.orders.services import LLMProcessor
 
 
 class OpenAIAPI(LLMProcessor):
+    def __init__(self):
+        self.client = OpenAI()
+
     async def ask_for_text(self, prompt: str, quantity: int, configs: LLMTextConfig):
         response = self.client.chat.completions.create(
             model=configs.model,
@@ -30,6 +33,3 @@ class OpenAIAPI(LLMProcessor):
             n=1,
         )
         return response
-
-    def __init__(self):
-        self.client = OpenAI()

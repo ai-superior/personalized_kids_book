@@ -16,9 +16,15 @@ class MongoSettings(BaseSettings):
     db: str = ""
 
 
+class HubSpotSettings(BaseSettings):
+    host: str = ""
+    access_token: str = ""
+
+
 class Settings(BaseSettings):
     mongo: MongoSettings = Field(default_factory=MongoSettings)
     webserver: WebserverSettings = Field(default_factory=WebserverSettings)
+    hubspot: HubSpotSettings = Field(default_factory=HubSpotSettings)
 
     debug: bool = True
 

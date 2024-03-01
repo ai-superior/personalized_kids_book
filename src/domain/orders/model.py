@@ -14,6 +14,21 @@ class LLMTextConfig:
 
 
 @dataclass
+class Contact:
+    email: str
+    first_name: str
+    last_name: str
+
+
+@dataclass
+class Deal:
+    amount: str
+    name: str
+    stage: str
+    contact_id: str
+
+
+@dataclass
 class LLMImageConfig:
     model: str
     quality: Literal["standard", "hd"]

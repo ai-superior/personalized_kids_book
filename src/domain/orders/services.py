@@ -1,6 +1,6 @@
 import abc
 
-from domain.orders.model import LLMTextConfig, LLMImageConfig
+from domain.orders.model import LLMTextConfig, LLMImageConfig, Contact, Deal
 
 
 class LLMProcessor(abc.ABC):
@@ -15,5 +15,25 @@ class LLMProcessor(abc.ABC):
 
 class CRM(abc.ABC):
     @abc.abstractmethod
-    async def get(self):
+    async def create_contact(self, contact: Contact):
+        ...
+
+    @abc.abstractmethod
+    async def get_contacts(self):
+        ...
+
+    @abc.abstractmethod
+    async def get_contact(self, contact_id: str):
+        ...
+
+    @abc.abstractmethod
+    async def create_deal(self, deal: Deal):
+        ...
+
+    @abc.abstractmethod
+    async def get_deals(self):
+        ...
+
+    @abc.abstractmethod
+    async def get_deal(self, deal_id: str):
         ...
