@@ -1,4 +1,5 @@
 import abc
+import asyncio
 import secrets
 from io import BytesIO
 
@@ -35,6 +36,13 @@ class CreateAsset(UseCase):
         async with httpx.AsyncClient() as client:
             response = await client.get(url)
             return response
+
+    @staticmethod
+    async def async_open_file(response_content: bytes):
+        loop = asyncio.get_event_loop()
+        return await loop.run_in_executor(
+            None, lambda: Image.open(BytesIO(response_content))
+        )
 
     async def find_character(
         self, file_url, gender, age, hair_color, hair_length, hair_style, skin_tone
@@ -157,7 +165,7 @@ class CreateAsset(UseCase):
             cover_image_response = await self.get_file_from_url(
                 cover_image_gpt_response.data[0].url
             )
-            cover_image = Image.open(BytesIO(cover_image_response.content))
+            cover_image = await self.async_open_file(cover_image_response.content)
             output_file_name = secrets.token_hex(6)
             output_path = (
                 f"{SETTINGS.webserver.static_dir}/results/{output_file_name}.png"

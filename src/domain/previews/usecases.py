@@ -1,4 +1,5 @@
 import abc
+import asyncio
 import secrets
 from io import BytesIO
 from textwrap import TextWrapper
@@ -38,6 +39,13 @@ class CreatePreview(UseCase):
                     break
         return assets_for_preview
 
+    @staticmethod
+    async def async_open_file(response_content: bytes):
+        loop = asyncio.get_event_loop()
+        return await loop.run_in_executor(
+            None, lambda: Image.open(BytesIO(response_content))
+        )
+
     async def fuse_images(
         self, cover_image_url, char_image_url, title, output_file_name
     ):
@@ -46,8 +54,8 @@ class CreatePreview(UseCase):
         char_image_response = await self.get_file_from_url(char_image_url)
 
         # Open the images
-        cover_image = Image.open(BytesIO(cover_image_response.content))
-        char_image = Image.open(BytesIO(char_image_response.content))
+        cover_image = await self.async_open_file(cover_image_response.content)
+        char_image = await self.async_open_file(char_image_response.content)
 
         # First is width, second is height
         final_dimensions = (1312, 928)
