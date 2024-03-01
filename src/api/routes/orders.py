@@ -35,26 +35,22 @@ async def create_order(cmd: commands.CreateOrder) -> model.Order:
     order_usecase = usecases.CreateOrder(di.orders())
     asset_usecase = asset_usecases.CreateAsset(di.assets(), di.orders(), di.gpt())
     preview_usecase = preview_usecases.CreatePreview(di.previews(), di.assets())
-    orders = order_usecase.execute(cmd)
+    orders = await order_usecase.execute(cmd)
     assets = await asset_usecase.execute(
         asset_commands.CreateAsset(order_id=orders.id, additional_params=cmd)
     )
-    # asset_ids = getting_first_asset_ids(assets)
-    # preview_usecase.execute(
-    #     preview_commands.CreatePreview(order_id=orders.id, asset_ids=asset_ids)
-    # )
     return orders
 
 
 @router.get("/")
-def get_orders() -> list[model.Order]:
+async def get_orders() -> list[model.Order]:
     di = DependencyInjector.get()
     usecase = usecases.GetOrders(di.orders())
-    return usecase.execute()
+    return await usecase.execute()
 
 
 @router.get("/{order_id}")
-def get_order(order_id: str) -> model.Order:
+async def get_order(order_id: str) -> model.Order:
     di = DependencyInjector.get()
     usecase = usecases.GetOrder(di.orders())
-    return usecase.execute(queries.GetOrder(order_id=order_id))
+    return await usecase.execute(queries.GetOrder(order_id=order_id))

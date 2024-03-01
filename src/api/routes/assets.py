@@ -14,21 +14,21 @@ async def create_asset(cmd: commands.CreateAsset) -> list[model.Asset]:
 
 
 @router.get("/")
-def get_assets() -> list[model.Asset]:
+async def get_assets() -> list[model.Asset]:
     di = DependencyInjector.get()
     usecase = usecases.GetAssets(di.assets())
-    return usecase.execute()
+    return await usecase.execute()
 
 
 @router.get("/asset_id/{asset_id}")
-def get_asset_by_asset_id(asset_id: str) -> model.Asset:
+async def get_asset_by_asset_id(asset_id: str) -> model.Asset:
     di = DependencyInjector.get()
     usecase = usecases.GetAsset(di.assets())
-    return usecase.execute(queries.GetAsset(asset_id=asset_id))
+    return await usecase.execute(queries.GetAsset(asset_id=asset_id))
 
 
 @router.get("/order_id/{order_id}")
-def get_asset_by_order_id(order_id: str) -> list[model.Asset]:
+async def get_asset_by_order_id(order_id: str) -> list[model.Asset]:
     di = DependencyInjector.get()
     usecase = usecases.GetAssetByOrderId(di.assets())
-    return usecase.execute(queries.GetAssetByOrderId(order_id=order_id))
+    return await usecase.execute(queries.GetAssetByOrderId(order_id=order_id))

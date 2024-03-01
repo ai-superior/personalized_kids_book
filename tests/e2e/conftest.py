@@ -1,6 +1,7 @@
 import secrets
 
 import pytest
+import pytest_asyncio
 from starlette.testclient import TestClient
 
 from dependencies import DependencyInjector
@@ -57,10 +58,11 @@ def order(client):
         "no_of_covers": 1,
     }
     response = client.post("/orders/", json=data)
+
     return Order.from_dict(response.json())
 
 
-@pytest.fixture
+@pytest_asyncio.fixture
 def preview(client, order):
     assets_response = client.get(f"/assets/order_id/{order.id}")
     assets = assets_response.json()

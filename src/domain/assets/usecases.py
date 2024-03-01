@@ -2,8 +2,8 @@ import abc
 import secrets
 from io import BytesIO
 
+import httpx
 import pandas as pd
-import requests
 from PIL import Image
 
 from domain.assets import queries, errors, commands
@@ -31,10 +31,15 @@ class CreateAsset(UseCase):
         self.orders = orders
 
     @staticmethod
-    def find_character(
-        file_url, gender, age, hair_color, hair_length, hair_style, skin_tone
+    async def get_file_from_url(url):
+        async with httpx.AsyncClient() as client:
+            response = await client.get(url)
+            return response
+
+    async def find_character(
+        self, file_url, gender, age, hair_color, hair_length, hair_style, skin_tone
     ):
-        file_response = requests.get(file_url)
+        file_response = await self.get_file_from_url(file_url)
         # Load the Excel file
         df = pd.read_excel(file_response.content, header=1)
 
@@ -77,7 +82,7 @@ class CreateAsset(UseCase):
         title_prompt = cmd.additional_params.prompts.title_prompt
         cover_prompt = cmd.additional_params.prompts.cover_prompt
 
-        order = self.orders.get(order_id=cmd.order_id)
+        order = await self.orders.get(order_id=cmd.order_id)
         title_prompt = (
             title_prompt.replace("{{", "{")
             .replace("}}", "}")
@@ -102,7 +107,7 @@ class CreateAsset(UseCase):
             for title in titles_response.choices
         ]
 
-        char_url = self.find_character(
+        char_url = await self.find_character(
             file_url="https://ai-childrens-book-assets.s3.eu-central-1.amazonaws.com/01_Character_excel.xlsx",
             gender=order.gender,
             age=order.age,
@@ -120,7 +125,7 @@ class CreateAsset(UseCase):
         )
 
         assets.append(asset)
-        self.assets.add(asset)
+        await self.assets.add(asset)
 
         for i in range(cmd.additional_params.no_of_covers):
             asset = Asset(
@@ -131,7 +136,7 @@ class CreateAsset(UseCase):
                 value=titles[i],
             )
             assets.append(asset)
-            self.assets.add(asset)
+            await self.assets.add(asset)
 
         cover_prompt = (
             cover_prompt.replace("{{", "{")
@@ -149,7 +154,9 @@ class CreateAsset(UseCase):
                 prompt=cover_prompt, configs=cmd.additional_params
             )
 
-            cover_image_response = requests.get(cover_image_gpt_response.data[0].url)
+            cover_image_response = await self.get_file_from_url(
+                cover_image_gpt_response.data[0].url
+            )
             cover_image = Image.open(BytesIO(cover_image_response.content))
             output_file_name = secrets.token_hex(6)
             output_path = (
@@ -165,14 +172,14 @@ class CreateAsset(UseCase):
             )
 
             assets.append(asset)
-            self.assets.add(asset)
+            await self.assets.add(asset)
 
         return assets
 
 
 class GetAsset(StandardAssetUseCase):
-    def execute(self, query: queries.GetAsset) -> Asset:
-        asset = self.messages.get(query.asset_id)
+    async def execute(self, query: queries.GetAsset) -> Asset:
+        asset = await self.messages.get(query.asset_id)
 
         if asset is None:  # pragma: no cover
             raise errors.AssetNotFound
@@ -180,14 +187,14 @@ class GetAsset(StandardAssetUseCase):
 
 
 class GetAssets(StandardAssetUseCase):
-    def execute(self) -> list[Asset]:
-        assets = self.messages.list()
+    async def execute(self) -> list[Asset]:
+        assets = await self.messages.list()
         return assets
 
 
 class GetAssetByOrderId(StandardAssetUseCase):
-    def execute(self, query: queries.GetAssetByOrderId) -> list[Asset]:
-        assets = self.messages.get_by_order_id(query.order_id)
+    async def execute(self, query: queries.GetAssetByOrderId) -> list[Asset]:
+        assets = await self.messages.get_by_order_id(query.order_id)
 
         if assets is None:  # pragma: no cover
             raise errors.AssetNotFound

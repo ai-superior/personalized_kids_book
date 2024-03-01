@@ -3,7 +3,7 @@ import secrets
 from io import BytesIO
 from textwrap import TextWrapper
 
-import requests
+import httpx
 from PIL import Image, ImageDraw, ImageFont, ImageFilter
 
 from domain.assets.model import AssetType
@@ -23,6 +23,12 @@ class StandardPreviewUseCase(UseCase, abc.ABC):
 
 class CreatePreview(UseCase):
     @staticmethod
+    async def get_file_from_url(url):
+        async with httpx.AsyncClient() as client:
+            response = await client.get(url)
+            return response
+
+    @staticmethod
     def assets_for_preview(assets):
         assets_for_preview = []
         for asset_type in AssetType:
@@ -32,11 +38,12 @@ class CreatePreview(UseCase):
                     break
         return assets_for_preview
 
-    @staticmethod
-    def fuse_images(cover_image_url, char_image_url, title, output_file_name):
+    async def fuse_images(
+        self, cover_image_url, char_image_url, title, output_file_name
+    ):
         # Download the images
-        cover_image_response = requests.get(cover_image_url)
-        char_image_response = requests.get(char_image_url)
+        cover_image_response = await self.get_file_from_url(cover_image_url)
+        char_image_response = await self.get_file_from_url(char_image_url)
 
         # Open the images
         cover_image = Image.open(BytesIO(cover_image_response.content))
@@ -83,7 +90,7 @@ class CreatePreview(UseCase):
         font_url = "https://ai-childrens-book-assets.s3.eu-central-1.amazonaws.com/fingerpaint.ttf"
 
         # Download the font file from the CDN
-        font_response = requests.get(font_url)
+        font_response = await self.get_file_from_url(font_url)
         font = ImageFont.truetype(BytesIO(font_response.content), header_font_size)
 
         wrapper = TextWrapper(width=33)
@@ -143,13 +150,19 @@ class CreatePreview(UseCase):
         self.previews = previews
         self.assets = assets
 
-    def execute(self, cmd: commands.CreatePreview) -> Preview:
+    async def execute(self, cmd: commands.CreatePreview) -> Preview:
         asset_ids = cmd.asset_ids
-        char_image_url = self.assets.get(cmd.asset_ids[2]).value
-        cover_image_url = self.assets.get(cmd.asset_ids[1]).value
-        title = self.assets.get(cmd.asset_ids[0]).value
-        result_url = self.fuse_images(
-            cover_image_url, char_image_url, title, secrets.token_hex(6)
+        char_image_response = await self.assets.get(cmd.asset_ids[2])
+        char_image_url = char_image_response.value
+        cover_image_response = await self.assets.get(cmd.asset_ids[1])
+        cover_image_url = cover_image_response.value
+        title_response = await self.assets.get(cmd.asset_ids[0])
+        title = title_response.value
+        result_url = await self.fuse_images(
+            cover_image_url=cover_image_url,
+            char_image_url=char_image_url,
+            title=title,
+            output_file_name=secrets.token_hex(6),
         )
 
         preview = Preview(
@@ -163,13 +176,13 @@ class CreatePreview(UseCase):
             fused_image_url=result_url,
         )
 
-        self.previews.add(preview)
+        await self.previews.add(preview)
         return preview
 
 
 class GetPreview(StandardPreviewUseCase):
-    def execute(self, query: queries.GetPreview) -> Preview:
-        preview = self.messages.get(query.preview_id)
+    async def execute(self, query: queries.GetPreview) -> Preview:
+        preview = await self.messages.get(query.preview_id)
 
         if preview is None:  # pragma: no cover
             raise errors.PreviewNotFound
@@ -177,13 +190,13 @@ class GetPreview(StandardPreviewUseCase):
 
 
 class GetPreviews(StandardPreviewUseCase):
-    def execute(self) -> list[Preview]:
-        previews = self.messages.list()
+    async def execute(self) -> list[Preview]:
+        previews = await self.messages.list()
         return previews
 
 
 class GetPreviewByOrderId(StandardPreviewUseCase):
-    def execute(self, query: queries.GetPreviewsByOrderId) -> list[Preview]:
-        previews = self.messages.get_by_order_id(query.order_id)
+    async def execute(self, query: queries.GetPreviewsByOrderId) -> list[Preview]:
+        previews = await self.messages.get_by_order_id(query.order_id)
 
         return previews

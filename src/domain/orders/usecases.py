@@ -17,7 +17,7 @@ class CreateOrder(UseCase):
         super().__init__()
         self.orders = orders
 
-    def execute(self, cmd: commands.CreateOrder):
+    async def execute(self, cmd: commands.CreateOrder):
         order = Order(
             email=cmd.email,
             name=cmd.name,
@@ -40,13 +40,13 @@ class CreateOrder(UseCase):
             prompts=cmd.prompts,
             configs=cmd.configs,
         )
-        self.orders.add(order)
+        await self.orders.add(order)
         return order
 
 
 class GetOrder(StandardOrderUseCase):
-    def execute(self, query: queries.GetOrder) -> Order:
-        order = self.orders.get(query.order_id)
+    async def execute(self, query: queries.GetOrder) -> Order:
+        order = await self.orders.get(query.order_id)
 
         if order is None:  # pragma: no cover
             raise errors.OrderNotFound
@@ -54,6 +54,6 @@ class GetOrder(StandardOrderUseCase):
 
 
 class GetOrders(StandardOrderUseCase):
-    def execute(self) -> list[Order]:
-        orders = self.orders.list()
+    async def execute(self) -> list[Order]:
+        orders = await self.orders.list()
         return orders
