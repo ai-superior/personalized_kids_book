@@ -20,18 +20,9 @@ def _model_to_db(previews: model.Preview):
 
 
 def _db_to_model(preview):
-    return Preview(
-        id=preview["id"],
-        order_id=preview["order_id"],
-        status=preview["status"],
-        asset_ids=preview["asset_ids"],
-        created_at=preview["created_at"],
-        is_approved=preview["is_approved"],
-        title=preview["title"],
-        cover_image_url=preview["cover_image_url"],
-        character_image_url=preview["character_image_url"],
-        fused_image_url=preview["fused_image_url"],
-    )
+    if "_id" in preview:
+        del preview["_id"]
+    return preview
 
 
 class PreviewSqlRepository(PreviewRepository, SqlRepository):

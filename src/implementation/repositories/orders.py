@@ -43,30 +43,9 @@ def _model_to_db(orders: model.Order):
 
 
 def _db_to_model(order):
-    return Order(
-        id=order["id"],
-        email=order["email"],
-        name=order["name"],
-        city=order["city"],
-        birthday=order["birthday"],
-        favourite_food=order["favourite_food"],
-        interests=order["interests"],
-        event_to_come=order["event_to_come"],
-        skin_tone=order["skin_tone"],
-        hair_color=order["hair_color"],
-        hair_length=order["hair_length"],
-        kids_photo=order["kids_photo"],
-        favourite_place=order["favourite_place"],
-        story_message=order["story_message"],
-        personal_dedication=order["personal_dedication"],
-        created_at=order["created_at"],
-        gender=order["gender"],
-        age=order["age"],
-        hair_style=order["hair_style"],
-        no_of_covers=order["no_of_covers"],
-        configs=order["configs"],
-        prompts=order["prompts"],
-    )
+    if "_id" in order:
+        del order["_id"]
+    return Order.from_dict(order)
 
 
 class OrderSqlRepository(OrderRepository, SqlRepository):

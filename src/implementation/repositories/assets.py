@@ -17,15 +17,9 @@ def _model_to_db(assets: model.Asset):
 
 
 def _db_to_model(asset):
-    return Asset(
-        id=asset["id"],
-        status=asset["status"],
-        prompt=asset["prompt"],
-        type=asset["type"],
-        order_id=asset["order_id"],
-        value=asset["value"],
-        created_at=asset["created_at"],
-    )
+    if "_id" in asset:
+        del asset["_id"]
+    return Asset.from_dict(asset)
 
 
 class AssetSqlRepository(AssetRepository, SqlRepository):
