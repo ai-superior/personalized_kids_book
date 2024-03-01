@@ -69,9 +69,9 @@ def preview(client, order):
     data = {
         "order_id": order.id,
         "asset_ids": [
-            [asset.id for asset in assets if asset.type == "TITLE"][0],
-            [asset.id for asset in assets if asset.type == "BACKGROUND_IMAGE"][0],
-            [asset.id for asset in assets if asset.type == "CHARACTER_IMAGE"][0],
+            [asset["id"] for asset in assets if asset["type"] == "TITLE"][0],
+            [asset["id"] for asset in assets if asset["type"] == "BACKGROUND_IMAGE"][0],
+            [asset["id"] for asset in assets if asset["type"] == "CHARACTER_IMAGE"][0],
         ],
     }
 

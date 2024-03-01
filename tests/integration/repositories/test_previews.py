@@ -15,5 +15,5 @@ async def test_get_all_previews(preview: Preview):
 @pytest.mark.asyncio
 async def test_get_preview(preview: Preview):
     repo: PreviewRepository = DependencyInjector.get().previews()
-    lead_collection = await repo.get(preview.id)
-    assert lead_collection.id == preview.id
+    preview_collection = await repo.get(preview.id)
+    assert preview_collection.id == preview.id

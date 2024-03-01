@@ -4,14 +4,28 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4f3fec3c-998e-4568-9568-8d97cb6904e1" name="Changes" comment="updating order domain to allow for additional params">
-      <change afterPath="$PROJECT_DIR$/setup.cfg" afterDir="false" />
+    <list default="true" id="4f3fec3c-998e-4568-9568-8d97cb6904e1" name="Changes" comment="concurrent processing and refactoring">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/setup.cfg" beforeDir="false" afterPath="$PROJECT_DIR$/setup.cfg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/api/routes/orders.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/routes/orders.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/assets/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/assets/model.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/domain/assets/usecases.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/assets/usecases.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/basic_types.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/basic_types.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/orders/commands.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/orders/commands.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/orders/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/orders/model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/orders/services.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/orders/services.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/previews/commands.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/previews/commands.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/domain/previews/usecases.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/previews/usecases.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/implementation/repositories/assets.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/implementation/repositories/assets.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/implementation/repositories/previews.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/implementation/repositories/previews.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/implementation/services/open_ai.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/implementation/services/open_ai.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/implementation/sql.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/implementation/sql.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/e2e/conftest.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/e2e/conftest.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/e2e/test_previews.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/e2e/test_previews.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/integration/repositories/conftest.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/integration/repositories/conftest.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/integration/repositories/test_previews.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/integration/repositories/test_previews.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/integration/services/test_open_ai.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/integration/services/test_open_ai.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/unit/test_fusion.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/unit/test_fusion.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,16 +53,16 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/subra/Documents/personalized_kids_book/tests/integration/repositories&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;actions.on.save&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "conurrent__api__calls",
+    "last_opened_file_path": "/home/subra/Documents/personalized_kids_book/tests/integration/repositories",
+    "settings.editor.selected.configurable": "actions.on.save"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/tests/integration/repositories" />
@@ -65,7 +79,7 @@
       <recent name="$PROJECT_DIR$/tests/integration" />
     </key>
   </component>
-  <component name="RunManager" selected="Python tests.pytest for e2e.test_orders.test_get_order">
+  <component name="RunManager" selected="Python tests.pytest for integration.services.test_open_ai.test_ask_for_text">
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="personalized_kids_book" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -99,22 +113,6 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="pytest for e2e.test_orders.test_get_order" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
-      <module name="personalized_kids_book" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="_new_keywords" value="&quot;&quot;" />
-      <option name="_new_parameters" value="&quot;&quot;" />
-      <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;e2e.test_orders.test_get_order&quot;" />
-      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
-      <method v="2" />
-    </configuration>
     <configuration name="pytest for e2e.test_previews.test_generate_preview" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
       <module name="personalized_kids_book" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -131,7 +129,7 @@
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="pytest for integration.repositories.test_orders.test_get_all_orders" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
+    <configuration name="pytest for integration.repositories.test_previews.test_get_preview" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
       <module name="personalized_kids_book" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -143,11 +141,11 @@
       <option name="_new_keywords" value="&quot;&quot;" />
       <option name="_new_parameters" value="&quot;&quot;" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;integration.repositories.test_orders.test_get_all_orders&quot;" />
+      <option name="_new_target" value="&quot;integration.repositories.test_previews.test_get_preview&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="pytest for integration.repositories.test_orders.test_get_order" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
+    <configuration name="pytest for integration.services.test_open_ai.test_ask_for_image" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
       <module name="personalized_kids_book" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -159,7 +157,7 @@
       <option name="_new_keywords" value="&quot;&quot;" />
       <option name="_new_parameters" value="&quot;&quot;" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;integration.repositories.test_orders.test_get_order&quot;" />
+      <option name="_new_target" value="&quot;integration.services.test_open_ai.test_ask_for_image&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
@@ -179,21 +177,37 @@
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
+    <configuration name="pytest for unit.test_fusion.test_fuse_images" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
+      <module name="personalized_kids_book" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_keywords" value="&quot;&quot;" />
+      <option name="_new_parameters" value="&quot;&quot;" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;unit.test_fusion.test_fuse_images&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
     <list>
       <item itemvalue="Python.main" />
-      <item itemvalue="Python tests.pytest for integration.repositories.test_orders.test_get_all_orders" />
-      <item itemvalue="Python tests.pytest for integration.repositories.test_orders.test_get_order" />
+      <item itemvalue="Python tests.pytest for integration.services.test_open_ai.test_ask_for_image" />
       <item itemvalue="Python tests.pytest for integration.services.test_open_ai.test_ask_for_text" />
-      <item itemvalue="Python tests.pytest for e2e.test_orders.test_get_order" />
+      <item itemvalue="Python tests.pytest for integration.repositories.test_previews.test_get_preview" />
+      <item itemvalue="Python tests.pytest for unit.test_fusion.test_fuse_images" />
       <item itemvalue="Python tests.pytest for e2e.test_previews.test_generate_preview" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python tests.pytest for e2e.test_orders.test_get_order" />
-        <item itemvalue="Python tests.pytest for e2e.test_previews.test_generate_preview" />
         <item itemvalue="Python tests.pytest for integration.services.test_open_ai.test_ask_for_text" />
-        <item itemvalue="Python tests.pytest for integration.repositories.test_orders.test_get_order" />
-        <item itemvalue="Python tests.pytest for integration.repositories.test_orders.test_get_all_orders" />
+        <item itemvalue="Python tests.pytest for e2e.test_previews.test_generate_preview" />
+        <item itemvalue="Python tests.pytest for unit.test_fusion.test_fuse_images" />
+        <item itemvalue="Python tests.pytest for integration.services.test_open_ai.test_ask_for_image" />
+        <item itemvalue="Python tests.pytest for integration.repositories.test_previews.test_get_preview" />
       </list>
     </recent_temporary>
   </component>
@@ -486,7 +500,87 @@
       <option name="project" value="LOCAL" />
       <updated>1708525388541</updated>
     </task>
-    <option name="localTasksCounter" value="36" />
+    <task id="LOCAL-00036" summary="refactoring codebase and fixing a few tests">
+      <option name="closed" value="true" />
+      <created>1708526379060</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1708526379060</updated>
+    </task>
+    <task id="LOCAL-00037" summary="adding todos">
+      <option name="closed" value="true" />
+      <created>1708526467361</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1708526467361</updated>
+    </task>
+    <task id="LOCAL-00038" summary="previews integration into orders and fixing unit tests">
+      <option name="closed" value="true" />
+      <created>1708609386211</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1708609386211</updated>
+    </task>
+    <task id="LOCAL-00039" summary="adjusting the shadow and size of the preview for char Image">
+      <option name="closed" value="true" />
+      <created>1709113924364</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1709113924364</updated>
+    </task>
+    <task id="LOCAL-00040" summary="updating the title shadow and removed char shadow">
+      <option name="closed" value="true" />
+      <created>1709116463181</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1709116463181</updated>
+    </task>
+    <task id="LOCAL-00041" summary="making assets repository asyncronous">
+      <option name="closed" value="true" />
+      <created>1709218266055</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1709218266055</updated>
+    </task>
+    <task id="LOCAL-00042" summary="making previews and orders repository asyncronous">
+      <option name="closed" value="true" />
+      <created>1709219873271</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1709219873271</updated>
+    </task>
+    <task id="LOCAL-00043" summary="getting all requests to be concurrent from external services">
+      <option name="closed" value="true" />
+      <created>1709283426093</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1709283426093</updated>
+    </task>
+    <task id="LOCAL-00044" summary="making bytesio asynchronous">
+      <option name="closed" value="true" />
+      <created>1709284336358</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1709284336358</updated>
+    </task>
+    <task id="LOCAL-00045" summary="concurrent processing and refactoring">
+      <option name="closed" value="true" />
+      <created>1709300865479</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1709300865479</updated>
+    </task>
+    <option name="localTasksCounter" value="46" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -501,16 +595,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="asset endpoints and storing multiple necessary assets in the database" />
-    <MESSAGE value="preview endpoint creation and storing in the database" />
-    <MESSAGE value="input changes to volume of titles and images" />
-    <MESSAGE value="previews endpoint creation test case" />
-    <MESSAGE value="fixing integration tests for previews" />
-    <MESSAGE value="revamping preview endpoints, with e2e tests and added prompts with core functions" />
-    <MESSAGE value="updates to prompt generation, fusion and changes to input params" />
-    <MESSAGE value="updates to the fusion process and adjusting the creativity of llm" />
-    <MESSAGE value="making the char image transparent" />
-    <MESSAGE value="adjustments for deployment" />
     <MESSAGE value="character image dimensions" />
     <MESSAGE value="character image dimensions and title updates" />
     <MESSAGE value="adding prompt used to generate assets in the endpoint response" />
@@ -526,7 +610,17 @@
     <MESSAGE value="adding gitignore" />
     <MESSAGE value="making configurations editable" />
     <MESSAGE value="updating order domain to allow for additional params" />
-    <option name="LAST_COMMIT_MESSAGE" value="updating order domain to allow for additional params" />
+    <MESSAGE value="refactoring codebase and fixing a few tests" />
+    <MESSAGE value="adding todos" />
+    <MESSAGE value="previews integration into orders and fixing unit tests" />
+    <MESSAGE value="adjusting the shadow and size of the preview for char Image" />
+    <MESSAGE value="updating the title shadow and removed char shadow" />
+    <MESSAGE value="making assets repository asyncronous" />
+    <MESSAGE value="making previews and orders repository asyncronous" />
+    <MESSAGE value="getting all requests to be concurrent from external services" />
+    <MESSAGE value="making bytesio asynchronous" />
+    <MESSAGE value="concurrent processing and refactoring" />
+    <option name="LAST_COMMIT_MESSAGE" value="concurrent processing and refactoring" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -548,12 +642,12 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/tests/e2e/conftest.py</url>
-          <line>76</line>
+          <line>78</line>
           <option name="timeStamp" value="75" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/tests/e2e/conftest.py</url>
-          <line>66</line>
+          <line>68</line>
           <option name="timeStamp" value="76" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
@@ -563,28 +657,58 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/tests/integration/services/test_open_ai.py</url>
-          <line>9</line>
+          <line>10</line>
           <option name="timeStamp" value="85" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/tests/e2e/conftest.py</url>
+          <line>59</line>
+          <option name="timeStamp" value="90" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/domain/assets/usecases.py</url>
+          <line>91</line>
+          <option name="timeStamp" value="96" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/src/domain/previews/usecases.py</url>
-          <line>141</line>
-          <option name="timeStamp" value="86" />
+          <line>171</line>
+          <option name="timeStamp" value="102" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/api/routes/orders.py</url>
-          <line>12</line>
-          <option name="timeStamp" value="88" />
+          <url>file://$PROJECT_DIR$/tests/integration/repositories/test_assets.py</url>
+          <line>10</line>
+          <option name="timeStamp" value="112" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/implementation/repositories/orders.py</url>
-          <line>46</line>
-          <option name="timeStamp" value="89" />
+          <url>file://$PROJECT_DIR$/src/implementation/repositories/assets.py</url>
+          <line>44</line>
+          <option name="timeStamp" value="116" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/tests/integration/repositories/test_orders.py</url>
+          <line>16</line>
+          <option name="timeStamp" value="117" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/tests/e2e/conftest.py</url>
-          <line>58</line>
-          <option name="timeStamp" value="90" />
+          <line>61</line>
+          <option name="timeStamp" value="118" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/tests/e2e/test_orders.py</url>
+          <line>1</line>
+          <option name="timeStamp" value="119" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/api/routes/orders.py</url>
+          <line>13</line>
+          <option name="timeStamp" value="123" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/tests/e2e/test_previews.py</url>
+          <line>1</line>
+          <option name="timeStamp" value="127" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>

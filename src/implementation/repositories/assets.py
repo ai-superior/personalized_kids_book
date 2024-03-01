@@ -7,9 +7,9 @@ from implementation.sql import SqlRepository
 def _model_to_db(assets: model.Asset):
     return {
         "id": assets.id,
-        "type": assets.type,
+        "type": assets.type.value,
         "order_id": assets.order_id,
-        "status": assets.status,
+        "status": assets.status.value,
         "created_at": assets.created_at,
         "value": assets.value,
         "prompt": assets.prompt,

@@ -23,6 +23,11 @@ class StandardPreviewUseCase(UseCase, abc.ABC):
 
 
 class CreatePreview(UseCase):
+    def __init__(self, previews: PreviewRepository, assets: AssetRepository):
+        super().__init__()
+        self.previews = previews
+        self.assets = assets
+
     @staticmethod
     async def get_file_from_url(url):
         async with httpx.AsyncClient() as client:
@@ -46,16 +51,15 @@ class CreatePreview(UseCase):
             None, lambda: Image.open(BytesIO(response_content))
         )
 
-    async def fuse_images(
-        self, cover_image_url, char_image_url, title, output_file_name
-    ):
+    @staticmethod
+    async def fuse_images(cover_image_url, char_image_url, title, output_file_name):
         # Download the images
-        cover_image_response = await self.get_file_from_url(cover_image_url)
-        char_image_response = await self.get_file_from_url(char_image_url)
+        cover_image_response = await CreatePreview.get_file_from_url(cover_image_url)
+        char_image_response = await CreatePreview.get_file_from_url(char_image_url)
 
         # Open the images
-        cover_image = await self.async_open_file(cover_image_response.content)
-        char_image = await self.async_open_file(char_image_response.content)
+        cover_image = await CreatePreview.async_open_file(cover_image_response.content)
+        char_image = await CreatePreview.async_open_file(char_image_response.content)
 
         # First is width, second is height
         final_dimensions = (1312, 928)
@@ -98,30 +102,16 @@ class CreatePreview(UseCase):
         font_url = "https://ai-childrens-book-assets.s3.eu-central-1.amazonaws.com/fingerpaint.ttf"
 
         # Download the font file from the CDN
-        font_response = await self.get_file_from_url(font_url)
+        font_response = await CreatePreview.get_file_from_url(font_url)
         font = ImageFont.truetype(BytesIO(font_response.content), header_font_size)
 
         wrapper = TextWrapper(width=33)
         wrapped_lines = wrapper.wrap(title)
         wrapped_title = "\n".join(line.center(33) for line in wrapped_lines)
-
-        # wrapped_title = wrapper.fill(title)
-
         _, _, w, h = draw.textbbox((0, 0), wrapped_title, font=font)
 
         text_position = (2 * 152 * 4 - w, 2 * 23 * 4 - h / 2)
 
-        # outline_color = "white"
-        # outline_thickness = 2
-        #
-        # for dx in [-outline_thickness, 0, outline_thickness]:
-        #     for dy in [-outline_thickness, 0, outline_thickness]:
-        #         draw.text(
-        #             (text_position[0] + dx, text_position[1] + dy),
-        #             wrapped_title,
-        #             font=font,
-        #             fill=outline_color,
-        #         )
         text_mask = Image.new("L", fused_image.size, 0)
         draw_mask = ImageDraw.Draw(text_mask)
         draw_mask.text(text_position, wrapped_title, fill=255, font=font)
@@ -153,18 +143,13 @@ class CreatePreview(UseCase):
         fused_image.save(output_path)
         return f"{SETTINGS.webserver.domain}/public/results/{output_file_name}.png"
 
-    def __init__(self, previews: PreviewRepository, assets: AssetRepository):
-        super().__init__()
-        self.previews = previews
-        self.assets = assets
-
     async def execute(self, cmd: commands.CreatePreview) -> Preview:
         asset_ids = cmd.asset_ids
-        char_image_response = await self.assets.get(cmd.asset_ids[2])
+        char_image_response = await self.assets.get(asset_id=cmd.asset_ids[2])
         char_image_url = char_image_response.value
-        cover_image_response = await self.assets.get(cmd.asset_ids[1])
+        cover_image_response = await self.assets.get(asset_id=cmd.asset_ids[1])
         cover_image_url = cover_image_response.value
-        title_response = await self.assets.get(cmd.asset_ids[0])
+        title_response = await self.assets.get(asset_id=cmd.asset_ids[0])
         title = title_response.value
         result_url = await self.fuse_images(
             cover_image_url=cover_image_url,
@@ -176,7 +161,7 @@ class CreatePreview(UseCase):
         preview = Preview(
             asset_ids=asset_ids,
             order_id=cmd.order_id,
-            status=PreviewStatus.COMPLETED.value,
+            status=PreviewStatus.COMPLETED,
             is_approved=False,
             title=title,
             character_image_url=char_image_url,

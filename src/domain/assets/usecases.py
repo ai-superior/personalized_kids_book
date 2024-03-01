@@ -11,6 +11,7 @@ from domain.assets import queries, errors, commands
 from domain.assets.model import Asset, AssetType, AssetStatus
 from domain.assets.repositories import AssetRepository
 from domain.basic_types import UseCase
+from domain.orders.model import LLMTextConfig, LLMImageConfig
 from domain.orders.repositories import OrderRepository
 from domain.orders.services import LLMProcessor
 from settings import SETTINGS
@@ -76,7 +77,6 @@ class CreateAsset(UseCase):
         final_result = "*missing"
 
         if not filtered_df.empty:
-            # Return the first matching Id
             first_result = filtered_df.iloc[0]["Id"]
         else:
             return "*missing"
@@ -109,10 +109,16 @@ class CreateAsset(UseCase):
             )
         )
 
+        title_configs = LLMTextConfig(
+            model=cmd.additional_params.configs.title_configs.model,
+            max_tokens=cmd.additional_params.configs.title_configs.max_tokens,
+            temperature=cmd.additional_params.configs.title_configs.temperature,
+            system_prompt=cmd.additional_params.configs.title_configs.system_prompt,
+        )
         titles_response = await self.llm.ask_for_text(
             prompt=title_prompt,
             quantity=cmd.additional_params.no_of_covers,
-            configs=cmd.additional_params,
+            configs=title_configs,
         )
         titles = [
             title.message.content.strip('"').strip("”")
@@ -131,8 +137,8 @@ class CreateAsset(UseCase):
 
         asset = Asset(
             order_id=cmd.order_id,
-            type=AssetType.CHARACTER_IMAGE.value,
-            status=AssetStatus.ACTIVE.value,
+            type=AssetType.CHARACTER_IMAGE,
+            status=AssetStatus.ACTIVE,
             value=char_url,
         )
 
@@ -142,8 +148,8 @@ class CreateAsset(UseCase):
         for i in range(cmd.additional_params.no_of_covers):
             asset = Asset(
                 order_id=cmd.order_id,
-                type=AssetType.TITLE.value,
-                status=AssetStatus.ACTIVE.value,
+                type=AssetType.TITLE,
+                status=AssetStatus.ACTIVE,
                 prompt=title_prompt,
                 value=titles[i],
             )
@@ -162,8 +168,13 @@ class CreateAsset(UseCase):
             if i > 0:
                 cover_prompt = cover_prompt.replace(titles[i - 1], titles[i])
 
+            cover_image_config = LLMImageConfig(
+                model=cmd.additional_params.configs.cover_configs.model,
+                quality=cmd.additional_params.configs.cover_configs.quality,
+            )
+
             cover_image_gpt_response = await self.llm.ask_for_image(
-                prompt=cover_prompt, configs=cmd.additional_params
+                prompt=cover_prompt, configs=cover_image_config
             )
 
             cover_image_response = await self.get_file_from_url(
@@ -177,8 +188,8 @@ class CreateAsset(UseCase):
             cover_image.save(output_path)
             asset = Asset(
                 order_id=cmd.order_id,
-                type=AssetType.BACKGROUND_IMAGE.value,
-                status=AssetStatus.ACTIVE.value,
+                type=AssetType.BACKGROUND_IMAGE,
+                status=AssetStatus.ACTIVE,
                 prompt=cover_prompt,
                 value=f"{SETTINGS.webserver.domain}/public/results/{output_file_name}.png",
             )

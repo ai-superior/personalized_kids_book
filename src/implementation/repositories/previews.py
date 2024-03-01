@@ -8,7 +8,7 @@ def _model_to_db(previews: model.Preview):
     return {
         "id": previews.id,
         "order_id": previews.order_id,
-        "status": previews.status,
+        "status": previews.status.value,
         "asset_ids": previews.asset_ids,
         "created_at": previews.created_at,
         "is_approved": previews.is_approved,
@@ -22,7 +22,7 @@ def _model_to_db(previews: model.Preview):
 def _db_to_model(preview):
     if "_id" in preview:
         del preview["_id"]
-    return preview
+    return Preview.from_dict(preview)
 
 
 class PreviewSqlRepository(PreviewRepository, SqlRepository):

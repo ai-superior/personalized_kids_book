@@ -52,8 +52,8 @@ async def order():
 async def asset():
     random_asset = Asset(
         order_id=secrets.token_hex(5),
-        status=AssetStatus.PENDING.value,
-        type=AssetType.TITLE.value,
+        status=AssetStatus.PENDING,
+        type=AssetType.TITLE,
     )
     await DependencyInjector.get().assets().add(random_asset)
     return random_asset
@@ -63,7 +63,7 @@ async def asset():
 async def preview():
     random_preview = Preview(
         asset_ids=[secrets.token_hex(5)],
-        status=PreviewStatus.PENDING.value,
+        status=PreviewStatus.PENDING,
         is_approved=False,
         order_id=secrets.token_hex(5),
         title="str",

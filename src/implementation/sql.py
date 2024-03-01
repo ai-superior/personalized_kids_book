@@ -8,7 +8,7 @@ from settings import Settings
 
 def get_async_mongo_db(settings: Settings):
     loop = asyncio.get_event_loop()
-    mongo_client = AsyncIOMotorClient(settings.mongo.mongo_client, io_loop=loop)
+    mongo_client = AsyncIOMotorClient(settings.mongo.mongo_client, io_loop=loop)  # type: ignore
     db = mongo_client[settings.mongo.db]
     return db
 

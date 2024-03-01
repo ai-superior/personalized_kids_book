@@ -6,6 +6,20 @@ from domain.basic_types import Entity
 
 
 @dataclass
+class LLMTextConfig:
+    model: str
+    system_prompt: str
+    temperature: float
+    max_tokens: int
+
+
+@dataclass
+class LLMImageConfig:
+    model: str
+    quality: Literal["standard", "hd"]
+
+
+@dataclass
 class CoverConfigs:
     quality: Literal["standard", "hd"] = "standard"
     model: str = "dall-e-3"
