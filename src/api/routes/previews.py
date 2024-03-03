@@ -1,3 +1,5 @@
+import asyncio
+
 from fastapi import APIRouter
 
 from dependencies import DependencyInjector
@@ -32,3 +34,11 @@ async def get_preview_by_order_id(order_id: str) -> list[model.Preview]:
     di = DependencyInjector.get()
     usecase = usecases.GetPreviewByOrderId(di.previews())
     return await usecase.execute(queries.GetPreviewsByOrderId(order_id=order_id))
+
+
+@router.post("/test_preview")
+async def get_test_preview():
+    await asyncio.sleep(3)
+    return {
+        "image_url": "https://ai-childrens-book-assets.s3.eu-central-1.amazonaws.com/mock_preview.png"
+    }
