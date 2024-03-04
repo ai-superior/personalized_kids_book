@@ -3,6 +3,7 @@ import asyncio
 from fastapi import APIRouter
 
 from dependencies import DependencyInjector
+from domain.orders.model import Deal
 from domain.previews import commands, usecases, model, queries
 
 router = APIRouter(prefix="/previews")
@@ -42,3 +43,13 @@ async def get_test_preview():
     return {
         "image_url": "https://ai-childrens-book-assets.s3.eu-central-1.amazonaws.com/mock_preview.png"
     }
+
+
+@router.get("/test_hubspot_deal")
+async def create_hubspot_deal():
+    random_deal = Deal(
+        name="test_deal", contact_id="1951", amount="30", stage="contractsent"
+    )
+    di = DependencyInjector.get()
+    deal_response = await di.hubspot().create_deal(random_deal)
+    return deal_response.json()

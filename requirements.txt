@@ -22,4 +22,3 @@ openpyxl==3.1.2
 motor==3.3.2
 types-Pillow
 pandas-stubs
-hubspot-api=client-8.2.1
