@@ -5,7 +5,7 @@ from io import BytesIO
 from textwrap import TextWrapper
 
 import httpx
-from PIL import Image, ImageDraw, ImageFont, ImageFilter
+from PIL import Image, ImageDraw, ImageFont
 
 from domain.assets.model import AssetType
 from domain.assets.repositories import AssetRepository
@@ -112,24 +112,19 @@ class CreatePreview(UseCase):
 
         text_position = (2 * 152 * 4 - w, 2 * 23 * 4 - h / 2)
 
-        text_mask = Image.new("L", fused_image.size, 0)
-        draw_mask = ImageDraw.Draw(text_mask)
-        draw_mask.text(text_position, wrapped_title, fill=255, font=font)
-        shadow_mask = text_mask.filter(ImageFilter.GaussianBlur(radius=10))
-        shadow_mask = shadow_mask.point(lambda p: p * 1.2)
-        shadow_color = (
-            0,
-            0,
-            0,
-            100,
+        text_shadow_response = await CreatePreview.get_file_from_url(
+            "https://ai-childrens-book-assets.s3.eu-central-1.amazonaws.com/shadow_2.png"
         )
-        shadow_image = Image.new("RGBA", fused_image.size, shadow_color)
+        text_shadow = await CreatePreview.async_open_file(text_shadow_response.content)
 
-        # Ensure the alpha channel around the text is black
-        shadow_image.putalpha(text_mask)
+        text_shadow = text_shadow.resize(fused_image.size)
+        shadow_mask = text_shadow.split()[3]
 
-        # Paste the shadow image onto the fused image using the shadow mask
-        fused_image.paste(shadow_image, (0, 0), mask=shadow_mask)
+        fused_image.paste(
+            text_shadow,
+            (0, -50),
+            mask=shadow_mask,
+        )
 
         draw.text(
             text_position,
@@ -138,7 +133,6 @@ class CreatePreview(UseCase):
             font=font,
         )
 
-        # Save the fused image
         output_path = f"{SETTINGS.webserver.static_dir}/results/{output_file_name}.png"
         fused_image.save(output_path)
         return f"{SETTINGS.webserver.domain}/public/results/{output_file_name}.png"
