@@ -192,6 +192,7 @@ class CreateAsset(UseCase):
                 status=AssetStatus.ACTIVE,
                 prompt=cover_prompt,
                 value=f"{SETTINGS.webserver.domain}/public/results/{output_file_name}.png",
+                revised_cover_prompt=cover_image_gpt_response.data[0].revised_prompt,
             )
 
             assets.append(asset)

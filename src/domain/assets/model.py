@@ -21,5 +21,6 @@ class Asset(Entity):
     order_id: str
     type: AssetType
     status: AssetStatus
+    revised_cover_prompt: Optional[str] = None
     prompt: Optional[str] = None
     value: Optional[str] = None

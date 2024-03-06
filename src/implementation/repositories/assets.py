@@ -13,6 +13,7 @@ def _model_to_db(assets: model.Asset):
         "created_at": assets.created_at,
         "value": assets.value,
         "prompt": assets.prompt,
+        "revised_cover_prompt": assets.revised_cover_prompt,
     }
 
 
