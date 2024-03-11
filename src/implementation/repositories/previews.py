@@ -40,6 +40,20 @@ class PreviewSqlRepository(PreviewRepository, SqlRepository):
             previews.append(_db_to_model(document))
         return previews
 
+    async def approve_preview(self, preview_id: str):
+        await self.db["previews"].update_one(
+            {"id": preview_id}, {"$set": {"is_approved": True}}
+        )
+        document = await self.db["previews"].find_one({"id": preview_id})
+        return _db_to_model(document)
+
+    async def disapprove_preview(self, preview_id: str):
+        await self.db["previews"].update_one(
+            {"id": preview_id}, {"$set": {"is_approved": False}}
+        )
+        document = await self.db["previews"].find_one({"id": preview_id})
+        return _db_to_model(document)
+
     async def list(self) -> list[Preview]:
         cursor = self.db["previews"].find({})
         previews = []

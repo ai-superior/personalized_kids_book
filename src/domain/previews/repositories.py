@@ -19,3 +19,11 @@ class PreviewRepository(abc.ABC):
     @abc.abstractmethod
     async def list(self) -> list[Preview]:
         raise NotImplementedError
+
+    @abc.abstractmethod
+    async def approve_preview(self, preview_id: str) -> Preview:
+        raise NotImplementedError
+
+    @abc.abstractmethod
+    async def disapprove_preview(self, preview: str) -> Preview:
+        raise NotImplementedError

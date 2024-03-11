@@ -14,8 +14,8 @@ class PreviewStatus(Enum):
 class Preview(Entity):
     asset_ids: list[str]
     order_id: str
-    is_approved: bool
     status: PreviewStatus
+    is_approved: Optional[bool] = None
     title: Optional[str] = None
     cover_image_url: Optional[str] = None
     character_image_url: Optional[str] = None

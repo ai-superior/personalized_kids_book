@@ -37,6 +37,13 @@ async def get_preview_by_order_id(order_id: str) -> list[model.Preview]:
     return await usecase.execute(queries.GetPreviewsByOrderId(order_id=order_id))
 
 
+@router.put("/approve/preview_id")
+async def approve_preview(preview_id: str) -> model.Preview:
+    di = DependencyInjector.get()
+    usecase = usecases.ApprovePreview(di.previews())
+    return await usecase.execute(queries.ApprovePreview(preview_id=preview_id))
+
+
 @router.post("/test_preview")
 async def get_test_preview():
     await asyncio.sleep(3)

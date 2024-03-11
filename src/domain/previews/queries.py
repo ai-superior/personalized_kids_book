@@ -11,3 +11,8 @@ class GetPreview(Query):
 @dataclass(frozen=True)
 class GetPreviewsByOrderId(Query):
     order_id: str
+
+
+@dataclass(frozen=True)
+class ApprovePreview(Query):
+    preview_id: str

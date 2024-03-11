@@ -17,9 +17,19 @@ from settings import SETTINGS
 
 
 class StandardPreviewUseCase(UseCase, abc.ABC):
-    def __init__(self, messages: PreviewRepository):
+    def __init__(self, previews: PreviewRepository):
         super().__init__()
-        self.messages = messages
+        self.previews = previews
+
+
+class ApprovePreview(StandardPreviewUseCase):
+    async def execute(self, query: queries.ApprovePreview) -> Preview:
+        current_preview = await self.previews.get(query.preview_id)
+        all_previews = await self.previews.get_by_order_id(current_preview.order_id)
+        for preview in all_previews:
+            await self.previews.disapprove_preview(preview.id)
+        result = await self.previews.approve_preview(current_preview.id)
+        return result
 
 
 class CreatePreview(UseCase):
@@ -169,7 +179,7 @@ class CreatePreview(UseCase):
 
 class GetPreview(StandardPreviewUseCase):
     async def execute(self, query: queries.GetPreview) -> Preview:
-        preview = await self.messages.get(query.preview_id)
+        preview = await self.previews.get(query.preview_id)
 
         if preview is None:  # pragma: no cover
             raise errors.PreviewNotFound
@@ -178,12 +188,12 @@ class GetPreview(StandardPreviewUseCase):
 
 class GetPreviews(StandardPreviewUseCase):
     async def execute(self) -> list[Preview]:
-        previews = await self.messages.list()
+        previews = await self.previews.list()
         return previews
 
 
 class GetPreviewByOrderId(StandardPreviewUseCase):
     async def execute(self, query: queries.GetPreviewsByOrderId) -> list[Preview]:
-        previews = await self.messages.get_by_order_id(query.order_id)
+        previews = await self.previews.get_by_order_id(query.order_id)
 
         return previews
