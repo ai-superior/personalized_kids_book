@@ -14,6 +14,7 @@ def _model_to_db(assets: model.Asset):
         "value": assets.value,
         "prompt": assets.prompt,
         "revised_cover_prompt": assets.revised_cover_prompt,
+        "category": assets.category.value if assets.category else None,
     }
 
 

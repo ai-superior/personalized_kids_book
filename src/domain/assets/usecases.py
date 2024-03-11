@@ -9,7 +9,7 @@ import pandas as pd
 from PIL import Image
 
 from domain.assets import queries, errors, commands
-from domain.assets.model import Asset, AssetType, AssetStatus
+from domain.assets.model import Asset, AssetType, AssetStatus, AssetCategory
 from domain.assets.repositories import AssetRepository
 from domain.basic_types import UseCase
 from domain.orders.model import LLMTextConfig, LLMImageConfig
@@ -231,7 +231,12 @@ class CreateAsset(UseCase):
             for title in titles_response.choices
         ]
         all_titles = remove_bad_titles(titles, stop_symbols, stop_ending_words)
-        valid_titles = all_titles["valid_titles"]
+        valid_titles = all_titles["valid_titles"][
+            cmd.additional_params.no_of_covers : -1
+        ]
+        valid_selectable_titles = all_titles["valid_titles"][
+            0 : cmd.additional_params.no_of_covers
+        ]
         bad_titles = all_titles["bad_titles"]
 
         char_url = await self.find_character(
@@ -259,8 +264,21 @@ class CreateAsset(UseCase):
                 order_id=cmd.order_id,
                 type=AssetType.TITLE,
                 status=AssetStatus.ACTIVE,
+                category=AssetCategory.VALID,
                 prompt=title_prompt,
                 value=valid_titles[i],
+            )
+            assets.append(asset)
+            await self.assets.add(asset)
+
+        for i in range(len(valid_selectable_titles)):
+            asset = Asset(
+                order_id=cmd.order_id,
+                type=AssetType.TITLE,
+                status=AssetStatus.ACTIVE,
+                category=AssetCategory.SELECTABLE,
+                prompt=title_prompt,
+                value=valid_selectable_titles[i],
             )
             assets.append(asset)
             await self.assets.add(asset)
@@ -269,7 +287,8 @@ class CreateAsset(UseCase):
             asset = Asset(
                 order_id=cmd.order_id,
                 type=AssetType.TITLE,
-                status=AssetStatus.PENDING,
+                status=AssetStatus.ACTIVE,
+                category=AssetCategory.BAD,
                 prompt=title_prompt,
                 value=bad_titles[i],
             )
@@ -280,14 +299,14 @@ class CreateAsset(UseCase):
             cover_prompt.replace("{{", "{")
             .replace("}}", "}")
             .format(
-                generated_title=valid_titles[0],
+                generated_title=valid_selectable_titles[0],
             )
         )
 
         for i in range(cmd.additional_params.no_of_covers):
             if i > 0:
                 cover_prompt = cover_prompt.replace(
-                    valid_titles[i - 1], valid_titles[i]
+                    valid_selectable_titles[i - 1], valid_selectable_titles[i]
                 )
 
             cover_image_config = LLMImageConfig(

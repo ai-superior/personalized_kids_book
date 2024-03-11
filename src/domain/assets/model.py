@@ -16,11 +16,18 @@ class AssetStatus(Enum):
     PENDING = "PENDING"
 
 
+class AssetCategory(Enum):
+    SELECTABLE = "SELECTABLE"
+    VALID = "VALID"
+    BAD = "BAD"
+
+
 @dataclass
 class Asset(Entity):
     order_id: str
     type: AssetType
     status: AssetStatus
+    category: Optional[AssetCategory] = None
     revised_cover_prompt: Optional[str] = None
     prompt: Optional[str] = None
     value: Optional[str] = None
