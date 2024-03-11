@@ -33,3 +33,4 @@ class CreateOrder(Command):
     configs: Configs
     prompts: Prompt
     no_of_covers: int = 2
+    total_no_of_titles: int = 5

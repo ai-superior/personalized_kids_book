@@ -37,6 +37,7 @@ def _model_to_db(orders: model.Order):
         "age": orders.age,
         "hair_style": orders.hair_style,
         "no_of_covers": orders.no_of_covers,
+        "total_no_of_titles": orders.total_no_of_titles,
         "configs": convert_to_dict(orders.configs),
         "prompts": convert_to_dict(orders.prompts),
     }

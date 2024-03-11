@@ -1,4 +1,5 @@
 from dataclasses import dataclass
+from typing import Optional
 
 from typing_extensions import Literal
 
@@ -82,3 +83,4 @@ class Order(Entity):
     no_of_covers: int
     configs: Configs
     prompts: Prompt
+    total_no_of_titles: Optional[int] = None

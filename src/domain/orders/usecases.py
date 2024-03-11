@@ -37,6 +37,7 @@ class CreateOrder(UseCase):
             hair_style=cmd.hair_style,
             age=cmd.age,
             no_of_covers=cmd.no_of_covers,
+            total_no_of_titles=cmd.total_no_of_titles,
             prompts=cmd.prompts,
             configs=cmd.configs,
         )

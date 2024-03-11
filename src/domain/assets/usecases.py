@@ -1,5 +1,6 @@
 import abc
 import asyncio
+import re
 import secrets
 from io import BytesIO
 
@@ -15,6 +16,111 @@ from domain.orders.model import LLMTextConfig, LLMImageConfig
 from domain.orders.repositories import OrderRepository
 from domain.orders.services import LLMProcessor
 from settings import SETTINGS
+
+stop_symbols = [
+    "_",
+    "-)",
+    "=",
+    "%",
+    "}",
+    ">",
+    "<",
+    "\\",
+    "//",
+    "~",
+    "@",
+    "어",
+    "♀",
+    "SQL",
+    "条",
+    "►",
+    "[",
+    "]",
+    "코",
+    "드",
+    "함",
+    "??",
+    "!!",
+    "..",
+    "((",
+    "))",
+    "`",
+    "#",
+    "$",
+    "^",
+    "*",
+    "►",
+    " ,",
+    ",)",
+    "\n",
+    "+",
+]
+stop_ending_words = ["and", "und"]
+
+
+def find_dotted_letters(text):
+    # The pattern matches a letter ([a-zA-Z]), followed by a dot (\.), followed by another letter ([a-zA-Z])
+    pattern = r"[a-zA-Z]\.[a-zA-Z]"
+    matches = re.findall(pattern, text)
+    return matches
+
+
+def remove_dot_at_end(s: str) -> str:
+    # Check if the string ends with a dot and remove it if it does
+    if s.endswith("."):
+        return s[:-1]
+    return s
+
+
+def ends_with_word(s: str, words: list) -> bool:
+    # Check if the string ends with any of the words in the list
+    for word in words:
+        if s.endswith(word):
+            return True
+    return False
+
+
+def remove_quotes_if_both_ends(s: str) -> str:
+    # Check if the string starts and ends with '"' and remove them if it does
+    if s.startswith('"') and s.endswith('"'):
+        return s[1:-1]  # Remove the leading and trailing '"'
+    return s
+
+
+def remove_bad_titles(titles, stop_symbols, stop_ending_words):
+    resulting_titles = []
+    bad_titles = []
+    for title in titles:
+        # Remove space at the end
+        title = title.rstrip()
+
+        # Remove " from start and end
+        title = remove_quotes_if_both_ends(title)
+
+        # Remove point at the end
+        title = remove_dot_at_end(title)
+
+        # check if the title end with a stop_word
+        validation = ends_with_word(title, stop_ending_words)
+        if validation:
+            bad_titles.append(title)
+            continue
+
+        # check if the symbols are there
+        validation = [symbol in title for symbol in stop_symbols]
+        if sum(validation):
+            bad_titles.append(title)
+            continue
+
+        # check if there is a dot between letters e.g. a.p - this is an indicator for bad title
+        validation = find_dotted_letters(title)
+        if len(validation):
+            bad_titles.append(title)
+            continue
+
+        resulting_titles.append(title)
+
+    return {"valid_titles": resulting_titles, "bad_titles": bad_titles}
 
 
 class StandardAssetUseCase(UseCase, abc.ABC):
@@ -117,13 +223,16 @@ class CreateAsset(UseCase):
         )
         titles_response = await self.llm.ask_for_text(
             prompt=title_prompt,
-            quantity=cmd.additional_params.no_of_covers,
+            quantity=cmd.additional_params.total_no_of_titles,
             configs=title_configs,
         )
         titles = [
             title.message.content.strip('"').strip("”")
             for title in titles_response.choices
         ]
+        all_titles = remove_bad_titles(titles, stop_symbols, stop_ending_words)
+        valid_titles = all_titles["valid_titles"]
+        bad_titles = all_titles["bad_titles"]
 
         char_url = await self.find_character(
             file_url="https://ai-childrens-book-assets.s3.eu-central-1.amazonaws.com/01_Character_excel.xlsx",
@@ -145,13 +254,24 @@ class CreateAsset(UseCase):
         assets.append(asset)
         await self.assets.add(asset)
 
-        for i in range(cmd.additional_params.no_of_covers):
+        for i in range(len(valid_titles)):
             asset = Asset(
                 order_id=cmd.order_id,
                 type=AssetType.TITLE,
                 status=AssetStatus.ACTIVE,
                 prompt=title_prompt,
-                value=titles[i],
+                value=valid_titles[i],
+            )
+            assets.append(asset)
+            await self.assets.add(asset)
+
+        for i in range(len(bad_titles)):
+            asset = Asset(
+                order_id=cmd.order_id,
+                type=AssetType.TITLE,
+                status=AssetStatus.PENDING,
+                prompt=title_prompt,
+                value=bad_titles[i],
             )
             assets.append(asset)
             await self.assets.add(asset)
@@ -160,13 +280,15 @@ class CreateAsset(UseCase):
             cover_prompt.replace("{{", "{")
             .replace("}}", "}")
             .format(
-                generated_title=titles[0],
+                generated_title=valid_titles[0],
             )
         )
 
         for i in range(cmd.additional_params.no_of_covers):
             if i > 0:
-                cover_prompt = cover_prompt.replace(titles[i - 1], titles[i])
+                cover_prompt = cover_prompt.replace(
+                    valid_titles[i - 1], valid_titles[i]
+                )
 
             cover_image_config = LLMImageConfig(
                 model=cmd.additional_params.configs.cover_configs.model,
