@@ -1,5 +1,6 @@
 import abc
 
+from domain.assets.repositories import AssetRepository
 from domain.basic_types import UseCase
 from domain.orders import queries, errors, commands
 from domain.orders.model import Order
@@ -10,6 +11,25 @@ class StandardOrderUseCase(UseCase, abc.ABC):
     def __init__(self, orders: OrderRepository):
         super().__init__()
         self.orders = orders
+
+
+class GetOrderStatus(UseCase):
+    def __init__(self, orders: OrderRepository, assets: AssetRepository):
+        super().__init__()
+        self.orders = orders
+        self.assets = assets
+
+    async def execute(self, query: queries.GetOrderStatus):
+        order = await self.orders.get(query.order_id)
+        assets = await self.assets.get_by_order_id(query.order_id)
+        total_titles = (
+            int(order.total_no_of_titles) if order.total_no_of_titles is not None else 0
+        )
+        total_covers = int(order.no_of_covers) if order.no_of_covers is not None else 0
+        if len(assets) >= total_titles + total_covers - 1:
+            return True
+        else:
+            return False
 
 
 class CreateOrder(UseCase):

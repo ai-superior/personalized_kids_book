@@ -34,3 +34,10 @@ async def get_order(order_id: str) -> model.Order:
     di = DependencyInjector.get()
     usecase = usecases.GetOrder(di.orders())
     return await usecase.execute(queries.GetOrder(order_id=order_id))
+
+
+@router.get("/order_status/{order_id}")
+async def get_assets_status(order_id: str) -> bool:
+    di = DependencyInjector.get()
+    usecase = usecases.GetOrderStatus(di.orders(), di.assets())
+    return await usecase.execute(queries.GetOrderStatus(order_id=order_id))
