@@ -15,6 +15,7 @@ def _model_to_db(assets: model.Asset):
         "prompt": assets.prompt,
         "revised_cover_prompt": assets.revised_cover_prompt,
         "category": assets.category.value if assets.category else None,
+        "was_shown": assets.was_shown,
     }
 
 
@@ -30,12 +31,19 @@ class AssetSqlRepository(AssetRepository, SqlRepository):
 
     async def get(self, asset_id: str) -> Asset:
         document = await self.db["assets"].find_one({"id": asset_id})
+        await self.update_was_shown_flag(asset_id)
         return _db_to_model(document)
+
+    async def update_was_shown_flag(self, asset_id: str):
+        return await self.db["assets"].update_one(
+            {"id": asset_id}, {"$set": {"was_shown": True}}
+        )
 
     async def get_by_order_id(self, order_id: str) -> list[Asset]:
         cursor = self.db["assets"].find({"order_id": order_id})
         assets = []
         async for document in cursor:
+            await self.update_was_shown_flag(document["id"])
             assets.append(_db_to_model(document))
         return assets
 
@@ -43,5 +51,6 @@ class AssetSqlRepository(AssetRepository, SqlRepository):
         cursor = self.db["assets"].find({})
         assets = []
         async for document in cursor:
+            await self.update_was_shown_flag(document["id"])
             assets.append(_db_to_model(document))
         return assets

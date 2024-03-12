@@ -31,3 +31,4 @@ class Asset(Entity):
     revised_cover_prompt: Optional[str] = None
     prompt: Optional[str] = None
     value: Optional[str] = None
+    was_shown: Optional[bool] = None
