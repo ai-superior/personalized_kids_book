@@ -56,7 +56,7 @@ stop_symbols = [
     "\n",
     "+",
 ]
-stop_ending_words = ["and", "und"]
+stop_ending_words = [" and", " und"]
 
 
 def find_dotted_letters(text):
