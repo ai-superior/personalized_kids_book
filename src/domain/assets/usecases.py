@@ -56,7 +56,7 @@ stop_symbols = [
     "\n",
     "+",
 ]
-stop_ending_words = [" and", " und"]
+stop_ending_words = [" and", " und", " FieldType"]
 
 
 def find_dotted_letters(text):
@@ -208,11 +208,8 @@ class CreateAsset(UseCase):
 
         selected_dict = {}
 
-        # Iterate through the keys in the parsed JSON object
         for key, values in config_dict.items():
-            # Randomly select a value from the list associated with the key
             selected_dict[key] = random.choice(values)
-        cover_prompt = cover_prompt.format(**selected_dict)
 
         order = await self.orders.get(order_id=cmd.order_id)
         title_prompt = (
@@ -227,9 +224,6 @@ class CreateAsset(UseCase):
                 favourite_place=order.favourite_place,
                 event_to_come=order.event_to_come,
                 story_location=selected_dict["story_location"],
-                animation_type=selected_dict["animation_type"],
-                colors_type=selected_dict["colors_type"],
-                orientation=selected_dict["orientation"],
             )
         )
 
@@ -311,19 +305,33 @@ class CreateAsset(UseCase):
             assets.append(asset)
             await self.assets.add(asset)
 
-        cover_prompt = (
-            cover_prompt.replace("{{", "{")
-            .replace("}}", "}")
-            .format(
-                generated_title=valid_selectable_titles[0],
-                story_location=selected_dict["story_location"],
-                animation_type=selected_dict["animation_type"],
-                colors_type=selected_dict["colors_type"],
-                orientation=selected_dict["orientation"],
-            )
-        )
+        initial_cover_prompt = cover_prompt
 
         for i in range(cmd.additional_params.no_of_covers):
+            cover_prompt = initial_cover_prompt
+
+            for key, values in config_dict.items():
+                selected_dict[key] = random.choice(values)
+                ## making sure that the random pool is from an unrepeated list
+                if selected_dict[key].startswith("colors_type"):
+                    config_dict[key].remove(selected_dict[key])
+
+            cover_prompt = cover_prompt.format(**selected_dict)
+
+            cover_prompt = (
+                cover_prompt.replace("{{", "{")
+                .replace("}}", "}")
+                .format(
+                    generated_title=valid_selectable_titles[0],
+                    story_location=selected_dict["story_location"],
+                    animation_type=selected_dict["animation_type"],
+                    colors_type=selected_dict["colors_type_" + str(i + 1)]
+                    if (i + 1) <= 2
+                    else selected_dict["colors_type_1"],
+                    orientation=selected_dict["orientation"],
+                )
+            )
+
             if i > 0:
                 cover_prompt = cover_prompt.replace(
                     valid_selectable_titles[i - 1], valid_selectable_titles[i]

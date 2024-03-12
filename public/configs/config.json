@@ -12,8 +12,11 @@
   "animation_type": [
     "3D animation"
   ],
-  "colors_type": [
-    "Warm colors"
+  "colors_type_1": [
+    "warm colors"
+  ],
+  "colors_type_2": [
+    "cold colors"
   ],
   "orientation": [
     "Horizontal"
