@@ -206,10 +206,10 @@ class CreateAsset(UseCase):
         )
         config_dict = config_file_response.json()
 
-        selected_dict = {}
+        selected_dict_titles = {}
 
         for key, values in config_dict.items():
-            selected_dict[key] = random.choice(values)
+            selected_dict_titles[key] = random.choice(values)
 
         order = await self.orders.get(order_id=cmd.order_id)
         title_prompt = (
@@ -223,7 +223,7 @@ class CreateAsset(UseCase):
                 interests=order.interests,
                 favourite_place=order.favourite_place,
                 event_to_come=order.event_to_come,
-                story_location=selected_dict["story_location"],
+                story_location=selected_dict_titles["story_location"],
             )
         )
 
@@ -309,7 +309,7 @@ class CreateAsset(UseCase):
 
         for i in range(cmd.additional_params.no_of_covers):
             cover_prompt = initial_cover_prompt
-
+            selected_dict = {}
             for key, values in config_dict.items():
                 selected_dict[key] = random.choice(values)
                 ## making sure that the random pool is from an unrepeated list
@@ -323,7 +323,7 @@ class CreateAsset(UseCase):
                 .replace("}}", "}")
                 .format(
                     generated_title=valid_selectable_titles[0],
-                    story_location=selected_dict["story_location"],
+                    story_location=selected_dict_titles["story_location"],
                     animation_type=selected_dict["animation_type"],
                     colors_type=selected_dict["colors_type_" + str(i + 1)]
                     if (i + 1) <= 2
