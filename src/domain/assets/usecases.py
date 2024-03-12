@@ -1,5 +1,6 @@
 import abc
 import asyncio
+import random
 import re
 import secrets
 from io import BytesIO
@@ -200,6 +201,19 @@ class CreateAsset(UseCase):
         title_prompt = cmd.additional_params.prompts.title_prompt
         cover_prompt = cmd.additional_params.prompts.cover_prompt
 
+        config_file_response = await CreateAsset.get_file_from_url(
+            f"{SETTINGS.webserver.domain}/public/configs/config.json"
+        )
+        config_dict = config_file_response.json()
+
+        selected_dict = {}
+
+        # Iterate through the keys in the parsed JSON object
+        for key, values in config_dict.items():
+            # Randomly select a value from the list associated with the key
+            selected_dict[key] = random.choice(values)
+        cover_prompt = cover_prompt.format(**selected_dict)
+
         order = await self.orders.get(order_id=cmd.order_id)
         title_prompt = (
             title_prompt.replace("{{", "{")
@@ -212,6 +226,10 @@ class CreateAsset(UseCase):
                 interests=order.interests,
                 favourite_place=order.favourite_place,
                 event_to_come=order.event_to_come,
+                story_location=selected_dict["story_location"],
+                animation_type=selected_dict["animation_type"],
+                colors_type=selected_dict["colors_type"],
+                orientation=selected_dict["orientation"],
             )
         )
 
@@ -231,11 +249,9 @@ class CreateAsset(UseCase):
             for title in titles_response.choices
         ]
         all_titles = remove_bad_titles(titles, stop_symbols, stop_ending_words)
-        valid_titles = all_titles["valid_titles"][
-            cmd.additional_params.no_of_covers : -1
-        ]
+        valid_titles = all_titles["valid_titles"][cmd.additional_params.no_of_covers :]
         valid_selectable_titles = all_titles["valid_titles"][
-            0 : cmd.additional_params.no_of_covers
+            : cmd.additional_params.no_of_covers
         ]
         bad_titles = all_titles["bad_titles"]
 
@@ -300,6 +316,10 @@ class CreateAsset(UseCase):
             .replace("}}", "}")
             .format(
                 generated_title=valid_selectable_titles[0],
+                story_location=selected_dict["story_location"],
+                animation_type=selected_dict["animation_type"],
+                colors_type=selected_dict["colors_type"],
+                orientation=selected_dict["orientation"],
             )
         )
 
