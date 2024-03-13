@@ -21,7 +21,7 @@ class HubSpot(CRM):
         async with httpx.AsyncClient(headers=self.headers) as client:
             return await client.get(f"{self.host}/crm/v3/objects/contacts/{contact_id}")
 
-    async def create_deal(self, deal: Deal):
+    async def create_deal(self, deal: Deal, order):
         async with httpx.AsyncClient(headers=self.headers) as client:
             body = {
                 "properties": {
@@ -29,6 +29,7 @@ class HubSpot(CRM):
                     "dealname": deal.name,
                     "pipeline": "default",
                     "dealstage": deal.stage,
+                    "order_details": order,
                 },
                 "associations": [
                     {
@@ -56,8 +57,7 @@ class HubSpot(CRM):
         async with httpx.AsyncClient(headers=self.headers) as client:
             body = {
                 "properties": {
-                    "firstname": contact.first_name,
-                    "lastname": contact.last_name,
+                    "firstname": contact.name,
                     "email": contact.email,
                 }
             }

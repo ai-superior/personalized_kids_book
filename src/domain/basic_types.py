@@ -1,9 +1,22 @@
 import abc
+from dataclasses import asdict, is_dataclass
 from dataclasses import dataclass, field
-from datetime import datetime, timezone
+from datetime import datetime
+from datetime import timezone
 from enum import Enum
 from typing import Self
 from uuid import uuid4
+
+
+def dataclass_to_dict(obj):
+    if is_dataclass(obj):
+        data = asdict(obj)
+        for key, value in data.items():
+            if isinstance(value, datetime):
+                data[key] = value.isoformat()  # Convert datetime to string
+        return data
+    else:
+        raise TypeError("Input object is not a dataclass instance")
 
 
 @dataclass(kw_only=True)

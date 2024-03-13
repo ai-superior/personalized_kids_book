@@ -1,10 +1,27 @@
 import abc
+import json
+import re
 
 from domain.assets.repositories import AssetRepository
-from domain.basic_types import UseCase
+from domain.basic_types import UseCase, dataclass_to_dict
 from domain.orders import queries, errors, commands
-from domain.orders.model import Order
+from domain.orders.model import Order, Contact, Deal
 from domain.orders.repositories import OrderRepository
+from domain.orders.services import CRM
+
+
+def extract_existing_contact_id_from_error(error_message):
+    # Define a regex pattern to search for the existing contact ID
+    pattern = r"Existing ID: (\d+)"
+    # Search for the pattern in the error message
+    match = re.search(pattern, error_message)
+    if match:
+        # If a match is found, return the ID as an integer
+        existing_contact_id = int(match.group(1))
+        return existing_contact_id
+    else:
+        # If no match is found, return None
+        return None
 
 
 class StandardOrderUseCase(UseCase, abc.ABC):
@@ -33,9 +50,10 @@ class GetOrderStatus(UseCase):
 
 
 class CreateOrder(UseCase):
-    def __init__(self, orders: OrderRepository):
+    def __init__(self, orders: OrderRepository, crm: CRM):
         super().__init__()
         self.orders = orders
+        self.crm = crm
 
     async def execute(self, cmd: commands.CreateOrder):
         order = Order(
@@ -62,6 +80,21 @@ class CreateOrder(UseCase):
             configs=cmd.configs,
         )
         await self.orders.add(order)
+        contact_response = await self.crm.create_contact(
+            contact=Contact(email=cmd.email, name=cmd.name)
+        )
+        if contact_response.status_code == "200":
+            contact_id = contact_response.json()["id"]
+        else:
+            contact_id = extract_existing_contact_id_from_error(
+                contact_response.json()["message"]
+            )
+        deal_response = await self.crm.create_deal(
+            deal=Deal(
+                amount="30", name=order.id, stage="contractsent", contact_id=contact_id
+            ),
+            order=json.dumps(dataclass_to_dict(order)),
+        )
         return order
 
 

@@ -27,7 +27,7 @@ class CRM(abc.ABC):
         ...
 
     @abc.abstractmethod
-    async def create_deal(self, deal: Deal):
+    async def create_deal(self, deal: Deal, order):
         ...
 
     @abc.abstractmethod

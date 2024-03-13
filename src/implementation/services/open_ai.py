@@ -2,10 +2,6 @@ from openai import OpenAI
 
 from domain.orders.model import LLMTextConfig, LLMImageConfig
 from domain.orders.services import LLMProcessor
-from openai import OpenAI
-
-from domain.orders.model import LLMTextConfig, LLMImageConfig
-from domain.orders.services import LLMProcessor
 
 
 class OpenAIAPI(LLMProcessor):

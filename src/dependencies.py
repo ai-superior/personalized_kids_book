@@ -19,7 +19,7 @@ class DependencyInjector(containers.DeclarativeContainer):
     orders: Factory[OrderRepository] = Factory(OrderSqlRepository, config)
     assets: Factory[AssetRepository] = Factory(AssetSqlRepository, config)
     previews: Factory[PreviewRepository] = Factory(PreviewSqlRepository, config)
-    hubspot: Factory[CRM] = Factory(HubSpot)
+    crm: Factory[CRM] = Factory(HubSpot)
     gpt: Factory[LLMProcessor] = Factory(OpenAIAPI)
 
     @classmethod

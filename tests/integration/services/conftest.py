@@ -19,7 +19,7 @@ def hubspot():
 @pytest_asyncio.fixture
 async def contact(hubspot):
     random_contact = Contact(
-        first_name=rand(3), last_name=rand(3), email=rand(5) + "@test.com"
+        name=rand(3), last_name=rand(3), email=rand(5) + "@test.com"
     )
     contact_response = await hubspot.create_contact(contact=random_contact)
     return contact_response.json()

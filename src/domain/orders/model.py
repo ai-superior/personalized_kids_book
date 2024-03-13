@@ -17,8 +17,7 @@ class LLMTextConfig:
 @dataclass
 class Contact:
     email: str
-    first_name: str
-    last_name: str
+    name: str
 
 
 @dataclass

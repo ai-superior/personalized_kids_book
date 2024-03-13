@@ -12,10 +12,15 @@ router = APIRouter(prefix="/orders")
 @router.post("/")
 async def create_order(cmd: commands.CreateOrder) -> model.Order:
     di = DependencyInjector.get()
-    order_usecase = usecases.CreateOrder(di.orders())
+    order_usecase = usecases.CreateOrder(di.orders(), di.crm())
     asset_usecase = asset_usecases.CreateAsset(di.assets(), di.orders(), di.gpt())
     preview_usecases.CreatePreview(di.previews(), di.assets())
     orders = await order_usecase.execute(cmd)
+    # asyncio.create_task(
+    #     asset_usecase.execute(
+    #         asset_commands.CreateAsset(order_id=orders.id, additional_params=cmd)
+    #     )
+    # )
     await asset_usecase.execute(
         asset_commands.CreateAsset(order_id=orders.id, additional_params=cmd)
     )
