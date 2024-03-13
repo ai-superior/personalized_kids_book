@@ -313,8 +313,8 @@ class CreateAsset(UseCase):
             for key, values in config_dict.items():
                 selected_dict[key] = random.choice(values)
                 ## making sure that the random pool is from an unrepeated list
-                if selected_dict[key].startswith("colors_type"):
-                    config_dict[key].remove(selected_dict[key])
+                # if selected_dict[key].startswith("colors_type"):
+                #     config_dict[key].remove(selected_dict[key])
 
             cover_prompt = cover_prompt.format(**selected_dict)
 
@@ -325,9 +325,9 @@ class CreateAsset(UseCase):
                     generated_title=valid_selectable_titles[0],
                     story_location=selected_dict_titles["story_location"],
                     animation_type=selected_dict["animation_type"],
-                    colors_type=selected_dict["colors_type_" + str(i + 1)]
-                    if (i + 1) <= 2
-                    else selected_dict["colors_type_1"],
+                    # colors_type=selected_dict["colors_type_" + str(i + 1)]
+                    # if (i + 1) <= 2
+                    # else selected_dict["colors_type_1"],
                     orientation=selected_dict["orientation"],
                 )
             )
