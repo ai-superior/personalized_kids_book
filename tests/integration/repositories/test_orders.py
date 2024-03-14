@@ -17,3 +17,9 @@ async def test_get_order(order: Order):
     repo: OrderRepository = DependencyInjector.get().orders()
     order_collection = await repo.get(order.id)
     assert order_collection.id == order.id
+
+
+@pytest.mark.asyncio
+async def test_update_order(order: Order):
+    repo: OrderRepository = DependencyInjector.get().orders()
+    await repo.update_deal_id()

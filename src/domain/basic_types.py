@@ -8,12 +8,20 @@ from typing import Self
 from uuid import uuid4
 
 
+def enum_to_string(obj):
+    if isinstance(obj, Enum):
+        return obj.value
+    return obj
+
+
 def dataclass_to_dict(obj):
     if is_dataclass(obj):
         data = asdict(obj)
         for key, value in data.items():
+            if isinstance(value, Enum):
+                data[key] = enum_to_string(value)
             if isinstance(value, datetime):
-                data[key] = value.isoformat()  # Convert datetime to string
+                data[key] = value.isoformat()
         return data
     else:
         raise TypeError("Input object is not a dataclass instance")

@@ -18,9 +18,7 @@ def hubspot():
 
 @pytest_asyncio.fixture
 async def contact(hubspot):
-    random_contact = Contact(
-        name=rand(3), last_name=rand(3), email=rand(5) + "@test.com"
-    )
+    random_contact = Contact(name=rand(3), email=rand(5) + "@test.com")
     contact_response = await hubspot.create_contact(contact=random_contact)
     return contact_response.json()
 
@@ -30,5 +28,5 @@ async def deal(hubspot, contact):
     random_deal = Deal(
         name=rand(3), contact_id=contact["id"], amount="30", stage="contractsent"
     )
-    deal_response = await hubspot.create_deal(random_deal)
+    deal_response = await hubspot.create_deal(random_deal, "order_details")
     return deal_response.json()

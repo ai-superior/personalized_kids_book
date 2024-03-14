@@ -1,5 +1,6 @@
 import abc
 import asyncio
+import json
 import secrets
 from io import BytesIO
 from textwrap import TextWrapper
@@ -9,7 +10,9 @@ from PIL import Image, ImageDraw, ImageFont
 
 from domain.assets.model import AssetType
 from domain.assets.repositories import AssetRepository
-from domain.basic_types import UseCase
+from domain.basic_types import UseCase, dataclass_to_dict
+from domain.orders.repositories import OrderRepository
+from domain.orders.services import CRM
 from domain.previews import queries, errors, commands
 from domain.previews.model import Preview, PreviewStatus
 from domain.previews.repositories import PreviewRepository
@@ -33,10 +36,18 @@ class ApprovePreview(StandardPreviewUseCase):
 
 
 class CreatePreview(UseCase):
-    def __init__(self, previews: PreviewRepository, assets: AssetRepository):
+    def __init__(
+        self,
+        previews: PreviewRepository,
+        assets: AssetRepository,
+        crm: CRM,
+        orders: OrderRepository,
+    ):
         super().__init__()
         self.previews = previews
         self.assets = assets
+        self.crm = crm
+        self.orders = orders
 
     @staticmethod
     async def get_file_from_url(url):
@@ -174,6 +185,10 @@ class CreatePreview(UseCase):
         )
 
         await self.previews.add(preview)
+        order = await self.orders.get(preview.order_id)
+        await self.crm.update_deal(
+            deal_id=order.deal_id, preview=json.dumps(dataclass_to_dict(preview))
+        )
         return preview
 
 

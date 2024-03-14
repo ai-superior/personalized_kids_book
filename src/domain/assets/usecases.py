@@ -1,5 +1,6 @@
 import abc
 import asyncio
+import json
 import random
 import re
 import secrets
@@ -12,10 +13,10 @@ from PIL import Image
 from domain.assets import queries, errors, commands
 from domain.assets.model import Asset, AssetType, AssetStatus, AssetCategory
 from domain.assets.repositories import AssetRepository
-from domain.basic_types import UseCase
+from domain.basic_types import UseCase, dataclass_to_dict
 from domain.orders.model import LLMTextConfig, LLMImageConfig
 from domain.orders.repositories import OrderRepository
-from domain.orders.services import LLMProcessor
+from domain.orders.services import LLMProcessor, CRM
 from settings import SETTINGS
 
 stop_symbols = [
@@ -132,12 +133,17 @@ class StandardAssetUseCase(UseCase, abc.ABC):
 
 class CreateAsset(UseCase):
     def __init__(
-        self, assets: AssetRepository, orders: OrderRepository, llm: LLMProcessor
+        self,
+        assets: AssetRepository,
+        orders: OrderRepository,
+        llm: LLMProcessor,
+        crm: CRM,
     ):
         super().__init__()
         self.assets = assets
         self.llm = llm
         self.orders = orders
+        self.crm = crm
 
     @staticmethod
     async def get_file_from_url(url):
@@ -366,6 +372,13 @@ class CreateAsset(UseCase):
 
             assets.append(asset)
             await self.assets.add(asset)
+            assets_json_list = []
+            for asset in assets:
+                assets_json_list.append(dataclass_to_dict(asset))
+
+            await self.crm.update_deal(
+                deal_id=order.deal_id, assets=json.dumps(assets_json_list)
+            )
 
         return assets
 

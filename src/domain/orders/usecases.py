@@ -95,6 +95,9 @@ class CreateOrder(UseCase):
             ),
             order=json.dumps(dataclass_to_dict(order)),
         )
+        await self.orders.update_deal_id(
+            order_id=order.id, deal_id=deal_response.json()["id"]
+        )
         return order
 
 

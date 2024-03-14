@@ -12,7 +12,7 @@ router = APIRouter(prefix="/previews")
 @router.post("/")
 async def create_preview(cmd: commands.CreatePreview) -> model.Preview:
     di = DependencyInjector.get()
-    usecase = usecases.CreatePreview(di.previews(), di.assets())
+    usecase = usecases.CreatePreview(di.previews(), di.assets(), di.crm(), di.orders())
     return await usecase.execute(cmd)
 
 

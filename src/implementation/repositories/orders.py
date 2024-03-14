@@ -40,6 +40,7 @@ def _model_to_db(orders: model.Order):
         "total_no_of_titles": orders.total_no_of_titles,
         "configs": convert_to_dict(orders.configs),
         "prompts": convert_to_dict(orders.prompts),
+        "deal_id": orders.deal_id,
     }
 
 
@@ -56,6 +57,12 @@ class OrderSqlRepository(OrderRepository, SqlRepository):
     async def get(self, order_id: str) -> Order:
         document = await self.db["orders"].find_one({"id": order_id})
         return _db_to_model(document)
+
+    async def update_deal_id(self, order_id: str, deal_id: str):
+        document = await self.db["orders"].update_one(
+            {"id": order_id}, {"$set": {"deal_id": deal_id}}
+        )
+        return await self.get(order_id)
 
     async def list(self) -> list[Order]:
         cursor = self.db["orders"].find({})

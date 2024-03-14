@@ -82,4 +82,5 @@ class Order(Entity):
     no_of_covers: int
     configs: Configs
     prompts: Prompt
+    deal_id: Optional[str] = None
     total_no_of_titles: Optional[int] = None

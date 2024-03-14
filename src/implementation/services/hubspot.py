@@ -45,6 +45,20 @@ class HubSpot(CRM):
             }
             return await client.post(f"{self.host}/crm/v3/objects/deals", json=body)
 
+    async def update_deal(self, deal_id: str, assets=None, preview=None):
+        async with httpx.AsyncClient(headers=self.headers) as client:
+            body = {"properties": {}}
+
+            if assets is not None:
+                body["properties"]["asset_details"] = assets
+
+            if preview is not None:
+                body["properties"]["preview_details"] = preview
+
+            return await client.patch(
+                f"{self.host}/crm/v3/objects/deals/{deal_id}", json=body
+            )
+
     async def get_deal(self, deal_id: str):
         async with httpx.AsyncClient(headers=self.headers) as client:
             return await client.get(f"{self.host}/crm/v3/objects/deals/{deal_id}")

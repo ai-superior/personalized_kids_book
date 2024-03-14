@@ -15,3 +15,7 @@ class OrderRepository(abc.ABC):
     @abc.abstractmethod
     async def list(self) -> list[Order]:
         raise NotImplementedError
+
+    @abc.abstractmethod
+    async def update_deal_id(self, order_id: str, deal_id: str):
+        raise NotImplementedError

@@ -37,3 +37,7 @@ class CRM(abc.ABC):
     @abc.abstractmethod
     async def get_deal(self, deal_id: str):
         ...
+
+    @abc.abstractmethod
+    async def update_deal(self, deal_id: str, assets=None, preview=None):
+        ...
