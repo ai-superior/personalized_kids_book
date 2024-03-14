@@ -1,5 +1,3 @@
-import asyncio
-
 from fastapi import APIRouter
 
 from dependencies import DependencyInjector
@@ -22,14 +20,14 @@ async def create_order(cmd: commands.CreateOrder) -> model.Order:
         previews=di.previews(), assets=di.assets(), crm=di.crm(), orders=di.orders()
     )
     orders = await order_usecase.execute(cmd)
-    asyncio.create_task(
-        asset_usecase.execute(
-            asset_commands.CreateAsset(order_id=orders.id, additional_params=cmd)
-        )
-    )
-    # await asset_usecase.execute(
-    #     asset_commands.CreateAsset(order_id=orders.id, additional_params=cmd)
+    # asyncio.create_task(
+    #     asset_usecase.execute(
+    #         asset_commands.CreateAsset(order_id=orders.id, additional_params=cmd)
+    #     )
     # )
+    await asset_usecase.execute(
+        asset_commands.CreateAsset(order_id=orders.id, additional_params=cmd)
+    )
     return orders
 
 
