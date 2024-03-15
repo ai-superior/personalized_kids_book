@@ -31,7 +31,6 @@ class AssetSqlRepository(AssetRepository, SqlRepository):
 
     async def get(self, asset_id: str) -> Asset:
         document = await self.db["assets"].find_one({"id": asset_id})
-        await self.update_was_shown_flag(asset_id)
         return _db_to_model(document)
 
     async def update_was_shown_flag(self, asset_id: str):
@@ -43,14 +42,14 @@ class AssetSqlRepository(AssetRepository, SqlRepository):
         cursor = self.db["assets"].find({"order_id": order_id})
         assets = []
         async for document in cursor:
-            await self.update_was_shown_flag(document["id"])
+            if document["was_shown"] is not True:
+                await self.update_was_shown_flag(document["id"])
             assets.append(_db_to_model(document))
         return assets
 
     async def list(self) -> list[Asset]:
         cursor = self.db["assets"].find({})
         assets = []
-        async for document in cursor:
-            await self.update_was_shown_flag(document["id"])
+        for document in cursor:
             assets.append(_db_to_model(document))
         return assets

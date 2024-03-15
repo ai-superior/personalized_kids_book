@@ -30,5 +30,7 @@ async def get_asset_by_asset_id(asset_id: str) -> model.Asset:
 @router.get("/order_id/{order_id}")
 async def get_asset_by_order_id(order_id: str) -> list[model.Asset]:
     di = DependencyInjector.get()
-    usecase = usecases.GetAssetByOrderId(di.assets())
+    usecase = usecases.GetAssetByOrderId(
+        assets=di.assets(), crm=di.crm(), orders=di.orders()
+    )
     return await usecase.execute(queries.GetAssetByOrderId(order_id=order_id))

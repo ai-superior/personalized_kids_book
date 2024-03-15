@@ -126,9 +126,9 @@ def remove_bad_titles(titles, stop_symbols, stop_ending_words):
 
 
 class StandardAssetUseCase(UseCase, abc.ABC):
-    def __init__(self, messages: AssetRepository):
+    def __init__(self, assets: AssetRepository):
         super().__init__()
-        self.messages = messages
+        self.assets = assets
 
 
 class CreateAsset(UseCase):
@@ -383,9 +383,33 @@ class CreateAsset(UseCase):
         return assets
 
 
+class GetAssetByOrderId(UseCase):
+    def __init__(self, assets: AssetRepository, crm: CRM, orders: OrderRepository):
+        self.assets = assets
+        self.crm = crm
+        self.orders = orders
+
+    async def execute(self, query: queries.GetAssetByOrderId) -> list[Asset]:
+        order = await self.orders.get(query.order_id)
+        assets = await self.assets.get_by_order_id(query.order_id)
+
+        if assets[0].was_shown is not True:
+            assets_json_list = []
+            for asset in assets:
+                assets_json_list.append(dataclass_to_dict(asset))
+
+            await self.crm.update_deal(
+                deal_id=order.deal_id, assets=json.dumps(assets_json_list)
+            )
+
+        if assets is None:  # pragma: no cover
+            raise errors.AssetNotFound
+        return assets
+
+
 class GetAsset(StandardAssetUseCase):
     async def execute(self, query: queries.GetAsset) -> Asset:
-        asset = await self.messages.get(query.asset_id)
+        asset = await self.assets.get(query.asset_id)
 
         if asset is None:  # pragma: no cover
             raise errors.AssetNotFound
@@ -394,14 +418,5 @@ class GetAsset(StandardAssetUseCase):
 
 class GetAssets(StandardAssetUseCase):
     async def execute(self) -> list[Asset]:
-        assets = await self.messages.list()
-        return assets
-
-
-class GetAssetByOrderId(StandardAssetUseCase):
-    async def execute(self, query: queries.GetAssetByOrderId) -> list[Asset]:
-        assets = await self.messages.get_by_order_id(query.order_id)
-
-        if assets is None:  # pragma: no cover
-            raise errors.AssetNotFound
+        assets = await self.assets.list()
         return assets

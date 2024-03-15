@@ -43,7 +43,7 @@ class GetOrderStatus(UseCase):
             int(order.total_no_of_titles) if order.total_no_of_titles is not None else 0
         )
         total_covers = int(order.no_of_covers) if order.no_of_covers is not None else 0
-        if len(assets) >= total_titles + total_covers - 1:
+        if len(assets) >= total_titles + total_covers + 1:
             return True
         else:
             return False
