@@ -5,6 +5,6 @@ from domain.assets.usecases import remove_bad_titles, stop_symbols, stop_ending_
 
 @pytest.mark.asyncio
 async def test_remove_bad_titles():
-    titles = ["Tim, der Hanse-Kicker und das Pizza-Abenteuer am Spanischen Strand"]
+    titles = ["\nTims Hafenabenteuer mit Fußball und Pizza"]
     result = remove_bad_titles(titles, stop_symbols, stop_ending_words)
     assert True

@@ -245,7 +245,7 @@ class CreateAsset(UseCase):
             configs=title_configs,
         )
         titles = [
-            title.message.content.strip('"').strip("”")
+            title.message.content.strip().strip('"').strip("”")
             for title in titles_response.choices
         ]
         all_titles = remove_bad_titles(titles, stop_symbols, stop_ending_words)
