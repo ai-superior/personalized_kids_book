@@ -34,13 +34,22 @@ class ApprovePreview(UseCase):
     async def execute(self, query: queries.ApprovePreview) -> Preview:
         current_preview = await self.previews.get(query.preview_id)
         all_previews = await self.previews.get_by_order_id(current_preview.order_id)
+
         for preview in all_previews:
             await self.previews.disapprove_preview(preview.id)
+
         result = await self.previews.approve_preview(current_preview.id)
         preview = await self.previews.get(preview_id=query.preview_id)
         order = await self.orders.get(order_id=preview.order_id)
+
+        previews = await self.previews.get_by_order_id(order_id=order.id)
+
+        previews_json_list = []
+        for preview in previews:
+            previews_json_list.append(dataclass_to_dict(preview))
+
         await self.crm.update_deal(
-            deal_id=order.deal_id, preview=json.dumps(dataclass_to_dict(preview))
+            deal_id=order.deal_id, preview=json.dumps(previews_json_list)
         )
         return result
 
@@ -196,8 +205,12 @@ class CreatePreview(UseCase):
 
         await self.previews.add(preview)
         order = await self.orders.get(preview.order_id)
+        previews = await self.previews.get_by_order_id(order_id=order.id)
+        previews_json_list = []
+        for preview in previews:
+            previews_json_list.append(dataclass_to_dict(preview))
         await self.crm.update_deal(
-            deal_id=order.deal_id, preview=json.dumps(dataclass_to_dict(preview))
+            deal_id=order.deal_id, preview=json.dumps(previews_json_list)
         )
         return preview
 
