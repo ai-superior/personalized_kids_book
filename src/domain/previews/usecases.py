@@ -230,8 +230,23 @@ class GetPreviews(StandardPreviewUseCase):
         return previews
 
 
-class GetPreviewByOrderId(StandardPreviewUseCase):
+class GetPreviewByOrderId(UseCase):
+    def __init__(self, previews: PreviewRepository, orders: OrderRepository, crm: CRM):
+        self.previews = previews
+        self.orders = orders
+        self.crm = crm
+
     async def execute(self, query: queries.GetPreviewsByOrderId) -> list[Preview]:
         previews = await self.previews.get_by_order_id(query.order_id)
+
+        order = await self.orders.get(query.order_id)
+
+        previews_json_list = []
+        for preview in previews:
+            previews_json_list.append(dataclass_to_dict(preview))
+
+        await self.crm.update_deal(
+            deal_id=order.deal_id, preview=json.dumps(previews_json_list)
+        )
 
         return previews

@@ -33,7 +33,9 @@ async def get_preview_by_preview_id(preview_id: str) -> model.Preview:
 @router.get("/order_id/{order_id}")
 async def get_preview_by_order_id(order_id: str) -> list[model.Preview]:
     di = DependencyInjector.get()
-    usecase = usecases.GetPreviewByOrderId(di.previews())
+    usecase = usecases.GetPreviewByOrderId(
+        previews=di.previews(), orders=di.orders(), crm=di.crm()
+    )
     return await usecase.execute(queries.GetPreviewsByOrderId(order_id=order_id))
 
 

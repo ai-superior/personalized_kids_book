@@ -27,3 +27,7 @@ class PreviewRepository(abc.ABC):
     @abc.abstractmethod
     async def disapprove_preview(self, preview: str) -> Preview:
         raise NotImplementedError
+
+    @abc.abstractmethod
+    async def update_was_shown_flag(self, preview_id: str):
+        raise NotImplementedError

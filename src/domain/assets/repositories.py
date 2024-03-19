@@ -19,3 +19,7 @@ class AssetRepository(abc.ABC):
     @abc.abstractmethod
     async def list(self) -> list[Asset]:
         raise NotImplementedError
+
+    @abc.abstractmethod
+    async def update_was_shown_flag(self, asset_id: str):
+        raise NotImplementedError

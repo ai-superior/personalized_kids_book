@@ -15,6 +15,7 @@ class Preview(Entity):
     asset_ids: list[str]
     order_id: str
     status: PreviewStatus
+    was_shown: Optional[bool] = None
     is_approved: Optional[bool] = None
     title: Optional[str] = None
     cover_image_url: Optional[str] = None

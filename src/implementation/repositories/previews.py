@@ -16,6 +16,7 @@ def _model_to_db(previews: model.Preview):
         "cover_image_url": previews.cover_image_url,
         "character_image_url": previews.character_image_url,
         "fused_image_url": previews.fused_image_url,
+        "was_shown": previews.was_shown,
     }
 
 
@@ -37,6 +38,8 @@ class PreviewSqlRepository(PreviewRepository, SqlRepository):
         cursor = self.db["previews"].find({"order_id": order_id})
         previews = []
         async for document in cursor:
+            if document["was_shown"] is not True:
+                await self.update_was_shown_flag(document["id"])
             previews.append(_db_to_model(document))
         return previews
 
@@ -60,3 +63,8 @@ class PreviewSqlRepository(PreviewRepository, SqlRepository):
         async for document in cursor:
             previews.append(_db_to_model(document))
         return previews
+
+    async def update_was_shown_flag(self, preview_id: str):
+        return await self.db["previews"].update_one(
+            {"id": preview_id}, {"$set": {"was_shown": True}}
+        )
