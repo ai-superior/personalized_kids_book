@@ -62,5 +62,5 @@ async def create_hubspot_deal():
         name="test_deal", contact_id="1951", amount="30", stage="contractsent"
     )
     di = DependencyInjector.get()
-    deal_response = await di.hubspot().create_deal(random_deal)
+    deal_response = await di.crm().create_deal(deal=random_deal, order="test")
     return deal_response.json()
