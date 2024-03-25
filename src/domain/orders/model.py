@@ -64,24 +64,25 @@ class Prompt:
 class Order(Entity):
     email: str
     name: str
-    city: str
     birthday: str
-    favourite_food: str
-    interests: str
-    event_to_come: str
     skin_tone: str
     hair_color: str
     hair_length: str
     kids_photo: str
     favourite_place: str
     story_message: str
-    personal_dedication: str
+
     gender: str
     age: str
     hair_style: str
     no_of_covers: int
     configs: Configs
     prompts: Prompt
+    personal_dedication: Optional[str] = None
+    favourite_food: Optional[str] = None
+    interests: Optional[str] = None
+    event_to_come: Optional[str] = None
+    city: Optional[str] = None
     intent: Optional[str] = None
     story_location: Optional[str] = None
     deal_id: Optional[str] = None

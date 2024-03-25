@@ -85,7 +85,7 @@ class CreateOrder(UseCase):
         contact_response = await self.crm.create_contact(
             contact=Contact(email=cmd.email, name=cmd.name)
         )
-        if contact_response.status_code == "200":
+        if contact_response.status_code == 201:
             contact_id = contact_response.json()["id"]
         else:
             contact_id = extract_existing_contact_id_from_error(
