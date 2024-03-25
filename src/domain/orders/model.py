@@ -68,8 +68,6 @@ class Order(Entity):
     birthday: str
     favourite_food: str
     interests: str
-    intent: str
-    story_location: str
     event_to_come: str
     skin_tone: str
     hair_color: str
@@ -84,5 +82,7 @@ class Order(Entity):
     no_of_covers: int
     configs: Configs
     prompts: Prompt
+    intent: Optional[str] = None
+    story_location: Optional[str] = None
     deal_id: Optional[str] = None
     total_no_of_titles: Optional[int] = None
