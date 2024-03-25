@@ -41,6 +41,8 @@ def _model_to_db(orders: model.Order):
         "configs": convert_to_dict(orders.configs),
         "prompts": convert_to_dict(orders.prompts),
         "deal_id": orders.deal_id,
+        "intent": orders.intent,
+        "story_location": orders.story_location,
     }
 
 

@@ -68,6 +68,8 @@ class Order(Entity):
     birthday: str
     favourite_food: str
     interests: str
+    intent: str
+    story_location: str
     event_to_come: str
     skin_tone: str
     hair_color: str

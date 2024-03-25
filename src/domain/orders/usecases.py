@@ -78,6 +78,8 @@ class CreateOrder(UseCase):
             total_no_of_titles=cmd.total_no_of_titles,
             prompts=cmd.prompts,
             configs=cmd.configs,
+            intent=cmd.intent,
+            story_location=cmd.story_location,
         )
         await self.orders.add(order)
         contact_response = await self.crm.create_contact(
