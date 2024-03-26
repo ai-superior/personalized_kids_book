@@ -76,3 +76,60 @@ class HubSpot(CRM):
                 }
             }
             return await client.post(f"{self.host}/crm/v3/objects/contacts", json=body)
+
+    async def create_group(self, group_name: str, group_label: str):
+        async with httpx.AsyncClient(headers=self.headers, timeout=300.0) as client:
+            body = {
+                "name": group_name,
+                "label": group_label,
+                "displayOrder": -1,
+            }
+            return await client.post(
+                f"{self.host}/crm/v3/properties/deal/groups", json=body
+            )
+
+    async def delete_group(self, group_name: str):
+        async with httpx.AsyncClient(headers=self.headers, timeout=300.0) as client:
+            return await client.delete(
+                f"{self.host}/crm/v3/properties/deal/groups/{group_name}"
+            )
+
+    async def get_group(self, group_name: str):
+        async with httpx.AsyncClient(headers=self.headers, timeout=300.0) as client:
+            return await client.get(
+                f"{self.host}/crm/v3/properties/deal/groups/{group_name}"
+            )
+
+    async def create_text_property(self, group_name: str, property_name: str):
+        async with httpx.AsyncClient(headers=self.headers, timeout=300.0) as client:
+            body = {
+                "fieldType": "text",
+                "groupName": group_name,
+                "label": property_name,
+                "name": property_name,
+                "type": "string",
+            }
+            return await client.post(f"{self.host}/crm/v3/properties/deal", json=body)
+
+    async def create_dropdown_property(
+        self, group_name: str, property_name: str, possible_values: list
+    ):
+        async with httpx.AsyncClient(headers=self.headers, timeout=300.0) as client:
+            options = []
+            for value in possible_values:
+                options.append({"label": value, "value": value})
+            body = {
+                "fieldType": "select",
+                "options": options,
+                "groupName": group_name,
+                "label": property_name,
+                "name": property_name,
+                "type": "enumeration",
+            }
+            return await client.post(f"{self.host}/crm/v3/properties/deal", json=body)
+
+    async def delete_property(self, property_name: str):
+        async with httpx.AsyncClient(headers=self.headers, timeout=300.0) as client:
+            return await client.delete(
+                f"{self.host}/crm/v3/properties/deal/{property_name}"
+            )

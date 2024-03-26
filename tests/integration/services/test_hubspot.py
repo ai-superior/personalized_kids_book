@@ -43,3 +43,41 @@ async def test_update_preview(hubspot, deal: dict):
         preview="test_previews",
     )
     assert deal_response.status_code == 200
+
+
+@pytest.mark.asyncio
+async def test_create_delete_group(hubspot):
+    created_group_response = await hubspot.create_group(
+        group_name="kids_info", group_label="Kids Info"
+    )
+    assert created_group_response.status_code == 201
+    deleted_group_response = await hubspot.delete_group("kids_info")
+    assert deleted_group_response.status_code == 204
+
+
+@pytest.mark.asyncio
+async def test_create_text_property(hubspot):
+    created_group_response = await hubspot.create_group(
+        group_name="kids_info", group_label="Kids Info"
+    )
+    assert created_group_response.status_code == 201
+    created_property_response = await hubspot.create_text_property(
+        group_name="kids_info", property_name="kids_name"
+    )
+    assert created_property_response.status_code == 201
+    deleted_property_response = await hubspot.delete_property(property_name="kids_name")
+    assert deleted_property_response.status_code == 204
+    await hubspot.delete_group("kids_info")
+
+
+@pytest.mark.asyncio
+async def test_create_dropdown_property(hubspot):
+    await hubspot.create_group(group_name="kids_info", group_label="Kids Info")
+    created_property_response = await hubspot.create_dropdown_property(
+        group_name="kids_info",
+        property_name="test_dd",
+        possible_values=["option1", "option2"],
+    )
+    assert created_property_response.status_code == 201
+    await hubspot.delete_property(property_name="test_dd")
+    await hubspot.delete_group(group_name="kids_info")
