@@ -14,15 +14,15 @@ class HubSpot(CRM):
         }
 
     async def get_contacts(self):
-        async with httpx.AsyncClient(headers=self.headers) as client:
+        async with httpx.AsyncClient(headers=self.headers, timeout=300.0) as client:
             return await client.get(f"{self.host}/crm/v3/objects/contacts")
 
     async def get_contact(self, contact_id: str):
-        async with httpx.AsyncClient(headers=self.headers) as client:
+        async with httpx.AsyncClient(headers=self.headers, timeout=300.0) as client:
             return await client.get(f"{self.host}/crm/v3/objects/contacts/{contact_id}")
 
     async def create_deal(self, deal: Deal, order):
-        async with httpx.AsyncClient(headers=self.headers) as client:
+        async with httpx.AsyncClient(headers=self.headers, timeout=300.0) as client:
             body = {
                 "properties": {
                     "amount": str(deal.amount),
@@ -46,7 +46,7 @@ class HubSpot(CRM):
             return await client.post(f"{self.host}/crm/v3/objects/deals", json=body)
 
     async def update_deal(self, deal_id: str, assets=None, preview=None):
-        async with httpx.AsyncClient(headers=self.headers) as client:
+        async with httpx.AsyncClient(headers=self.headers, timeout=300.0) as client:
             body = {"properties": {}}
 
             if assets is not None:
@@ -60,15 +60,15 @@ class HubSpot(CRM):
             )
 
     async def get_deal(self, deal_id: str):
-        async with httpx.AsyncClient(headers=self.headers) as client:
+        async with httpx.AsyncClient(headers=self.headers, timeout=300.0) as client:
             return await client.get(f"{self.host}/crm/v3/objects/deals/{deal_id}")
 
     async def get_deals(self):
-        async with httpx.AsyncClient(headers=self.headers) as client:
+        async with httpx.AsyncClient(headers=self.headers, timeout=300.0) as client:
             return await client.get(f"{self.host}/crm/v3/objects/deals")
 
     async def create_contact(self, contact: Contact):
-        async with httpx.AsyncClient(headers=self.headers) as client:
+        async with httpx.AsyncClient(headers=self.headers, timeout=300.0) as client:
             body = {
                 "properties": {
                     "firstname": contact.name,

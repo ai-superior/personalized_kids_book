@@ -9,7 +9,7 @@ async def test_get_contact(hubspot):
 
 
 @pytest.mark.asyncio
-async def test_get_contact(hubspot, contact):
+async def test_get_contact(hubspot, contact: dict):
     contact_response = await hubspot.get_contact(contact_id=contact["id"])
     assert contact_response.json()["id"] == contact["id"]
 
@@ -22,13 +22,13 @@ async def test_get_deals(hubspot):
 
 
 @pytest.mark.asyncio
-async def test_get_deal(hubspot, contact, deal):
+async def test_get_deal(hubspot, contact, deal: dict):
     deal_response = await hubspot.get_deal(deal_id=deal["id"])
     assert deal_response.json()["id"] == deal["id"]
 
 
 @pytest.mark.asyncio
-async def test_update_assets(hubspot, deal):
+async def test_update_assets(hubspot, deal: dict):
     deal_response = await hubspot.update_deal(
         deal_id=deal["id"],
         assets="test_assets",
@@ -37,7 +37,7 @@ async def test_update_assets(hubspot, deal):
 
 
 @pytest.mark.asyncio
-async def test_update_preview(hubspot, deal):
+async def test_update_preview(hubspot, deal: dict):
     deal_response = await hubspot.update_deal(
         deal_id=deal["id"],
         preview="test_previews",
