@@ -36,19 +36,19 @@ with open("src/config/book_title_template.txt") as f:
         book_cover_template.replace("{{", "{")
         .replace("}}", "}")
         .format(
-            name=cmd.name,
+            name=cmd.kids_name,
             city=cmd.city,
-            birthday=cmd.birthday,
+            birthday=cmd.kids_date_of_birth,
             favourite_food=cmd.favourite_food,
-            interests=cmd.interests,
-            event_to_come=cmd.event_to_come,
-            skin_tone=cmd.skin_tone,
+            interests=cmd.interest,
+            event_to_come=cmd.upcoming_life_event,
+            skin_tone=cmd.color_skin_tone,
             hair_color=cmd.hair_color,
             hair_length=cmd.hair_length,
-            kids_photo=cmd.kids_photo,
+            kids_photo=cmd.image,
             favourite_place=cmd.favourite_place,
             story_message=cmd.story_message,
-            personal_dedication=cmd.personal_dedication,
+            personal_dedication=cmd.dedication,
         )
     )
 
@@ -58,19 +58,19 @@ with open("src/config/book_cover_template.txt") as f:
         book_cover_template.replace("{{", "{")
         .replace("}}", "}")
         .format(
-            name=cmd.name,
+            name=cmd.kids_name,
             city=cmd.city,
-            birthday=cmd.birthday,
+            birthday=cmd.kids_date_of_birth,
             favourite_food=cmd.favourite_food,
-            interests=cmd.interests,
-            event_to_come=cmd.event_to_come,
-            skin_tone=cmd.skin_tone,
+            interests=cmd.interest,
+            event_to_come=cmd.upcoming_life_event,
+            skin_tone=cmd.color_skin_tone,
             hair_color=cmd.hair_color,
             hair_length=cmd.hair_length,
-            kids_photo=cmd.kids_photo,
+            kids_photo=cmd.image,
             favourite_place=cmd.favourite_place,
             story_message=cmd.story_message,
-            personal_dedication=cmd.personal_dedication,
+            personal_dedication=cmd.dedication,
         )
     )
 
@@ -95,19 +95,19 @@ result = model.Result(
 
 order = model.Order(
     email=cmd.email,
-    name=cmd.name,
+    name=cmd.kids_name,
     city=cmd.city,
-    birthday=cmd.birthday,
+    birthday=cmd.kids_date_of_birth,
     favourite_food=cmd.favourite_food,
-    interests=cmd.interests,
-    event_to_come=cmd.event_to_come,
-    skin_tone=cmd.skin_tone,
+    interests=cmd.interest,
+    event_to_come=cmd.upcoming_life_event,
+    skin_tone=cmd.color_skin_tone,
     hair_color=cmd.hair_color,
     hair_length=cmd.hair_length,
-    kids_photo=cmd.kids_photo,
+    kids_photo=cmd.image,
     favourite_place=cmd.favourite_place,
     story_message=cmd.story_message,
-    personal_dedication=cmd.personal_dedication,
+    personal_dedication=cmd.dedication,
     status="Success",
     result=result,
 )

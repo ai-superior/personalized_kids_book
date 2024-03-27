@@ -11,16 +11,12 @@ from domain.orders.services import CRM
 
 
 def extract_existing_contact_id_from_error(error_message):
-    # Define a regex pattern to search for the existing contact ID
     pattern = r"Existing ID: (\d+)"
-    # Search for the pattern in the error message
     match = re.search(pattern, error_message)
     if match:
-        # If a match is found, return the ID as an integer
         existing_contact_id = int(match.group(1))
         return existing_contact_id
     else:
-        # If no match is found, return None
         return None
 
 
@@ -58,32 +54,29 @@ class CreateOrder(UseCase):
     async def execute(self, cmd: commands.CreateOrder):
         order = Order(
             email=cmd.email,
-            name=cmd.name,
+            kids_name=cmd.kids_name,
             city=cmd.city,
-            birthday=cmd.birthday,
+            kids_date_of_birth=cmd.kids_date_of_birth,
             favourite_food=cmd.favourite_food,
-            interests=cmd.interests,
-            event_to_come=cmd.event_to_come,
-            skin_tone=cmd.skin_tone,
+            interest=cmd.interest,
+            upcoming_life_event=cmd.upcoming_life_event,
+            color_skin_tone=cmd.color_skin_tone,
             hair_color=cmd.hair_color,
             hair_length=cmd.hair_length,
-            kids_photo=cmd.kids_photo,
-            favourite_place=cmd.favourite_place,
-            story_message=cmd.story_message,
-            personal_dedication=cmd.personal_dedication,
-            gender=cmd.gender,
-            hair_style=cmd.hair_style,
+            image=cmd.image,
+            dedication=cmd.dedication,
+            kids_gender=cmd.kids_gender,
             age=cmd.age,
             no_of_covers=cmd.no_of_covers,
             total_no_of_titles=cmd.total_no_of_titles,
             prompts=cmd.prompts,
             configs=cmd.configs,
-            intent=cmd.intent,
+            intent_message=cmd.intent_message,
             story_location=cmd.story_location,
         )
         await self.orders.add(order)
         contact_response = await self.crm.create_contact(
-            contact=Contact(email=cmd.email, name=cmd.name)
+            contact=Contact(email=cmd.email, name=cmd.kids_name)
         )
         if contact_response.status_code == 201:
             contact_id = contact_response.json()["id"]

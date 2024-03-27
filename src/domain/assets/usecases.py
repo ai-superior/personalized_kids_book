@@ -222,14 +222,14 @@ class CreateAsset(UseCase):
             title_prompt.replace("{{", "{")
             .replace("}}", "}")
             .format(
-                name=order.name,
+                name=order.kids_name,
                 city=order.city,
-                birthday=order.birthday,
+                birthday=order.kids_date_of_birth,
                 favourite_food=order.favourite_food,
-                interests=order.interests,
-                favourite_place=order.favourite_place,
-                event_to_come=order.event_to_come,
-                story_location=selected_dict_titles["story_location"],
+                interest=order.interest,
+                upcoming_life_event=order.upcoming_life_event,
+                story_location=order.story_location
+                # story_location=selected_dict_titles["story_location"],
             )
         )
 
@@ -257,12 +257,12 @@ class CreateAsset(UseCase):
 
         char_url = await self.find_character(
             file_url="https://ai-childrens-book-assets.s3.eu-central-1.amazonaws.com/01_Character_excel.xlsx",
-            gender=order.gender,
+            gender=order.kids_gender,
             age=order.age,
             hair_color=order.hair_color,
             hair_length=order.hair_length,
-            hair_style=order.hair_style,
-            skin_tone=order.skin_tone,
+            skin_tone=order.color_skin_tone,
+            hair_style="straight",
         )
 
         asset = Asset(

@@ -1,5 +1,5 @@
 from dataclasses import dataclass
-from typing import Literal
+from typing import Literal, Optional
 
 from domain.basic_types import Command
 from domain.orders.model import Prompt, Configs
@@ -14,25 +14,24 @@ class CoverConfigs:
 @dataclass(frozen=True)
 class CreateOrder(Command):
     email: str
-    name: str
-    city: str
-    birthday: str
-    favourite_food: str
-    interests: str
-    intent: str
-    story_location: str
-    event_to_come: str
-    skin_tone: str
+    kids_name: str
+    kids_gender: str
     hair_color: str
     hair_length: str
-    kids_photo: str
-    favourite_place: str
-    story_message: str
-    personal_dedication: str
-    age: str
-    gender: str
-    hair_style: str
+    color_skin_tone: str
+    no_of_covers: int
     configs: Configs
     prompts: Prompt
-    no_of_covers: int = 2
+    kids_date_of_birth: Optional[str] = None
+    age: Optional[str] = "2-6"
+    city: Optional[str] = None
+    interest: Optional[str] = None
+    favourite_food: Optional[str] = None
+    upcoming_life_event: Optional[str] = None
+    intent_message: Optional[str] = None
+    story_location: Optional[str] = None
+    mood: Optional[str] = None
+    dedication: Optional[str] = None
+    image: str = None
+
     total_no_of_titles: int = 5

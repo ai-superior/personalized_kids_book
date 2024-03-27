@@ -37,7 +37,19 @@ async def test_seed_text_property_creation(hubspot):
                 {"favourite_food": ("text", "string")},
                 {"upcoming_life_event": ["birthday", "vacation"]},
                 {"intent_message": ("text", "string")},
-                {"story_location": ["forest", "castle"]},
+                {
+                    "story_location": [
+                        "German Village",
+                        "Magical Forest",
+                        "Beach Coast",
+                        "Flower Garden",
+                        "Moon",
+                        "Jungle",
+                        "Magical Playground",
+                        "Dinosaur World",
+                    ]
+                },
+                {"mood": ["happy", "fun"]},
                 {"dedication": ("textarea", "string")},
             ],
             "kids_info_aggregated": [
@@ -94,8 +106,8 @@ async def test_seed_text_property_creation(hubspot):
                             possible_values=possible_values,
                         )
 
-    for config in properties_config:
-        for group, properties_list in config.items():
-            for property_dict in properties_list:
-                for property_name, types in property_dict.items():
-                    await hubspot.delete_property(property_name=property_name)
+    # for config in properties_config:
+    #     for group, properties_list in config.items():
+    #         for property_dict in properties_list:
+    #             for property_name, types in property_dict.items():
+    #                 await hubspot.delete_property(property_name=property_name)

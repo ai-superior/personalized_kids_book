@@ -1,4 +1,5 @@
 import secrets
+from time import sleep
 
 import pytest
 import pytest_asyncio
@@ -26,22 +27,12 @@ def client():
 def order(client):
     data = {
         "email": "someemail@gmail.com",
-        "name": "Tim",
-        "city": "Hamburg",
-        "birthday": "28/01/2019",
-        "favourite_food": "Pizza",
-        "interests": "Fussball",
-        "event_to_come": "Urlaub in Spanien",
-        "skin_tone": "fair",
+        "kids_name": "Tim",
+        "kids_gender": "girl",
         "hair_color": "blond",
         "hair_length": "short",
-        "kids_photo": "string",
-        "favourite_place": "Der Hamburger Hafen",
-        "story_message": "Mut und Freundschaft überwinden alle Hindernisse",
-        "personal_dedication": "Für dich meine Liebe",
-        "age": "0-1",
-        "gender": "girl",
-        "hair_style": "straight",
+        "color_skin_tone": "fair",
+        "no_of_covers": 1,
         "configs": {
             "cover_configs": {"quality": "standard", "model": "dall-e-3"},
             "title_configs": {
@@ -53,9 +44,8 @@ def order(client):
         },
         "prompts": {
             "cover_prompt": "Standard Image",
-            "title_prompt": "Standard Title",
+            "title_prompt": "Just return a title in 4 words",
         },
-        "no_of_covers": 1,
     }
     response = client.post("/orders/", json=data)
 
@@ -64,6 +54,10 @@ def order(client):
 
 @pytest_asyncio.fixture
 def preview(client, order):
+    assets_status_flag = False
+    while not assets_status_flag:
+        assets_status_flag = client.get(f"/orders/order_status/{order.id}").json()
+        sleep(10)
     assets_response = client.get(f"/assets/order_id/{order.id}")
     assets = assets_response.json()
     data = {

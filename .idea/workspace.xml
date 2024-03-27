@@ -4,28 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="4f3fec3c-998e-4568-9568-8d97cb6904e1" name="Changes" comment="concurrent processing and refactoring">
+    <list default="true" id="4f3fec3c-998e-4568-9568-8d97cb6904e1" name="Changes" comment="hubspot create properties">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/setup.cfg" beforeDir="false" afterPath="$PROJECT_DIR$/setup.cfg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/api/routes/orders.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/routes/orders.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/assets/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/assets/model.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/experiments/rough.py" beforeDir="false" afterPath="$PROJECT_DIR$/experiments/rough.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/domain/assets/usecases.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/assets/usecases.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/domain/orders/commands.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/orders/commands.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/domain/orders/model.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/orders/model.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/orders/services.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/orders/services.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/previews/commands.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/previews/commands.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/domain/previews/usecases.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/previews/usecases.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/implementation/repositories/assets.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/implementation/repositories/assets.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/implementation/repositories/previews.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/implementation/repositories/previews.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/implementation/services/open_ai.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/implementation/services/open_ai.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/implementation/sql.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/implementation/sql.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/domain/orders/usecases.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/domain/orders/usecases.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/implementation/repositories/orders.py" beforeDir="false" afterPath="$PROJECT_DIR$/src/implementation/repositories/orders.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/e2e/conftest.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/e2e/conftest.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/e2e/test_previews.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/e2e/test_previews.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/integration/repositories/conftest.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/integration/repositories/conftest.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/integration/repositories/test_previews.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/integration/repositories/test_previews.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/integration/services/test_open_ai.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/integration/services/test_open_ai.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/unit/test_fusion.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/unit/test_fusion.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/integration/services/create_hubspot_fields.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/integration/services/create_hubspot_fields.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -53,16 +42,16 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "conurrent__api__calls",
-    "last_opened_file_path": "/home/subra/Documents/personalized_kids_book/tests/integration/repositories",
-    "settings.editor.selected.configurable": "actions.on.save"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;full__flow&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/subra/Documents/personalized_kids_book/tests/integration/repositories&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;actions.on.save&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/tests/integration/repositories" />
@@ -79,7 +68,7 @@
       <recent name="$PROJECT_DIR$/tests/integration" />
     </key>
   </component>
-  <component name="RunManager" selected="Python tests.pytest for integration.services.test_open_ai.test_ask_for_text">
+  <component name="RunManager" selected="Python tests.pytest for e2e.test_previews.test_generate_preview">
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
       <module name="personalized_kids_book" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -113,6 +102,22 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="pytest for e2e.test_orders.test_get_order" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
+      <module name="personalized_kids_book" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="_new_keywords" value="&quot;&quot;" />
+      <option name="_new_parameters" value="&quot;&quot;" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;e2e.test_orders.test_get_order&quot;" />
+      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
+      <method v="2" />
+    </configuration>
     <configuration name="pytest for e2e.test_previews.test_generate_preview" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
       <module name="personalized_kids_book" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -129,7 +134,7 @@
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="pytest for integration.repositories.test_previews.test_get_preview" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
+    <configuration name="pytest for integration.services.create_hubspot_fields.test_seed_dropdown_property_creation" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
       <module name="personalized_kids_book" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -141,11 +146,11 @@
       <option name="_new_keywords" value="&quot;&quot;" />
       <option name="_new_parameters" value="&quot;&quot;" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;integration.repositories.test_previews.test_get_preview&quot;" />
+      <option name="_new_target" value="&quot;integration.services.create_hubspot_fields.test_seed_dropdown_property_creation&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="pytest for integration.services.test_open_ai.test_ask_for_image" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
+    <configuration name="pytest for integration.services.create_hubspot_fields.test_seed_property_creation" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
       <module name="personalized_kids_book" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -157,11 +162,11 @@
       <option name="_new_keywords" value="&quot;&quot;" />
       <option name="_new_parameters" value="&quot;&quot;" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;integration.services.test_open_ai.test_ask_for_image&quot;" />
+      <option name="_new_target" value="&quot;integration.services.create_hubspot_fields.test_seed_property_creation&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="pytest for integration.services.test_open_ai.test_ask_for_text" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
+    <configuration name="pytest for integration.services.create_hubspot_fields.test_seed_text_property_creation" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
       <module name="personalized_kids_book" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -173,41 +178,25 @@
       <option name="_new_keywords" value="&quot;&quot;" />
       <option name="_new_parameters" value="&quot;&quot;" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;integration.services.test_open_ai.test_ask_for_text&quot;" />
-      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
-      <method v="2" />
-    </configuration>
-    <configuration name="pytest for unit.test_fusion.test_fuse_images" type="tests" factoryName="py.test" temporary="true" nameIsGenerated="true">
-      <module name="personalized_kids_book" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="_new_keywords" value="&quot;&quot;" />
-      <option name="_new_parameters" value="&quot;&quot;" />
-      <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;unit.test_fusion.test_fuse_images&quot;" />
+      <option name="_new_target" value="&quot;integration.services.create_hubspot_fields.test_seed_text_property_creation&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
     <list>
       <item itemvalue="Python.main" />
-      <item itemvalue="Python tests.pytest for integration.services.test_open_ai.test_ask_for_image" />
-      <item itemvalue="Python tests.pytest for integration.services.test_open_ai.test_ask_for_text" />
-      <item itemvalue="Python tests.pytest for integration.repositories.test_previews.test_get_preview" />
-      <item itemvalue="Python tests.pytest for unit.test_fusion.test_fuse_images" />
+      <item itemvalue="Python tests.pytest for e2e.test_orders.test_get_order" />
       <item itemvalue="Python tests.pytest for e2e.test_previews.test_generate_preview" />
+      <item itemvalue="Python tests.pytest for integration.services.create_hubspot_fields.test_seed_dropdown_property_creation" />
+      <item itemvalue="Python tests.pytest for integration.services.create_hubspot_fields.test_seed_property_creation" />
+      <item itemvalue="Python tests.pytest for integration.services.create_hubspot_fields.test_seed_text_property_creation" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python tests.pytest for integration.services.test_open_ai.test_ask_for_text" />
         <item itemvalue="Python tests.pytest for e2e.test_previews.test_generate_preview" />
-        <item itemvalue="Python tests.pytest for unit.test_fusion.test_fuse_images" />
-        <item itemvalue="Python tests.pytest for integration.services.test_open_ai.test_ask_for_image" />
-        <item itemvalue="Python tests.pytest for integration.repositories.test_previews.test_get_preview" />
+        <item itemvalue="Python tests.pytest for e2e.test_orders.test_get_order" />
+        <item itemvalue="Python tests.pytest for integration.services.create_hubspot_fields.test_seed_text_property_creation" />
+        <item itemvalue="Python tests.pytest for integration.services.create_hubspot_fields.test_seed_dropdown_property_creation" />
+        <item itemvalue="Python tests.pytest for integration.services.create_hubspot_fields.test_seed_property_creation" />
       </list>
     </recent_temporary>
   </component>
@@ -219,238 +208,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1707026849859</updated>
-    </task>
-    <task id="LOCAL-00001" summary="adding methods for open ai text, and images, including test cases">
-      <option name="closed" value="true" />
-      <created>1707030981981</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1707030981981</updated>
-    </task>
-    <task id="LOCAL-00002" summary="adding methods for open ai text, and images, including test cases">
-      <option name="closed" value="true" />
-      <created>1707030990058</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1707030990058</updated>
-    </task>
-    <task id="LOCAL-00003" summary="adding methods for open ai text, and images, including test cases">
-      <option name="closed" value="true" />
-      <created>1707031071665</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1707031071665</updated>
-    </task>
-    <task id="LOCAL-00004" summary="replacing gpt with open ai">
-      <option name="closed" value="true" />
-      <created>1707064706523</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1707064706523</updated>
-    </task>
-    <task id="LOCAL-00005" summary="refactoring leads to orders">
-      <option name="closed" value="true" />
-      <created>1707246301121</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1707246301121</updated>
-    </task>
-    <task id="LOCAL-00006" summary="orders database created and tests for pushing data into it">
-      <option name="closed" value="true" />
-      <created>1707287693642</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1707287693642</updated>
-    </task>
-    <task id="LOCAL-00007" summary="assets database created and tests for pushing data into it">
-      <option name="closed" value="true" />
-      <created>1707290736592</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1707290736592</updated>
-    </task>
-    <task id="LOCAL-00008" summary="previews database created and tests for pushing data into it">
-      <option name="closed" value="true" />
-      <created>1707291682162</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1707291682162</updated>
-    </task>
-    <task id="LOCAL-00009" summary="orders create and query endpoint created">
-      <option name="closed" value="true" />
-      <created>1707298321747</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1707298321747</updated>
-    </task>
-    <task id="LOCAL-00010" summary="establishing e2e tests">
-      <option name="closed" value="true" />
-      <created>1707299338647</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1707299338647</updated>
-    </task>
-    <task id="LOCAL-00011" summary="asset endpoints and storing multiple necessary assets in the database">
-      <option name="closed" value="true" />
-      <created>1707308134924</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1707308134924</updated>
-    </task>
-    <task id="LOCAL-00012" summary="preview endpoint creation and storing in the database">
-      <option name="closed" value="true" />
-      <created>1707313628458</created>
-      <option name="number" value="00012" />
-      <option name="presentableId" value="LOCAL-00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1707313628458</updated>
-    </task>
-    <task id="LOCAL-00013" summary="input changes to volume of titles and images">
-      <option name="closed" value="true" />
-      <created>1707387611197</created>
-      <option name="number" value="00013" />
-      <option name="presentableId" value="LOCAL-00013" />
-      <option name="project" value="LOCAL" />
-      <updated>1707387611197</updated>
-    </task>
-    <task id="LOCAL-00014" summary="previews endpoint creation test case">
-      <option name="closed" value="true" />
-      <created>1707387632658</created>
-      <option name="number" value="00014" />
-      <option name="presentableId" value="LOCAL-00014" />
-      <option name="project" value="LOCAL" />
-      <updated>1707387632658</updated>
-    </task>
-    <task id="LOCAL-00015" summary="fixing integration tests for previews">
-      <option name="closed" value="true" />
-      <created>1707388000948</created>
-      <option name="number" value="00015" />
-      <option name="presentableId" value="LOCAL-00015" />
-      <option name="project" value="LOCAL" />
-      <updated>1707388000948</updated>
-    </task>
-    <task id="LOCAL-00016" summary="revamping preview endpoints, with e2e tests and added prompts with core functions">
-      <option name="closed" value="true" />
-      <created>1707399349153</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1707399349153</updated>
-    </task>
-    <task id="LOCAL-00017" summary="updates to prompt generation, fusion and changes to input params">
-      <option name="closed" value="true" />
-      <created>1707470908771</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1707470908771</updated>
-    </task>
-    <task id="LOCAL-00018" summary="updates to the fusion process and adjusting the creativity of llm">
-      <option name="closed" value="true" />
-      <created>1707483403923</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1707483403923</updated>
-    </task>
-    <task id="LOCAL-00019" summary="making the char image transparent">
-      <option name="closed" value="true" />
-      <created>1707488532229</created>
-      <option name="number" value="00019" />
-      <option name="presentableId" value="LOCAL-00019" />
-      <option name="project" value="LOCAL" />
-      <updated>1707488532229</updated>
-    </task>
-    <task id="LOCAL-00020" summary="adjustments for deployment">
-      <option name="closed" value="true" />
-      <created>1707488678914</created>
-      <option name="number" value="00020" />
-      <option name="presentableId" value="LOCAL-00020" />
-      <option name="project" value="LOCAL" />
-      <updated>1707488678914</updated>
-    </task>
-    <task id="LOCAL-00021" summary="character image dimensions">
-      <option name="closed" value="true" />
-      <created>1707489033280</created>
-      <option name="number" value="00021" />
-      <option name="presentableId" value="LOCAL-00021" />
-      <option name="project" value="LOCAL" />
-      <updated>1707489033280</updated>
-    </task>
-    <task id="LOCAL-00022" summary="character image dimensions and title updates">
-      <option name="closed" value="true" />
-      <created>1707489176363</created>
-      <option name="number" value="00022" />
-      <option name="presentableId" value="LOCAL-00022" />
-      <option name="project" value="LOCAL" />
-      <updated>1707489176363</updated>
-    </task>
-    <task id="LOCAL-00023" summary="adding prompt used to generate assets in the endpoint response">
-      <option name="closed" value="true" />
-      <created>1707730980177</created>
-      <option name="number" value="00023" />
-      <option name="presentableId" value="LOCAL-00023" />
-      <option name="project" value="LOCAL" />
-      <updated>1707730980177</updated>
-    </task>
-    <task id="LOCAL-00024" summary="updates to aspect ratio">
-      <option name="closed" value="true" />
-      <created>1707740885947</created>
-      <option name="number" value="00024" />
-      <option name="presentableId" value="LOCAL-00024" />
-      <option name="project" value="LOCAL" />
-      <updated>1707740885947</updated>
-    </task>
-    <task id="LOCAL-00025" summary="updates to positioning and aspect ratio">
-      <option name="closed" value="true" />
-      <created>1707797659108</created>
-      <option name="number" value="00025" />
-      <option name="presentableId" value="LOCAL-00025" />
-      <option name="project" value="LOCAL" />
-      <updated>1707797659108</updated>
-    </task>
-    <task id="LOCAL-00026" summary="fixing preview reordering issues">
-      <option name="closed" value="true" />
-      <created>1707820590357</created>
-      <option name="number" value="00026" />
-      <option name="presentableId" value="LOCAL-00026" />
-      <option name="project" value="LOCAL" />
-      <updated>1707820590357</updated>
-    </task>
-    <task id="LOCAL-00027" summary="adding orders endpoint and fixing tests">
-      <option name="closed" value="true" />
-      <created>1708022248894</created>
-      <option name="number" value="00027" />
-      <option name="presentableId" value="LOCAL-00027" />
-      <option name="project" value="LOCAL" />
-      <updated>1708022248894</updated>
-    </task>
-    <task id="LOCAL-00028" summary="integrating the character_changes">
-      <option name="closed" value="true" />
-      <created>1708078609540</created>
-      <option name="number" value="00028" />
-      <option name="presentableId" value="LOCAL-00028" />
-      <option name="project" value="LOCAL" />
-      <updated>1708078609540</updated>
-    </task>
-    <task id="LOCAL-00029" summary="assets endpoint, and prod config changes">
-      <option name="closed" value="true" />
-      <created>1708169228244</created>
-      <option name="number" value="00029" />
-      <option name="presentableId" value="LOCAL-00029" />
-      <option name="project" value="LOCAL" />
-      <updated>1708169228244</updated>
     </task>
     <task id="LOCAL-00030" summary="additional endpoints for the FE app">
       <option name="closed" value="true" />
@@ -580,7 +337,271 @@
       <option name="project" value="LOCAL" />
       <updated>1709300865479</updated>
     </task>
-    <option name="localTasksCounter" value="46" />
+    <task id="LOCAL-00046" summary="refactoring the codebase">
+      <option name="closed" value="true" />
+      <created>1709315632648</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1709315632648</updated>
+    </task>
+    <task id="LOCAL-00047" summary="integration with hubspot apis">
+      <option name="closed" value="true" />
+      <created>1709323168633</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1709323168633</updated>
+    </task>
+    <task id="LOCAL-00048" summary="adding a test preview mock endpoint">
+      <option name="closed" value="true" />
+      <created>1709440834323</created>
+      <option name="number" value="00048" />
+      <option name="presentableId" value="LOCAL-00048" />
+      <option name="project" value="LOCAL" />
+      <updated>1709440834323</updated>
+    </task>
+    <task id="LOCAL-00049" summary="adding hubspot test endpoint">
+      <option name="closed" value="true" />
+      <created>1709577944025</created>
+      <option name="number" value="00049" />
+      <option name="presentableId" value="LOCAL-00049" />
+      <option name="project" value="LOCAL" />
+      <updated>1709577944025</updated>
+    </task>
+    <task id="LOCAL-00050" summary="updating the shadow to a shadow image">
+      <option name="closed" value="true" />
+      <created>1709718199111</created>
+      <option name="number" value="00050" />
+      <option name="presentableId" value="LOCAL-00050" />
+      <option name="project" value="LOCAL" />
+      <updated>1709718199111</updated>
+    </task>
+    <task id="LOCAL-00051" summary="adding revised cover prompt">
+      <option name="closed" value="true" />
+      <created>1709732418442</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1709732418442</updated>
+    </task>
+    <task id="LOCAL-00052" summary="adding bad titles logic">
+      <option name="closed" value="true" />
+      <created>1710155448012</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1710155448013</updated>
+    </task>
+    <task id="LOCAL-00053" summary="assets status endpoint">
+      <option name="closed" value="true" />
+      <created>1710160418747</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1710160418747</updated>
+    </task>
+    <task id="LOCAL-00054" summary="approve preview endpoint">
+      <option name="closed" value="true" />
+      <created>1710163652960</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1710163652960</updated>
+    </task>
+    <task id="LOCAL-00055" summary="adding title categories">
+      <option name="closed" value="true" />
+      <created>1710169130989</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1710169130989</updated>
+    </task>
+    <task id="LOCAL-00056" summary="prompt new variables">
+      <option name="closed" value="true" />
+      <created>1710213700193</created>
+      <option name="number" value="00056" />
+      <option name="presentableId" value="LOCAL-00056" />
+      <option name="project" value="LOCAL" />
+      <updated>1710213700193</updated>
+    </task>
+    <task id="LOCAL-00057" summary="updating story location">
+      <option name="closed" value="true" />
+      <created>1710227551694</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1710227551694</updated>
+    </task>
+    <task id="LOCAL-00058" summary="flag whether asset was shown">
+      <option name="closed" value="true" />
+      <created>1710235416542</created>
+      <option name="number" value="00058" />
+      <option name="presentableId" value="LOCAL-00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1710235416542</updated>
+    </task>
+    <task id="LOCAL-00059" summary="bad titles debugging and updating stop_ending_words">
+      <option name="closed" value="true" />
+      <created>1710236527792</created>
+      <option name="number" value="00059" />
+      <option name="presentableId" value="LOCAL-00059" />
+      <option name="project" value="LOCAL" />
+      <updated>1710236527792</updated>
+    </task>
+    <task id="LOCAL-00060" summary="color type updates">
+      <option name="closed" value="true" />
+      <created>1710255709734</created>
+      <option name="number" value="00060" />
+      <option name="presentableId" value="LOCAL-00060" />
+      <option name="project" value="LOCAL" />
+      <updated>1710255709734</updated>
+    </task>
+    <task id="LOCAL-00061" summary="updating consistent story location">
+      <option name="closed" value="true" />
+      <created>1710256341413</created>
+      <option name="number" value="00061" />
+      <option name="presentableId" value="LOCAL-00061" />
+      <option name="project" value="LOCAL" />
+      <updated>1710256341413</updated>
+    </task>
+    <task id="LOCAL-00062" summary="removing colors_type param">
+      <option name="closed" value="true" />
+      <created>1710338720965</created>
+      <option name="number" value="00062" />
+      <option name="presentableId" value="LOCAL-00062" />
+      <option name="project" value="LOCAL" />
+      <updated>1710338720966</updated>
+    </task>
+    <task id="LOCAL-00063" summary="hubspot deal and contact creation from order">
+      <option name="closed" value="true" />
+      <created>1710356395083</created>
+      <option name="number" value="00063" />
+      <option name="presentableId" value="LOCAL-00063" />
+      <option name="project" value="LOCAL" />
+      <updated>1710356395083</updated>
+    </task>
+    <task id="LOCAL-00064" summary="loading order, assets, and preview information into hubspot">
+      <option name="closed" value="true" />
+      <created>1710406647250</created>
+      <option name="number" value="00064" />
+      <option name="presentableId" value="LOCAL-00064" />
+      <option name="project" value="LOCAL" />
+      <updated>1710406647250</updated>
+    </task>
+    <task id="LOCAL-00065" summary="adding back colors type">
+      <option name="closed" value="true" />
+      <created>1710425188017</created>
+      <option name="number" value="00065" />
+      <option name="presentableId" value="LOCAL-00065" />
+      <option name="project" value="LOCAL" />
+      <updated>1710425188017</updated>
+    </task>
+    <task id="LOCAL-00066" summary="revert back async">
+      <option name="closed" value="true" />
+      <created>1710425233791</created>
+      <option name="number" value="00066" />
+      <option name="presentableId" value="LOCAL-00066" />
+      <option name="project" value="LOCAL" />
+      <updated>1710425233791</updated>
+    </task>
+    <task id="LOCAL-00067" summary="making all the processes async">
+      <option name="closed" value="true" />
+      <created>1710521219516</created>
+      <option name="number" value="00067" />
+      <option name="presentableId" value="LOCAL-00067" />
+      <option name="project" value="LOCAL" />
+      <updated>1710521219516</updated>
+    </task>
+    <task id="LOCAL-00068" summary="updating the approved preview to be located on hubspot">
+      <option name="closed" value="true" />
+      <created>1710660182945</created>
+      <option name="number" value="00068" />
+      <option name="presentableId" value="LOCAL-00068" />
+      <option name="project" value="LOCAL" />
+      <updated>1710660182945</updated>
+    </task>
+    <task id="LOCAL-00069" summary="fixing preview approve issue">
+      <option name="closed" value="true" />
+      <created>1710753567396</created>
+      <option name="number" value="00069" />
+      <option name="presentableId" value="LOCAL-00069" />
+      <option name="project" value="LOCAL" />
+      <updated>1710753567396</updated>
+    </task>
+    <task id="LOCAL-00070" summary="fixing the leading and trailing new lines in title issue">
+      <option name="closed" value="true" />
+      <created>1710754136503</created>
+      <option name="number" value="00070" />
+      <option name="presentableId" value="LOCAL-00070" />
+      <option name="project" value="LOCAL" />
+      <updated>1710754136503</updated>
+    </task>
+    <task id="LOCAL-00071" summary="was shown flag added to previews and update that to hubspot">
+      <option name="closed" value="true" />
+      <created>1710873261891</created>
+      <option name="number" value="00071" />
+      <option name="presentableId" value="LOCAL-00071" />
+      <option name="project" value="LOCAL" />
+      <updated>1710873261892</updated>
+    </task>
+    <task id="LOCAL-00072" summary="fix deal issue">
+      <option name="closed" value="true" />
+      <created>1711137350815</created>
+      <option name="number" value="00072" />
+      <option name="presentableId" value="LOCAL-00072" />
+      <option name="project" value="LOCAL" />
+      <updated>1711137350816</updated>
+    </task>
+    <task id="LOCAL-00073" summary="order model updates">
+      <option name="closed" value="true" />
+      <created>1711366143502</created>
+      <option name="number" value="00073" />
+      <option name="presentableId" value="LOCAL-00073" />
+      <option name="project" value="LOCAL" />
+      <updated>1711366143503</updated>
+    </task>
+    <task id="LOCAL-00074" summary="making the fields optional">
+      <option name="closed" value="true" />
+      <created>1711373133532</created>
+      <option name="number" value="00074" />
+      <option name="presentableId" value="LOCAL-00074" />
+      <option name="project" value="LOCAL" />
+      <updated>1711373133533</updated>
+    </task>
+    <task id="LOCAL-00075" summary="updating the fields">
+      <option name="closed" value="true" />
+      <created>1711396901706</created>
+      <option name="number" value="00075" />
+      <option name="presentableId" value="LOCAL-00075" />
+      <option name="project" value="LOCAL" />
+      <updated>1711396901706</updated>
+    </task>
+    <task id="LOCAL-00076" summary="increasing the timeout">
+      <option name="closed" value="true" />
+      <created>1711436423477</created>
+      <option name="number" value="00076" />
+      <option name="presentableId" value="LOCAL-00076" />
+      <option name="project" value="LOCAL" />
+      <updated>1711436423477</updated>
+    </task>
+    <task id="LOCAL-00077" summary="hubspot create properties">
+      <option name="closed" value="true" />
+      <created>1711487042962</created>
+      <option name="number" value="00077" />
+      <option name="presentableId" value="LOCAL-00077" />
+      <option name="project" value="LOCAL" />
+      <updated>1711487042962</updated>
+    </task>
+    <task id="LOCAL-00078" summary="hubspot create properties">
+      <option name="closed" value="true" />
+      <created>1711545537583</created>
+      <option name="number" value="00078" />
+      <option name="presentableId" value="LOCAL-00078" />
+      <option name="project" value="LOCAL" />
+      <updated>1711545537583</updated>
+    </task>
+    <option name="localTasksCounter" value="79" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -595,32 +616,32 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="character image dimensions" />
-    <MESSAGE value="character image dimensions and title updates" />
-    <MESSAGE value="adding prompt used to generate assets in the endpoint response" />
-    <MESSAGE value="updates to aspect ratio" />
-    <MESSAGE value="updates to positioning and aspect ratio" />
-    <MESSAGE value="fixing preview reordering issues" />
-    <MESSAGE value="adding orders endpoint and fixing tests" />
-    <MESSAGE value="integrating the character_changes" />
-    <MESSAGE value="assets endpoint, and prod config changes" />
-    <MESSAGE value="additional endpoints for the FE app" />
-    <MESSAGE value="merging the assets and orders endpoint" />
-    <MESSAGE value="fixing the issue with multiple covers" />
-    <MESSAGE value="adding gitignore" />
-    <MESSAGE value="making configurations editable" />
-    <MESSAGE value="updating order domain to allow for additional params" />
-    <MESSAGE value="refactoring codebase and fixing a few tests" />
-    <MESSAGE value="adding todos" />
-    <MESSAGE value="previews integration into orders and fixing unit tests" />
-    <MESSAGE value="adjusting the shadow and size of the preview for char Image" />
-    <MESSAGE value="updating the title shadow and removed char shadow" />
-    <MESSAGE value="making assets repository asyncronous" />
-    <MESSAGE value="making previews and orders repository asyncronous" />
-    <MESSAGE value="getting all requests to be concurrent from external services" />
-    <MESSAGE value="making bytesio asynchronous" />
-    <MESSAGE value="concurrent processing and refactoring" />
-    <option name="LAST_COMMIT_MESSAGE" value="concurrent processing and refactoring" />
+    <MESSAGE value="assets status endpoint" />
+    <MESSAGE value="approve preview endpoint" />
+    <MESSAGE value="adding title categories" />
+    <MESSAGE value="prompt new variables" />
+    <MESSAGE value="updating story location" />
+    <MESSAGE value="flag whether asset was shown" />
+    <MESSAGE value="bad titles debugging and updating stop_ending_words" />
+    <MESSAGE value="color type updates" />
+    <MESSAGE value="updating consistent story location" />
+    <MESSAGE value="removing colors_type param" />
+    <MESSAGE value="hubspot deal and contact creation from order" />
+    <MESSAGE value="loading order, assets, and preview information into hubspot" />
+    <MESSAGE value="adding back colors type" />
+    <MESSAGE value="revert back async" />
+    <MESSAGE value="making all the processes async" />
+    <MESSAGE value="updating the approved preview to be located on hubspot" />
+    <MESSAGE value="fixing preview approve issue" />
+    <MESSAGE value="fixing the leading and trailing new lines in title issue" />
+    <MESSAGE value="was shown flag added to previews and update that to hubspot" />
+    <MESSAGE value="fix deal issue" />
+    <MESSAGE value="order model updates" />
+    <MESSAGE value="making the fields optional" />
+    <MESSAGE value="updating the fields" />
+    <MESSAGE value="increasing the timeout" />
+    <MESSAGE value="hubspot create properties" />
+    <option name="LAST_COMMIT_MESSAGE" value="hubspot create properties" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -642,13 +663,8 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/tests/e2e/conftest.py</url>
-          <line>78</line>
+          <line>72</line>
           <option name="timeStamp" value="75" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/tests/e2e/conftest.py</url>
-          <line>68</line>
-          <option name="timeStamp" value="76" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/tests/e2e/test_orders.py</url>
@@ -661,28 +677,13 @@
           <option name="timeStamp" value="85" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/tests/e2e/conftest.py</url>
-          <line>59</line>
-          <option name="timeStamp" value="90" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/domain/assets/usecases.py</url>
-          <line>91</line>
-          <option name="timeStamp" value="96" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/domain/previews/usecases.py</url>
-          <line>171</line>
-          <option name="timeStamp" value="102" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/tests/integration/repositories/test_assets.py</url>
           <line>10</line>
           <option name="timeStamp" value="112" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/src/implementation/repositories/assets.py</url>
-          <line>44</line>
+          <line>54</line>
           <option name="timeStamp" value="116" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
@@ -691,24 +692,69 @@
           <option name="timeStamp" value="117" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/tests/e2e/conftest.py</url>
-          <line>61</line>
-          <option name="timeStamp" value="118" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/tests/e2e/test_orders.py</url>
           <line>1</line>
           <option name="timeStamp" value="119" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/src/api/routes/orders.py</url>
-          <line>13</line>
-          <option name="timeStamp" value="123" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/tests/e2e/test_previews.py</url>
           <line>1</line>
           <option name="timeStamp" value="127" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/tests/integration/services/test_hubspot.py</url>
+          <line>20</line>
+          <option name="timeStamp" value="143" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/tests/unit/test_fusion.py</url>
+          <line>18</line>
+          <option name="timeStamp" value="149" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/tests/integration/services/test_open_ai.py</url>
+          <line>31</line>
+          <option name="timeStamp" value="150" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/api/routes/previews.py</url>
+          <line>43</line>
+          <option name="timeStamp" value="155" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/tests/unit/test_bad_titles.py</url>
+          <line>9</line>
+          <option name="timeStamp" value="161" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/api/routes/assets.py</url>
+          <line>10</line>
+          <option name="timeStamp" value="183" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/tests/integration/services/create_hubspot_fields.py</url>
+          <line>14</line>
+          <option name="timeStamp" value="209" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/tests/integration/services/create_hubspot_fields.py</url>
+          <line>108</line>
+          <option name="timeStamp" value="212" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/tests/e2e/conftest.py</url>
+          <line>60</line>
+          <option name="timeStamp" value="222" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/src/api/routes/orders.py</url>
+          <line>29</line>
+          <option name="timeStamp" value="225" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/tests/e2e/conftest.py</url>
+          <line>57</line>
+          <option name="timeStamp" value="232" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
