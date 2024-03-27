@@ -100,14 +100,16 @@ class HubSpot(CRM):
                 f"{self.host}/crm/v3/properties/deal/groups/{group_name}"
             )
 
-    async def create_text_property(self, group_name: str, property_name: str):
+    async def create_property(
+        self, group_name: str, property_name: str, field_type: str, data_type: str
+    ):
         async with httpx.AsyncClient(headers=self.headers, timeout=300.0) as client:
             body = {
-                "fieldType": "text",
+                "fieldType": field_type,
                 "groupName": group_name,
                 "label": property_name,
                 "name": property_name,
-                "type": "string",
+                "type": data_type,
             }
             return await client.post(f"{self.host}/crm/v3/properties/deal", json=body)
 

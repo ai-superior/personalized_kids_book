@@ -61,7 +61,7 @@ async def test_create_text_property(hubspot):
         group_name="kids_info", group_label="Kids Info"
     )
     assert created_group_response.status_code == 201
-    created_property_response = await hubspot.create_text_property(
+    created_property_response = await hubspot.create_property(
         group_name="kids_info", property_name="kids_name"
     )
     assert created_property_response.status_code == 201
