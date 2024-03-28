@@ -225,9 +225,8 @@ class CreateAsset(UseCase):
                 story_location=order.story_location
                 or selected_dict_titles["story_location"],
                 name=order.kids_name,
-                interest=order.interest or selected_dict_titles["interest"],
-                upcoming_life_event=order.upcoming_life_event
-                or selected_dict_titles["upcoming_life_event"],
+                interest=order.interest or "",
+                upcoming_life_event=order.upcoming_life_event or "",
             )
         )
 
