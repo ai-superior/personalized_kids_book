@@ -73,6 +73,7 @@ class CreateOrder(UseCase):
             configs=cmd.configs,
             intent_message=cmd.intent_message,
             story_location=cmd.story_location,
+            mood=cmd.mood,
         )
         await self.orders.add(order)
         contact_response = await self.crm.create_contact(

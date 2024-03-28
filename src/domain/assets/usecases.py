@@ -229,7 +229,7 @@ class CreateAsset(UseCase):
                 interest=order.interest,
                 upcoming_life_event=order.upcoming_life_event,
                 story_location=order.story_location
-                # story_location=selected_dict_titles["story_location"],
+                or selected_dict_titles["story_location"],
             )
         )
 
@@ -329,12 +329,14 @@ class CreateAsset(UseCase):
                 .replace("}}", "}")
                 .format(
                     generated_title=valid_selectable_titles[0],
-                    story_location=selected_dict_titles["story_location"],
                     animation_type=selected_dict["animation_type"],
                     colors_type=selected_dict["colors_type_" + str(i + 1)]
                     if (i + 1) <= 2
                     else selected_dict["colors_type_1"],
                     orientation=selected_dict["orientation"],
+                    mood=order.mood,
+                    story_location=order.story_location
+                    or selected_dict_titles["story_location"],
                 )
             )
 
