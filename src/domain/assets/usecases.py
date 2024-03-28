@@ -222,14 +222,12 @@ class CreateAsset(UseCase):
             title_prompt.replace("{{", "{")
             .replace("}}", "}")
             .format(
-                name=order.kids_name,
-                city=order.city,
-                birthday=order.kids_date_of_birth,
-                favourite_food=order.favourite_food,
-                interest=order.interest,
-                upcoming_life_event=order.upcoming_life_event,
                 story_location=order.story_location
                 or selected_dict_titles["story_location"],
+                name=order.kids_name,
+                interest=order.interest or selected_dict_titles["interest"],
+                upcoming_life_event=order.upcoming_life_event
+                or selected_dict_titles["upcoming_life_event"],
             )
         )
 
@@ -328,15 +326,13 @@ class CreateAsset(UseCase):
                 cover_prompt.replace("{{", "{")
                 .replace("}}", "}")
                 .format(
-                    generated_title=valid_selectable_titles[0],
-                    animation_type=selected_dict["animation_type"],
+                    story_location=order.story_location
+                    or selected_dict["story_location"],
+                    mood=order.mood or selected_dict["mood"],
                     colors_type=selected_dict["colors_type_" + str(i + 1)]
                     if (i + 1) <= 2
                     else selected_dict["colors_type_1"],
                     orientation=selected_dict["orientation"],
-                    mood=order.mood,
-                    story_location=order.story_location
-                    or selected_dict_titles["story_location"],
                 )
             )
 

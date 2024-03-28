@@ -20,5 +20,17 @@
   ],
   "orientation": [
     "Horizontal"
+  ],
+  "mood": [
+    "happy",
+    "fun"
+  ],
+  "interest": [
+    "play",
+    "read"
+  ],
+  "upcoming_life_event": [
+    "vacation",
+    "birthday"
   ]
 }
